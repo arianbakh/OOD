@@ -1,20 +1,28 @@
+package db;
+
 import java.util.ArrayList;
 
 public class Product extends DataBaseObject {
 
 	private ArrayList<Component> components = new ArrayList<>();
+	private String name;
 	private int stock = 0;
 	private int minStock;
 	private int maxStock;
 	
-	public Product(ArrayList<Component> components, int minStock, int maxStock){
+	public Product(String name, ArrayList<Component> components, int minStock, int maxStock){
+        this.name = name;
 		this.components = components;
 		this.stock = 0;
 		this.minStock = minStock;
 		this.maxStock = maxStock;
 	}
-	
-	public int getMinStock() {
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMinStock() {
 		return minStock;
 	}
 	
@@ -58,7 +66,10 @@ public class Product extends DataBaseObject {
 	@Override
 	public void save() {
 		DataBase.getDB().addProduct(this);
-		
 	}
-	
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

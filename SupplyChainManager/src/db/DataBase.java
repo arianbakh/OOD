@@ -1,3 +1,5 @@
+package db;
+
 import java.util.ArrayList;
 
 public class DataBase {
@@ -49,11 +51,15 @@ public class DataBase {
 	public ArrayList<ProductReport> getProductReports() {
 		return productReports;
 	}
-	
+
+	public ArrayList<Person> getPersons() {
+		return persons;
+	}
+
 	public void addProduct(Product product){
 		this.products.add(product);
 	}
-	
+
 	public void addProductOrder(ProductOrder productOrder){
 		this.productOrders.add(productOrder);
 	}

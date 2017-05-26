@@ -1,3 +1,5 @@
+package db;
+
 import java.time.Duration;
 import java.util.ArrayList;
 

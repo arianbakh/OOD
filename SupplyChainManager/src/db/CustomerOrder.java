@@ -1,3 +1,4 @@
+package db;
 
 public class CustomerOrder extends DataBaseObject{
 	private Deliverer deliverer;

@@ -1,12 +1,20 @@
+package db;
+
 import java.util.ArrayList;
 
 public class Component extends DataBaseObject{
+	private String name;
 	private ArrayList<Supplier> suppliers = new ArrayList<>();
 	
-	public Component(){		
+	public Component(String name){
+	    this.name = name;
 	}
-	
-	public void addSupplier(Supplier supplier){
+
+    public String getName() {
+        return name;
+    }
+
+    public void addSupplier(Supplier supplier){
 		this.suppliers.add(supplier);
 	}
 	

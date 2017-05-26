@@ -1,3 +1,4 @@
+package db;
 
 public class Person extends DataBaseObject{
 
@@ -10,7 +11,10 @@ public class Person extends DataBaseObject{
 	@Override
 	public void save() {
 		DataBase.getDB().addPerson(this);
-		
 	}
-	
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }
