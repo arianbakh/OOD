@@ -1,19 +1,21 @@
-package ui;
-
-import db.Component;
-import db.DataBase;
+package view;
 
 import javax.swing.*;
+
+import database.DataBase;
+import model.product.Component;
+
 import java.awt.*;
 import java.util.ArrayList;
 
-class ComponentsListFrame extends JFrame {
-    ComponentsListFrame() {
+public class ComponentsListFrame extends JFrame {
+	private ArrayList<Component> components;
+    public ComponentsListFrame(ArrayList<Component> components) {
+    	this.components = components;
         initUI();
     }
 
     private void initUI() {
-        ArrayList<Component> components = DataBase.getDB().getComponents();
         for(Component component: components) {
             JLabel componentLabel = new JLabel(component.getName());
             componentLabel.setHorizontalAlignment(SwingConstants.CENTER);

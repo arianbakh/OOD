@@ -1,6 +1,9 @@
-package db;
+package model.order;
 
-public class Person extends DataBaseObject{
+import database.DataBase;
+import database.DataBaseObject;
+
+public class Person implements DataBaseObject{
 
 	private String name;
 	
@@ -8,7 +11,7 @@ public class Person extends DataBaseObject{
 		this.name = name;
 	}
 	
-	@Override
+	@Override	
 	public void save() {
 		DataBase.getDB().addPerson(this);
 	}

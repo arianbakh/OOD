@@ -1,8 +1,12 @@
-package db;
+package model.product;
 
 import java.util.ArrayList;
 
-public class Component extends DataBaseObject{
+import database.DataBase;
+import database.DataBaseObject;
+import model.Supplier;
+
+public class Component implements DataBaseObject{
 	private String name;
 	private ArrayList<Supplier> suppliers = new ArrayList<>();
 	
@@ -26,5 +30,10 @@ public class Component extends DataBaseObject{
 	public void save() {
 		DataBase.getDB().addComponent(this);
 		
+	}
+	
+	@Override
+	public String toString() {
+		return this.name;
 	}
 }

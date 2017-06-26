@@ -1,18 +1,22 @@
-package ui;
-
-import db.DataBase;
-import db.Person;
-import db.Product;
-import db.ProductReport;
+package view;
 
 import javax.swing.*;
+
+import controller.FrontController;
+import database.DataBase;
+import model.order.Person;
+import model.product.Product;
+import model.productOrder.ProductOrderReport;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-class SubmitProductReportFrame extends JFrame {
-    SubmitProductReportFrame() {
+public class SubmitProductReportFrame extends JFrame {
+    public SubmitProductReportFrame() {
         initUI();
     }
 
@@ -21,17 +25,9 @@ class SubmitProductReportFrame extends JFrame {
         productLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(productLabel);
 
-        JLabel durationLabel = new JLabel("مدت زمان");
-        durationLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        add(durationLabel);
-
         JLabel personsLabel = new JLabel("افراد درگیر");
         personsLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(personsLabel);
-
-        JLabel suggestionsLabel = new JLabel("پیشنهادات");
-        suggestionsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        add(suggestionsLabel);
 
         JLabel emptyLabel = new JLabel("");
         add(emptyLabel);
@@ -40,28 +36,20 @@ class SubmitProductReportFrame extends JFrame {
         productList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         add(new JScrollPane(productList));
 
-        JTextField durationField = new JTextField();
-        add(durationField);
-
         JList personsList = new JList(DataBase.getDB().getPersons().toArray());
         personsList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         add(new JScrollPane(personsList));
 
-        JTextArea suggestionTextArea = new JTextArea();
-        add(suggestionTextArea);
-
         JButton submitReportButton = new JButton("ثبت گزارش");
-        submitReportButton.addActionListener((ActionEvent e) -> {
-            ArrayList<Person> persons = new ArrayList<>(personsList.getSelectedValuesList());
-            DataBase.getDB().addProductReport(new ProductReport(
-                    (Product)productList.getSelectedValue(),
-                    Duration.ofDays(Integer.valueOf(durationField.getText())),
-                    persons,
-                    suggestionTextArea.getText()
-            ));
-            setVisible(false);
-            dispose();
-        });
+        submitReportButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				ArrayList<Person> persons = new ArrayList(Arrays.asList(personsList.getSelectedValues()));
+				onSubmit((Product)productList.getSelectedValue(), persons);
+				setVisible(false);
+				dispose();
+			}
+		});
         JPanel submitButtonPanel = new JPanel();
         submitButtonPanel.setLayout(new FlowLayout());
         submitButtonPanel.add(submitReportButton);
@@ -71,5 +59,12 @@ class SubmitProductReportFrame extends JFrame {
         setTitle("ثبت گزارش محصول");
         setSize(800, 450);
         setLocationRelativeTo(null);
+    }
+    
+    private void onSubmit(Product product, ArrayList<Person> persons) {
+    	ArrayList<Object> data = new ArrayList<>();
+    	data.add(product);
+    	data.add(persons);
+    	FrontController.getFrontController().callController("newProductOrderReport", data);
     }
 }

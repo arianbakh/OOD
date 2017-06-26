@@ -1,6 +1,15 @@
-package db;
+package database;
 
 import java.util.ArrayList;
+
+import model.Supplier;
+import model.customerOrder.CustomerOrder;
+import model.customerOrder.Deliverer;
+import model.order.Person;
+import model.product.Component;
+import model.product.Product;
+import model.productOrder.ProductOrder;
+import model.productOrder.ProductOrderReport;
 
 public class DataBase {
 	private static DataBase db = null;
@@ -12,7 +21,7 @@ public class DataBase {
 	private ArrayList<Component> components = new ArrayList<>();
 	private ArrayList<Supplier> suppliers = new ArrayList<>();
 	private ArrayList<Deliverer> deliverers = new ArrayList<>();
-	private ArrayList<ProductReport> productReports = new ArrayList<>();
+	private ArrayList<ProductOrderReport> productOrderReports = new ArrayList<>();
 	private ArrayList<Person> persons = new ArrayList<>();
 	 
 	private DataBase(){
@@ -48,8 +57,8 @@ public class DataBase {
 		return deliverers;
 	}
 	
-	public ArrayList<ProductReport> getProductReports() {
-		return productReports;
+	public ArrayList<ProductOrderReport> getProductOrderReports() {
+		return productOrderReports;
 	}
 
 	public ArrayList<Person> getPersons() {
@@ -80,8 +89,8 @@ public class DataBase {
 		this.deliverers.add(deliverer);
 	}
 	
-	public void addProductReport(ProductReport productReport){
-		this.productReports.add(productReport);
+	public void addProductOrderReport(ProductOrderReport productReport){
+		this.productOrderReports.add(productReport);
 	}
 	
 	public void addPerson(Person person){

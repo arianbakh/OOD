@@ -1,6 +1,11 @@
-package db;
+package model.customerOrder;
 
-public class CustomerOrder extends DataBaseObject{
+import database.DataBase;
+import database.DataBaseObject;
+import model.order.Order;
+import model.product.Product;
+
+public class CustomerOrder extends Order implements DataBaseObject{
 	private Deliverer deliverer;
 	private Product product;
 	
@@ -23,7 +28,6 @@ public class CustomerOrder extends DataBaseObject{
 	@Override
 	public void save() {
 		DataBase.getDB().addCustomerOrder(this);
-		
 	}
 
 }

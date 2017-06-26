@@ -1,8 +1,12 @@
-package db;
+package model.product;
 
 import java.util.ArrayList;
 
-public class Product extends DataBaseObject {
+import database.DataBase;
+import database.DataBaseObject;
+import model.productOrder.ProductOrder;
+
+public class Product implements DataBaseObject {
 
 	private ArrayList<Component> components = new ArrayList<>();
 	private String name;

@@ -1,14 +1,16 @@
-import db.Component;
-import db.DataBase;
-import db.Person;
-import db.Product;
 import logic.CheckStock;
-import ui.MainFrame;
+import model.order.Person;
+import model.product.Component;
+import model.product.Product;
+import view.MainFrame;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.concurrent.TimeUnit;
+
+import controller.FrontController;
+import database.DataBase;
 
 public class Main {
 	public static void main(String[] args) {
@@ -16,11 +18,7 @@ public class Main {
 
         Timer timer = new Timer();
         timer.schedule(new CheckStock(), 0, TimeUnit.MINUTES.toMillis(1));
-
-		EventQueue.invokeLater(() -> {
-			MainFrame mainFrame = new MainFrame();
-			mainFrame.setVisible(true);
-		});
+        FrontController.getFrontController().homepage();
 	}
 
 	private static void createDummyObjects() {
