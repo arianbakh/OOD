@@ -24,4 +24,9 @@ public class Supplier {
     public Component getComponent() {
         return component;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

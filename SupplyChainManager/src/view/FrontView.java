@@ -19,6 +19,10 @@ public class FrontView extends JFrame {
         showExistingComponentsButton.addActionListener(e -> onShowExistingComponents());
         add(showExistingComponentsButton);
 
+        JButton newComponentOrderButton = new JButton("سفارش مولفه جدید");
+        newComponentOrderButton.addActionListener(e -> onNewComponentOrder());
+        add(newComponentOrderButton);
+
         setLayout(new FlowLayout());
         setTitle("سامانه مدیریت زنجیره تأمین");
         setSize(800, 450);
@@ -32,5 +36,9 @@ public class FrontView extends JFrame {
 
     private void onShowExistingComponents() {
         FrontController.getFrontController().dispatch("showExistingComponents", null);
+    }
+
+    private void onNewComponentOrder() {
+        FrontController.getFrontController().dispatch("startNewComponentOrder", null);
     }
 }

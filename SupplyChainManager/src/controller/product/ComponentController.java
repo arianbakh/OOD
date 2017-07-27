@@ -1,6 +1,5 @@
 package controller.product;
 
-import model.product.Component;
 import model.repository.ComponentRepository;
 import view.product.ComponentsListView;
 

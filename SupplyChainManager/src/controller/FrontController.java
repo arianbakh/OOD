@@ -25,6 +25,16 @@ public class FrontController {
                     controller.product.ComponentController.class.getMethod("startShowExistingComponents", ArrayList.class));
             this.controllersMap.put("componentsListReturn",
                     controller.product.ComponentController.class.getMethod("componentsListReturn", ArrayList.class));
+            this.controllersMap.put("startNewComponentOrder",
+                    controller.componentOrder.ComponentOrderController.class.getMethod("startNewComponentOrder", ArrayList.class));
+            this.controllersMap.put("componentSelectionCancel",
+                    controller.componentOrder.ComponentOrderController.class.getMethod("componentSelectionCancel", ArrayList.class));
+            this.controllersMap.put("componentSelectionNext",
+                    controller.componentOrder.ComponentOrderController.class.getMethod("componentSelectionNext", ArrayList.class));
+            this.controllersMap.put("supplierSelectionForNewSubmit",
+                    controller.componentOrder.ComponentOrderController.class.getMethod("supplierSelectionForNewSubmit", ArrayList.class));
+            this.controllersMap.put("supplierSelectionForNewCancel",
+                    controller.componentOrder.ComponentOrderController.class.getMethod("supplierSelectionForNewCancel", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }

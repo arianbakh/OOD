@@ -10,6 +10,7 @@ public class Component {
 
     public Component(String name) {
         this.name = name;
+        suppliers = new ArrayList<>();
     }
 
     public String getName() {

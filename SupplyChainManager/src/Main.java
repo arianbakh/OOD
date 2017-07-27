@@ -1,8 +1,10 @@
 import controller.FrontController;
 import model.product.Component;
 import model.product.Product;
+import model.productOrder.Supplier;
 import model.repository.ComponentRepository;
 import model.repository.ProductRepository;
+import model.repository.SupplierRepository;
 
 import java.util.ArrayList;
 
@@ -16,8 +18,13 @@ public class Main {
         Component component1 = new Component("مولفه ۱");
         ComponentRepository.getInstance().save(component1);
 
+        component1.addSupplier("تامین‌کننده ۱", 1000);
+        component1.addSupplier("تامین‌کننده ۲", 2000);
+
         Component component2 = new Component("مولفه ۲");
         ComponentRepository.getInstance().save(component2);
+
+        component2.addSupplier("تامین‌کننده ۳", 3000);
 
         ArrayList<Component> components = new ArrayList<>();
         components.add(component1);
