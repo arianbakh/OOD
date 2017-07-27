@@ -49,4 +49,9 @@ public class Product {
     public int getCurrentStock() {
         return currentStock;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

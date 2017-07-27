@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class SubmitTextView extends JFrame {
     private JComboBox<Object> product;
-    private JTextField text;
+    private JTextArea text;
 
     public SubmitTextView(ArrayList<Product> products) {
         initUI(products);
@@ -19,7 +19,7 @@ public class SubmitTextView extends JFrame {
         product = new JComboBox<>(products.toArray());
         add(product);
 
-        text = new JTextField();
+        text = new JTextArea(10, 30);
         add(text);
 
         JButton submitButton = new JButton("ثبت");
