@@ -31,7 +31,7 @@ public class SubmitTextView extends JFrame {
         add(cancelButton);
 
         setLayout(new FlowLayout());
-        setTitle("سامانه مدیریت زنجیره تأمین");
+        setTitle("ثبت بازخورد متنی برای محصول");
         setSize(800, 450);
         setLocationRelativeTo(null);
     }

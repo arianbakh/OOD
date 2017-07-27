@@ -15,6 +15,10 @@ public class FrontView extends JFrame {
         newTextProductReviewButton.addActionListener(e -> onNewTextProductReview());
         add(newTextProductReviewButton);
 
+        JButton showExistingComponentsButton = new JButton("نمایش مولفه‌های موجود");
+        showExistingComponentsButton.addActionListener(e -> onShowExistingComponents());
+        add(showExistingComponentsButton);
+
         setLayout(new FlowLayout());
         setTitle("سامانه مدیریت زنجیره تأمین");
         setSize(800, 450);
@@ -24,5 +28,9 @@ public class FrontView extends JFrame {
 
     private void onNewTextProductReview() {
         FrontController.getFrontController().dispatch("startTextProductReview", null);
+    }
+
+    private void onShowExistingComponents() {
+        FrontController.getFrontController().dispatch("showExistingComponents", null);
     }
 }

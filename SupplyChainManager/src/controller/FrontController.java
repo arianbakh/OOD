@@ -21,6 +21,10 @@ public class FrontController {
                     controller.productReview.ProductTextReviewController.class.getMethod("submitFormSubmit", ArrayList.class));
             this.controllersMap.put("cancelTextReview",
                     controller.productReview.ProductTextReviewController.class.getMethod("submitFormCancel", ArrayList.class));
+            this.controllersMap.put("showExistingComponents",
+                    controller.product.ComponentController.class.getMethod("startShowExistingComponents", ArrayList.class));
+            this.controllersMap.put("componentsListReturn",
+                    controller.product.ComponentController.class.getMethod("componentsListReturn", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }

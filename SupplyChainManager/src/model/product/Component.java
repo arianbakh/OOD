@@ -23,4 +23,9 @@ public class Component {
     public void addSupplier(String name, int price) {
         suppliers.add(new Supplier(name, price, this));
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
