@@ -4,6 +4,7 @@ import model.customerOrder.CustomerOrder;
 import model.customerOrder.Deliverer;
 import model.product.Component;
 import model.product.Product;
+import model.product.StockChecker;
 import model.productOrder.Supplier;
 import model.repository.ComponentOrderRepository;
 import model.repository.ComponentRepository;
@@ -13,10 +14,14 @@ import model.repository.ProductRepository;
 import model.repository.SupplierRepository;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
         addDummyObjects();
+        Timer timer = new Timer();
+        timer.schedule(new StockChecker(), 0, TimeUnit.MINUTES.toMillis(1));
         FrontController.getFrontController().start();
     }
 
