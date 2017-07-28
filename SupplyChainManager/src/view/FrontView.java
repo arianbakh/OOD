@@ -48,6 +48,10 @@ public class FrontView extends JFrame {
         selectSupplier.addActionListener(e -> onSelectSupplier());
         add(selectSupplier);
 
+        JButton showExistingDeliverers = new JButton("دریافت مسیر‌های تحویل");
+        showExistingDeliverers.addActionListener(e -> onShowExistingDeliverers());
+        add(showExistingDeliverers);
+
         setLayout(new FlowLayout());
 //        setLayout(new GridLayout(0, 3));
         setTitle("سامانه مدیریت زنجیره تأمین");
@@ -90,5 +94,9 @@ public class FrontView extends JFrame {
     
     private void onSelectSupplier() {
         FrontController.getFrontController().dispatch("startSelectSupplier", null);
+    }
+    
+    private void onShowExistingDeliverers() {
+        FrontController.getFrontController().dispatch("startGetDeliverers", null);
     }
 }

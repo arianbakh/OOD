@@ -47,7 +47,7 @@ public class Main {
         CustomerOrder co = new CustomerOrder(product);
         CustomerOrderRepository.getInstance().save(co);
         
-        Deliverer del = new Deliverer("تحویل دهنده‌ی ۱", "");
+        Deliverer del = new Deliverer("تحویل دهنده‌ی ۱", "ویژگی ۱");
         DelivererRepository.getInstance().save(del);
         
         ComponentOrder componentOrder = new ComponentOrder(component1.getSuppliers().get(0));

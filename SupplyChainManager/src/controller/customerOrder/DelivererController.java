@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.customerOrder.Deliverer;
 import model.repository.DelivererRepository;
+import view.customerOrder.DeliverersListView;
 import view.customerOrder.SetDeliverersPropertiesView;
 
 public class DelivererController {
@@ -22,6 +23,7 @@ public class DelivererController {
     }
 
     public static void startGetDeliverers(ArrayList<Object> data) {
+    	new DeliverersListView(DelivererRepository.getInstance().getAll()).setVisible(true);
     }
 
     public static void deliverersListReturn(ArrayList<Object> data) {
