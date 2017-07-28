@@ -51,6 +51,11 @@ public class FrontView extends JFrame {
         JButton showExistingDeliverers = new JButton("دریافت مسیر‌های تحویل");
         showExistingDeliverers.addActionListener(e -> onShowExistingDeliverers());
         add(showExistingDeliverers);
+        
+        JButton showExistingSuppliers = new JButton("دریافت مسیر‌های تامین");
+        showExistingSuppliers.addActionListener(e -> onShowExistingSuppliers());
+        add(showExistingSuppliers);
+
 
         setLayout(new FlowLayout());
 //        setLayout(new GridLayout(0, 3));
@@ -98,5 +103,9 @@ public class FrontView extends JFrame {
     
     private void onShowExistingDeliverers() {
         FrontController.getFrontController().dispatch("startGetDeliverers", null);
+    }
+    
+    private void onShowExistingSuppliers() {
+        FrontController.getFrontController().dispatch("startGetSuppliers", null);
     }
 }

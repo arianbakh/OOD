@@ -52,5 +52,8 @@ public class Main {
         
         ComponentOrder componentOrder = new ComponentOrder(component1.getSuppliers().get(0));
         ComponentOrderRepository.getInstance().save(componentOrder);
+        
+        Supplier supplier1 = new Supplier("تامین‌کننده ۱", 1000, component1);
+        SupplierRepository.getInstance().save(supplier1);
     }
 }

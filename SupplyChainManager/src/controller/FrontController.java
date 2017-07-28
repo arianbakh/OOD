@@ -75,6 +75,10 @@ public class FrontController {
                     controller.customerOrder.DelivererController.class.getMethod("startGetDeliverers", ArrayList.class));
             this.controllersMap.put("deliverersListReturn",
                     controller.customerOrder.DelivererController.class.getMethod("deliverersListReturn", ArrayList.class));
+            this.controllersMap.put("startGetSuppliers",
+                    controller.productOrder.SupplierController.class.getMethod("startGetSuppliers", ArrayList.class));
+            this.controllersMap.put("suppliersListReturn",
+                    controller.productOrder.SupplierController.class.getMethod("suppliersListReturn", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }

@@ -31,7 +31,7 @@ public class DeliverersListView extends JFrame {
         add(returnButton);
 
         setLayout(new FlowLayout());
-        setTitle("نمایش مولفه‌های موجود");
+        setTitle("نمایش تحویل‌دهندگان موجود");
         setSize(800, 450);
         setLocationRelativeTo(null);
     }
