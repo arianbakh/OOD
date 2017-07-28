@@ -13,6 +13,7 @@ import model.repository.ComponentOrderRepository;
 import model.repository.ComponentRepository;
 import model.repository.CustomerOrderRepository;
 import model.repository.DelivererRepository;
+import model.repository.PersonRepository;
 import model.repository.ProductRepository;
 import model.repository.SupplierRepository;
 
@@ -124,5 +125,8 @@ public class Main {
         
         Supplier supplier1 = new Supplier("تامین‌کننده ۱", 1000, component1);
         SupplierRepository.getInstance().save(supplier1);
+        
+        Person person1 = new Person("غلام");
+        PersonRepository.getInstance().save(person1);
     }
 }
