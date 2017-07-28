@@ -37,6 +37,12 @@ public class FrontController {
                     controller.componentOrder.ComponentOrderController.class.getMethod("supplierSelectionForNewCancel", ArrayList.class));
             this.controllersMap.put("viewStock",
                     controller.product.ProductController.class.getMethod("startViewStock", ArrayList.class));
+            this.controllersMap.put("startSetProductStock",
+                    controller.product.ProductController.class.getMethod("startSetProductStock", ArrayList.class));
+            this.controllersMap.put("selectProductMinMaxCancel",
+                    controller.product.ProductController.class.getMethod("selectProductMinMaxCancel", ArrayList.class));
+            this.controllersMap.put("selectProductMinMaxSubmit",
+                    controller.product.ProductController.class.getMethod("selectProductMinMaxSubmit", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }

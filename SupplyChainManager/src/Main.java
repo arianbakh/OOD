@@ -33,5 +33,9 @@ public class Main {
         Product product = new Product("محصول ۱", components);
         product.setCurrentStock(5);
         ProductRepository.getInstance().save(product);
+
+        Product product2 = new Product("محصول ۲", components);
+        product2.setCurrentStock(10);
+        ProductRepository.getInstance().save(product2);
     }
 }
