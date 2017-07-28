@@ -40,6 +40,23 @@ public class FrontView extends JFrame {
         setDeliverersProperties.addActionListener(e -> onSetDeliverersProperties());
         add(setDeliverersProperties);
 
+        JButton selectDeliverer = new JButton("انتخاب مسیر تحویل");
+        selectDeliverer.addActionListener(e -> onSelectDeliverer());
+        add(selectDeliverer);
+        
+        JButton selectSupplier = new JButton("انتخاب مسیر تامین");
+        selectSupplier.addActionListener(e -> onSelectSupplier());
+        add(selectSupplier);
+
+        JButton showExistingDeliverers = new JButton("دریافت مسیر‌های تحویل");
+        showExistingDeliverers.addActionListener(e -> onShowExistingDeliverers());
+        add(showExistingDeliverers);
+        
+        JButton showExistingSuppliers = new JButton("دریافت مسیر‌های تامین");
+        showExistingSuppliers.addActionListener(e -> onShowExistingSuppliers());
+        add(showExistingSuppliers);
+
+
         setLayout(new FlowLayout());
 //        setLayout(new GridLayout(0, 3));
         setTitle("سامانه مدیریت زنجیره تأمین");
@@ -74,5 +91,21 @@ public class FrontView extends JFrame {
     
     private void onSetDeliverersProperties() {
         FrontController.getFrontController().dispatch("startSetDelivererProperties", null);
+    }
+    
+    private void onSelectDeliverer() {
+        FrontController.getFrontController().dispatch("startSelectDeliverer", null);
+    }
+    
+    private void onSelectSupplier() {
+        FrontController.getFrontController().dispatch("startSelectSupplier", null);
+    }
+    
+    private void onShowExistingDeliverers() {
+        FrontController.getFrontController().dispatch("startGetDeliverers", null);
+    }
+    
+    private void onShowExistingSuppliers() {
+        FrontController.getFrontController().dispatch("startGetSuppliers", null);
     }
 }

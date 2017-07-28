@@ -16,4 +16,9 @@ public class Deliverer {
     public String getProperties() {
         return properties;
     }
+    
+    @Override
+    public String toString() {
+    	return this.name;
+    }
 }

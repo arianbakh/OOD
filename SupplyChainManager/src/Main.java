@@ -3,13 +3,22 @@ import controller.FrontController;
 import model.componentOrder.ComponentOrder;
 import model.componentOrder.ComponentOrderReport;
 import model.order.Person;
+import model.customerOrder.CustomerOrder;
+import model.customerOrder.Deliverer;
 import model.product.Component;
 import model.product.Product;
+import model.product.StockChecker;
 import model.productOrder.Supplier;
+import model.repository.ComponentOrderRepository;
 import model.repository.ComponentRepository;
+import model.repository.CustomerOrderRepository;
+import model.repository.DelivererRepository;
 import model.repository.ProductRepository;
+import model.repository.SupplierRepository;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
@@ -21,6 +30,8 @@ public class Main {
     public static void main(String[] args) {
         initializeDatabase();
         addDummyObjects();
+        Timer timer = new Timer();
+        timer.schedule(new StockChecker(), 0, TimeUnit.MINUTES.toMillis(1));
         FrontController.getFrontController().start();
     }
 
@@ -101,5 +112,17 @@ public class Main {
         Product product2 = new Product("محصول ۲", components);
         product2.setCurrentStock(10);
         ProductRepository.getInstance().save(product2);
+        
+        CustomerOrder co = new CustomerOrder(product);
+        CustomerOrderRepository.getInstance().save(co);
+        
+        Deliverer del = new Deliverer("تحویل دهنده‌ی ۱", "ویژگی ۱");
+        DelivererRepository.getInstance().save(del);
+        
+        ComponentOrder componentOrder = new ComponentOrder(component1.getSuppliers().get(0));
+        ComponentOrderRepository.getInstance().save(componentOrder);
+        
+        Supplier supplier1 = new Supplier("تامین‌کننده ۱", 1000, component1);
+        SupplierRepository.getInstance().save(supplier1);
     }
 }
