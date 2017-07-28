@@ -31,6 +31,10 @@ public class FrontView extends JFrame {
         JButton setMaxMinStock = new JButton("تعیین حداقل و حداکثر موجودی محصولات");
         setMaxMinStock.addActionListener(e -> onSetProductStock());
         add(setMaxMinStock);
+        
+        JButton setSupplierProperties = new JButton("تعیین ویژگی‌های تامین جدید");
+        setSupplierProperties.addActionListener(e -> onSetSupplierProperties());
+        add(setSupplierProperties);
 
         setLayout(new FlowLayout());
 //        setLayout(new GridLayout(0, 3));
@@ -58,5 +62,9 @@ public class FrontView extends JFrame {
     
     private void onSetProductStock() {
         FrontController.getFrontController().dispatch("startSetProductStock", null);
+    }
+    
+    private void onSetSupplierProperties() {
+        FrontController.getFrontController().dispatch("startSetSupplierProperties", null);
     }
 }

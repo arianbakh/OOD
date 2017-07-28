@@ -43,6 +43,12 @@ public class FrontController {
                     controller.product.ProductController.class.getMethod("selectProductMinMaxCancel", ArrayList.class));
             this.controllersMap.put("selectProductMinMaxSubmit",
                     controller.product.ProductController.class.getMethod("selectProductMinMaxSubmit", ArrayList.class));
+            this.controllersMap.put("startSetSupplierProperties",
+                    controller.componentOrder.ComponentOrderController.class.getMethod("startSetSupplierProperties", ArrayList.class));
+            this.controllersMap.put("setSupplierPropertiesSubmit",
+                    controller.componentOrder.ComponentOrderController.class.getMethod("setSupplierPropertiesSubmit", ArrayList.class));
+            this.controllersMap.put("setSupplierPropertiesCancel",
+                    controller.componentOrder.ComponentOrderController.class.getMethod("setSupplierPropertiesCancel", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
