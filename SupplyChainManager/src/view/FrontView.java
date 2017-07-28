@@ -43,6 +43,10 @@ public class FrontView extends JFrame {
         JButton selectDeliverer = new JButton("انتخاب مسیر تحویل");
         selectDeliverer.addActionListener(e -> onSelectDeliverer());
         add(selectDeliverer);
+        
+        JButton selectSupplier = new JButton("انتخاب مسیر تامین");
+        selectSupplier.addActionListener(e -> onSelectSupplier());
+        add(selectSupplier);
 
         setLayout(new FlowLayout());
 //        setLayout(new GridLayout(0, 3));
@@ -82,5 +86,9 @@ public class FrontView extends JFrame {
     
     private void onSelectDeliverer() {
         FrontController.getFrontController().dispatch("startSelectDeliverer", null);
+    }
+    
+    private void onSelectSupplier() {
+        FrontController.getFrontController().dispatch("startSelectSupplier", null);
     }
 }

@@ -1,9 +1,11 @@
 import controller.FrontController;
+import model.componentOrder.ComponentOrder;
 import model.customerOrder.CustomerOrder;
 import model.customerOrder.Deliverer;
 import model.product.Component;
 import model.product.Product;
 import model.productOrder.Supplier;
+import model.repository.ComponentOrderRepository;
 import model.repository.ComponentRepository;
 import model.repository.CustomerOrderRepository;
 import model.repository.DelivererRepository;
@@ -47,5 +49,8 @@ public class Main {
         
         Deliverer del = new Deliverer("تحویل دهنده‌ی ۱", "");
         DelivererRepository.getInstance().save(del);
+        
+        ComponentOrder componentOrder = new ComponentOrder(component1.getSuppliers().get(0));
+        ComponentOrderRepository.getInstance().save(componentOrder);
     }
 }

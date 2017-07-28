@@ -17,4 +17,9 @@ public class ComponentOrder extends Order {
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
     }
+    
+    @Override
+    public String toString() {
+    	return "سفارش مولفه " + this.supplier.getComponent().getName();
+    }
 }
