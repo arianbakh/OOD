@@ -1,8 +1,12 @@
 import controller.FrontController;
+import model.customerOrder.CustomerOrder;
+import model.customerOrder.Deliverer;
 import model.product.Component;
 import model.product.Product;
 import model.productOrder.Supplier;
 import model.repository.ComponentRepository;
+import model.repository.CustomerOrderRepository;
+import model.repository.DelivererRepository;
 import model.repository.ProductRepository;
 import model.repository.SupplierRepository;
 
@@ -37,5 +41,11 @@ public class Main {
         Product product2 = new Product("محصول ۲", components);
         product2.setCurrentStock(10);
         ProductRepository.getInstance().save(product2);
+        
+        CustomerOrder co = new CustomerOrder(product);
+        CustomerOrderRepository.getInstance().save(co);
+        
+        Deliverer del = new Deliverer("تحویل دهنده‌ی ۱", "");
+        DelivererRepository.getInstance().save(del);
     }
 }

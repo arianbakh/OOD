@@ -40,6 +40,10 @@ public class FrontView extends JFrame {
         setDeliverersProperties.addActionListener(e -> onSetDeliverersProperties());
         add(setDeliverersProperties);
 
+        JButton selectDeliverer = new JButton("انتخاب مسیر تحویل");
+        selectDeliverer.addActionListener(e -> onSelectDeliverer());
+        add(selectDeliverer);
+
         setLayout(new FlowLayout());
 //        setLayout(new GridLayout(0, 3));
         setTitle("سامانه مدیریت زنجیره تأمین");
@@ -74,5 +78,9 @@ public class FrontView extends JFrame {
     
     private void onSetDeliverersProperties() {
         FrontController.getFrontController().dispatch("startSetDelivererProperties", null);
+    }
+    
+    private void onSelectDeliverer() {
+        FrontController.getFrontController().dispatch("startSelectDeliverer", null);
     }
 }
