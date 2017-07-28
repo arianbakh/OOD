@@ -11,6 +11,7 @@ public class FrontView extends JFrame {
     }
 
     private void initUI() {
+
         JButton newTextProductReviewButton = new JButton("ثبت بازخورد متنی برای محصول");
         newTextProductReviewButton.addActionListener(e -> onNewTextProductReview());
         add(newTextProductReviewButton);
@@ -22,6 +23,10 @@ public class FrontView extends JFrame {
         JButton newComponentOrderButton = new JButton("سفارش مولفه جدید");
         newComponentOrderButton.addActionListener(e -> onNewComponentOrder());
         add(newComponentOrderButton);
+
+        JButton viewProductStock = new JButton("نمایش موجودی محصولات");
+        viewProductStock.addActionListener(e -> onViewStock());
+        add(viewProductStock);
 
         setLayout(new FlowLayout());
         setTitle("سامانه مدیریت زنجیره تأمین");
@@ -40,5 +45,9 @@ public class FrontView extends JFrame {
 
     private void onNewComponentOrder() {
         FrontController.getFrontController().dispatch("startNewComponentOrder", null);
+    }
+
+    private void onViewStock() {
+        FrontController.getFrontController().dispatch("viewStock", null);
     }
 }

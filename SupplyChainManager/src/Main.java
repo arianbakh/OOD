@@ -31,6 +31,7 @@ public class Main {
         components.add(component2);
 
         Product product = new Product("محصول ۱", components);
+        product.setCurrentStock(5);
         ProductRepository.getInstance().save(product);
     }
 }

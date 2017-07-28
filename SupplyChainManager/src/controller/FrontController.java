@@ -35,6 +35,8 @@ public class FrontController {
                     controller.componentOrder.ComponentOrderController.class.getMethod("supplierSelectionForNewSubmit", ArrayList.class));
             this.controllersMap.put("supplierSelectionForNewCancel",
                     controller.componentOrder.ComponentOrderController.class.getMethod("supplierSelectionForNewCancel", ArrayList.class));
+            this.controllersMap.put("viewStock",
+                    controller.product.ProductController.class.getMethod("startViewStock", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }

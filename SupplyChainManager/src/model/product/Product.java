@@ -38,6 +38,10 @@ public class Product {
         this.maxStock = maxStock;
     }
 
+    public void setCurrentStock(int currentStock) {
+        this.currentStock = currentStock;
+    }
+
     public void increaseStock() {
         currentStock++;
     }

@@ -2,6 +2,10 @@ package controller.product;
 
 import java.util.ArrayList;
 
+import model.product.Product;
+import model.repository.ProductRepository;
+import view.product.StockCheckView;
+
 public class ProductController {
     public static void startSetProductStock(ArrayList<Object> data) {
     }
@@ -13,6 +17,8 @@ public class ProductController {
     }
 
     public static void startViewStock(ArrayList<Object> data) {
+    	ArrayList<Product> products = ProductRepository.getInstance().getAll();
+    	new StockCheckView(products).setVisible(true);
     }
 
     public static void stockCheckReturn(ArrayList<Object> data) {
