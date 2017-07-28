@@ -1,4 +1,5 @@
 .idea/*
 SupplyChainManager/*
 !SupplyChainManager/src/
+!SupplyChainManager/*.jar
 out/*
