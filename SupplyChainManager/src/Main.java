@@ -1,17 +1,81 @@
 import controller.FrontController;
+
+import model.componentOrder.ComponentOrder;
+import model.componentOrder.ComponentOrderReport;
+import model.order.Person;
 import model.product.Component;
 import model.product.Product;
 import model.productOrder.Supplier;
 import model.repository.ComponentRepository;
 import model.repository.ProductRepository;
-import model.repository.SupplierRepository;
 
 import java.util.ArrayList;
 
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
+
 public class Main {
     public static void main(String[] args) {
+        initializeDatabase();
         addDummyObjects();
         FrontController.getFrontController().start();
+    }
+
+    private static void initializeDatabase() {
+        try {
+            String databaseUrl = "jdbc:sqlite:main.db";
+            ConnectionSource connectionSource = new JdbcConnectionSource(databaseUrl);
+
+            TableUtils.createTableIfNotExists(connectionSource, Component.class);
+            TableUtils.clearTable(connectionSource, Component.class);
+            Component component = new Component("RAM");
+            Dao<Component, String> componentDao = DaoManager.createDao(connectionSource, Component.class);
+            componentDao.create(component);
+            System.out.println(componentDao.queryForAll());
+
+            TableUtils.createTableIfNotExists(connectionSource, Supplier.class);
+            TableUtils.clearTable(connectionSource, Supplier.class);
+            Supplier supplier = new Supplier("ASUS_RAM", 1000, component);
+            Dao<Supplier, String> supplierDao = DaoManager.createDao(connectionSource, Supplier.class);
+            supplierDao.create(supplier);
+            System.out.println(supplierDao.queryForAll());
+            System.out.println(supplierDao.queryForAll().get(0).getComponent());
+
+            TableUtils.createTableIfNotExists(connectionSource, Person.class);
+            TableUtils.clearTable(connectionSource, Person.class);
+            Person person = new Person("John");
+            Dao<Person, String> personDao = DaoManager.createDao(connectionSource, Person.class);
+            personDao.create(person);
+            System.out.println(personDao.queryForAll());
+
+            TableUtils.createTableIfNotExists(connectionSource, ComponentOrder.class);
+            TableUtils.clearTable(connectionSource, ComponentOrder.class);
+            ComponentOrder componentOrder = new ComponentOrder(supplier);
+            Dao<ComponentOrder, Integer> componentOrderDao = DaoManager.createDao(connectionSource, ComponentOrder.class);
+            componentOrderDao.create(componentOrder);
+            System.out.println(componentOrderDao.queryForAll());
+
+            TableUtils.createTableIfNotExists(connectionSource, ComponentOrderReport.class);
+            TableUtils.clearTable(connectionSource, ComponentOrderReport.class);
+            ComponentOrderReport componentOrderReport = new ComponentOrderReport(componentOrder, person);
+            Dao<ComponentOrderReport, Integer> componentOrderReportDao = DaoManager.createDao(connectionSource, ComponentOrderReport.class);
+            componentOrderReportDao.create(componentOrderReport);
+            System.out.println(componentOrderReportDao.queryForAll());
+
+            componentOrder.setReport(componentOrderReport);
+            componentOrderDao.update(componentOrder);
+            ComponentOrder retrieved = componentOrderDao.queryForAll().get(0);
+            System.out.println(componentOrder.getReport());
+            System.out.println(retrieved.getReport());
+            System.out.println(retrieved.getOrderTime());
+            System.out.println(retrieved.getReport().getReadyTime());
+        } catch (Exception e) {
+           System.err.println(e.getClass().getName() + ": " + e.getMessage());
+           System.exit(0);
+        }
     }
 
     private static void addDummyObjects() {

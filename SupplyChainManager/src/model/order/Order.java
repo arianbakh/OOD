@@ -1,10 +1,12 @@
 package model.order;
 
+import java.util.Date;
+
 public abstract class Order {
-    private Time orderTime;
+    private Date orderTime;
     private OrderReport report;
 
-    public Time getOrderTime() {
+    public Date getOrderTime() {
         return orderTime;
     }
 

@@ -1,9 +1,13 @@
 package model.order;
 
+import java.util.Date;
+
 public abstract class OrderReport {
     protected Order order;
-    private Time readyTime;
+    private Date readyTime;
     private Person responsiblePerson;
+
+    protected OrderReport() {}; // empty constructor required by ORMLite
 
     protected OrderReport(Person responsiblePerson) {
         this.responsiblePerson = responsiblePerson;
@@ -13,7 +17,7 @@ public abstract class OrderReport {
         return order;
     }
 
-    public Time getReadyTime() {
+    public Date getReadyTime() {
         return readyTime;
     }
 

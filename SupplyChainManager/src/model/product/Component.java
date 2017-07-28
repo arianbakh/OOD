@@ -4,9 +4,16 @@ import model.productOrder.Supplier;
 
 import java.util.ArrayList;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "Component")
 public class Component {
+	@DatabaseField(id = true)
     private String name;
     private ArrayList<Supplier> suppliers;
+
+    public Component() {}; // empty constructor required by ORMLite
 
     public Component(String name) {
         this.name = name;
