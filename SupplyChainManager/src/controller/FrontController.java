@@ -49,6 +49,12 @@ public class FrontController {
                     controller.componentOrder.ComponentOrderController.class.getMethod("setSupplierPropertiesSubmit", ArrayList.class));
             this.controllersMap.put("setSupplierPropertiesCancel",
                     controller.componentOrder.ComponentOrderController.class.getMethod("setSupplierPropertiesCancel", ArrayList.class));
+            this.controllersMap.put("startSetDelivererProperties",
+                    controller.customerOrder.DelivererController.class.getMethod("startSetDelivererProperties", ArrayList.class));
+            this.controllersMap.put("setDelivererPropertiesSubmit",
+                    controller.customerOrder.DelivererController.class.getMethod("setDelivererPropertiesSubmit", ArrayList.class));
+            this.controllersMap.put("setDelivererPropertiesCancel",
+                    controller.customerOrder.DelivererController.class.getMethod("setDelivererPropertiesCancel", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
