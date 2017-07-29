@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import model.customerOrder.CustomerOrder;
 import model.customerOrder.CustomerOrderReport;
 import model.order.Person;
+import model.repository.CustomerOrderReportRepository;
 import model.repository.CustomerOrderRepository;
 import model.repository.PersonRepository;
 import view.customerOrder.CustomerOrderReportListView;
@@ -25,7 +26,7 @@ public class CustomerOrderReportController {
     	CustomerOrder customerOrder = (CustomerOrder)data.get(0);
     	Person person = (Person)data.get(1);
     	CustomerOrderReport customerOrderReport = new CustomerOrderReport(customerOrder, person);
-    	CustomerOrderRepository.getInstance().save(customerOrder);
+    	CustomerOrderReportRepository.getInstance().save(customerOrderReport);
     	customerOrder.submitReport(customerOrderReport);
     }
 

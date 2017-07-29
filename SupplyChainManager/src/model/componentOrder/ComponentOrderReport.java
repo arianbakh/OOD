@@ -27,6 +27,7 @@ public class ComponentOrderReport extends OrderReport {
         super(responsiblePerson);
         this.readyTime = new Date(); // set to current time
         this.order = componentOrder;
+        this.responsiblePerson = responsiblePerson;
     }
 
     public ComponentOrder getOrder() {
@@ -43,6 +44,7 @@ public class ComponentOrderReport extends OrderReport {
 
     @Override
     public String toString() {
-        return id.toString();
+//        return id.toString();
+        return super.toString();
     }
 }
