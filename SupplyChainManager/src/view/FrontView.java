@@ -12,6 +12,10 @@ public class FrontView extends JFrame {
 
     private void initUI() {
     	
+    	JButton newFormProductReviewButton = new JButton("ثبت بازخورد فرمی برای محصول");
+        newFormProductReviewButton.addActionListener(e -> onNewFormProductReview());
+        add(newFormProductReviewButton);
+        
         JButton newTextProductReviewButton = new JButton("ثبت بازخورد متنی برای محصول");
         newTextProductReviewButton.addActionListener(e -> onNewTextProductReview());
         add(newTextProductReviewButton);
@@ -89,6 +93,10 @@ public class FrontView extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    private void onNewFormProductReview() {
+        FrontController.getFrontController().dispatch("startFormProductReview", null);
+    }
+    
     private void onNewTextProductReview() {
         FrontController.getFrontController().dispatch("startTextProductReview", null);
     }

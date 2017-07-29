@@ -15,6 +15,12 @@ public class FrontController {
 
     private FrontController() {
         try {
+        	this.controllersMap.put("startFormProductReview",
+                    controller.productReview.ProductFormReviewController.class.getMethod("startNewFormProductReview", ArrayList.class));
+            this.controllersMap.put("newFormReview",
+                    controller.productReview.ProductFormReviewController.class.getMethod("submitFormSubmit", ArrayList.class));
+            this.controllersMap.put("cancelFormReview",
+                    controller.productReview.ProductFormReviewController.class.getMethod("submitFormCancel", ArrayList.class));
             this.controllersMap.put("startTextProductReview",
                     controller.productReview.ProductTextReviewController.class.getMethod("startNewTextProductReview", ArrayList.class));
             this.controllersMap.put("newTextReview",
