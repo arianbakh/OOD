@@ -39,7 +39,7 @@ public class NewComponentOrderReportView extends JFrame {
         add(componentOrder);
         
         setLayout(new FlowLayout());
-        setTitle("ثبت گزارش سفارش مشتری جدید");
+        setTitle("ثبت گزارش سفارش مولفه جدید");
         setSize(800, 450);
         setLocationRelativeTo(null);
     }

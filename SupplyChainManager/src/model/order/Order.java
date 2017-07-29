@@ -14,6 +14,7 @@ public abstract class Order {
         return report;
     }
 
-    public void submitReport(Person responsiblePerson) {
+    public void submitReport(OrderReport report) {
+    	this.report = report;
     }
 }

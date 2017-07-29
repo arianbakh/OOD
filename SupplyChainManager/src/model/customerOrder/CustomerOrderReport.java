@@ -20,4 +20,8 @@ public class CustomerOrderReport extends OrderReport {
         this.order = customerOrder;
         this.readyTime = new Date(); // set to current time
     }
+    
+    public Date getReadyTime() {
+        return readyTime;
+    }
 }

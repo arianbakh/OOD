@@ -38,7 +38,7 @@ public class NewProductOrderReportView extends JFrame {
         add(productOrder);
         
         setLayout(new FlowLayout());
-        setTitle("ثبت گزارش سفارش مشتری جدید");
+        setTitle("ثبت گزارش سفارش محصول جدید");
         setSize(800, 450);
         setLocationRelativeTo(null);
     }
