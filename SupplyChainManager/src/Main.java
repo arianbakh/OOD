@@ -165,6 +165,9 @@ public class Main {
         Component component2 = new Component("مولفه ۲");
         ComponentRepository.getInstance().save(component2);
 
+        Component component3 = new Component("مولفه ۳");
+        ComponentRepository.getInstance().save(component3);
+        
         component2.addSupplier("تامین‌کننده ۳", 3000);
 
         ArrayList<Component> components = new ArrayList<>();
