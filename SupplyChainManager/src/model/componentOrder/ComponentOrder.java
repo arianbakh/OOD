@@ -12,11 +12,11 @@ import model.productOrder.Supplier;
 public class ComponentOrder extends Order {
     @DatabaseField(generatedId = true)
     private Integer id;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Supplier supplier;
     @DatabaseField
     private Date orderTime;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private ComponentOrderReport report;
 
     public ComponentOrder() {

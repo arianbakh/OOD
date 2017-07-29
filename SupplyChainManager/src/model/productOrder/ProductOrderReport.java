@@ -14,9 +14,9 @@ public class ProductOrderReport extends OrderReport {
     private Integer id;
     @DatabaseField
     private Date readyTime;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private ProductOrder order;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Person responsiblePerson;
 
     public ProductOrderReport() {

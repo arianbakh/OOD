@@ -12,13 +12,13 @@ import model.product.Product;
 public class CustomerOrder extends Order {
     @DatabaseField(generatedId = true)
     private Integer id;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Product product;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Deliverer deliverer;
     @DatabaseField
     private Date orderTime;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private CustomerOrderReport report;
 
     public CustomerOrder() {

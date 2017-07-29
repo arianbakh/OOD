@@ -12,11 +12,11 @@ import model.order.Person;
 public class ComponentOrderReport extends OrderReport {
     @DatabaseField(generatedId = true)
     private Integer id;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private ComponentOrder order;
     @DatabaseField
     private Date readyTime;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Person responsiblePerson;
 
     public ComponentOrderReport() {

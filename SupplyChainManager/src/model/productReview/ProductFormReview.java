@@ -15,7 +15,7 @@ public class ProductFormReview {
     private int qualityRating;
     @DatabaseField
     private int deliveryRating;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Product product;
 
     public ProductFormReview() {} // empty constructor required by ORMLite

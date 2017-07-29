@@ -13,9 +13,9 @@ import model.product.Product;
 public class ProductOrder extends Order {
     @DatabaseField(generatedId = true)
     private Integer id;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Product product;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private ProductOrderReport report;
     @DatabaseField
     private Date orderTime;

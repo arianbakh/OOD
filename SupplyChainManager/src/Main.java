@@ -8,9 +8,11 @@ import model.customerOrder.CustomerOrderReport;
 import model.customerOrder.Deliverer;
 import model.product.Component;
 import model.product.Product;
+import model.product.ProductComponent;
 import model.product.StockChecker;
 import model.productOrder.ProductOrder;
 import model.productOrder.ProductOrderReport;
+import model.productOrder.ProductOrderSupplier;
 import model.productOrder.Supplier;
 import model.productReview.ProductFormReview;
 import model.productReview.ProductTextReview;
@@ -72,6 +74,10 @@ public class Main {
             TableUtils.clearTable(connectionSource, ProductFormReview.class);
             TableUtils.createTableIfNotExists(connectionSource, ProductTextReview.class);
             TableUtils.clearTable(connectionSource, ProductTextReview.class);
+            TableUtils.createTableIfNotExists(connectionSource, ProductComponent.class);
+            TableUtils.clearTable(connectionSource, ProductComponent.class);
+            TableUtils.createTableIfNotExists(connectionSource, ProductOrderSupplier.class);
+            TableUtils.clearTable(connectionSource, ProductOrderSupplier.class);
 
             Component component = new Component("RAM");
             Dao<Component, String> componentDao = DaoManager.createDao(connectionSource, Component.class);
@@ -160,11 +166,26 @@ public class Main {
             Dao<ProductFormReview, Integer> productFormReviewDao = DaoManager.createDao(connectionSource, ProductFormReview.class);
             productFormReviewDao.create(productFormReview);
             System.out.println("###" + productFormReviewDao.queryForAll());
+            System.out.println("###" + productFormReviewDao.queryForAll().get(0).getQualityRating());
 
             ProductTextReview productTextReview = new ProductTextReview(product, "fucking horrible");
             Dao<ProductTextReview, Integer> productTextReviewDao = DaoManager.createDao(connectionSource, ProductTextReview.class);
             productTextReviewDao.create(productTextReview);
             System.out.println("###" + productTextReviewDao.queryForAll());
+
+            ProductComponent productComponent = new ProductComponent(product, component);
+            Dao<ProductComponent, Integer> productComponentDao = DaoManager.createDao(connectionSource, ProductComponent.class);
+            productComponentDao.create(productComponent);
+            System.out.println("###" + productComponentDao.queryForAll());
+            System.out.println("###" + productComponentDao.queryForAll().get(0).getProduct());
+            System.out.println("###" + productComponentDao.queryForAll().get(0).getComponent());
+
+            ProductOrderSupplier productOrderSupplier = new ProductOrderSupplier(productOrder, supplier);
+            Dao<ProductOrderSupplier, Integer> productOrderSupplierDao = DaoManager.createDao(connectionSource, ProductOrderSupplier.class);
+            productOrderSupplierDao.create(productOrderSupplier);
+            System.out.println("###" + productOrderSupplierDao.queryForAll());
+            System.out.println("###" + productOrderSupplierDao.queryForAll().get(0).getProductOrder());
+            System.out.println("###" + productOrderSupplierDao.queryForAll().get(0).getSupplier());
         } catch (Exception e) {
            System.err.println(e.getClass().getName() + ": " + e.getMessage());
            System.exit(0);

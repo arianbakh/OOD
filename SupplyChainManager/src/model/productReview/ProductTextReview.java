@@ -11,7 +11,7 @@ public class ProductTextReview {
     private Integer id;
     @DatabaseField
     private String name;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Product product;
     @DatabaseField
     private String text;
