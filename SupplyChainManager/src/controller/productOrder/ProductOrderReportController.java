@@ -10,8 +10,12 @@ import model.productOrder.ProductOrderReport;
 import model.repository.CustomerOrderRepository;
 import model.repository.PersonRepository;
 import model.repository.ProductOrderRepository;
+import view.customerOrder.CustomerOrderReportListView;
+import view.customerOrder.CustomerOrderSelectionView;
 import view.customerOrder.NewCustomerOrderReportView;
 import view.productOrder.NewProductOrderReportView;
+import view.productOrder.ProductOrderReportListView;
+import view.productOrder.ProductOrderSelectionView;
 
 public class ProductOrderReportController {
     public static void startNewProductOrderReport(ArrayList<Object> data) {
@@ -28,15 +32,20 @@ public class ProductOrderReportController {
     	Person person = (Person)data.get(1);
     	ProductOrderReport productOrderReport = new ProductOrderReport(productOrder, person);
     	ProductOrderRepository.getInstance().save(productOrder);
+    	productOrder.submitReport(productOrderReport);
     }
 
     public static void startGetProductOrderReport(ArrayList<Object> data) {
+    	ArrayList<ProductOrder> productOrders = ProductOrderRepository.getInstance().getAll();
+    	new ProductOrderSelectionView(productOrders).setVisible(true);
     }
 
     public static void productOrderSelectionCancel(ArrayList<Object> data) {
     }
 
     public static void productOrderSelectionNext(ArrayList<Object> data) {
+    	ProductOrder productOrder = (ProductOrder)data.get(0);
+    	new ProductOrderReportListView(productOrder).setVisible(true);
     }
 
     public static void productOrderReportListReturn(ArrayList<Object> data) {

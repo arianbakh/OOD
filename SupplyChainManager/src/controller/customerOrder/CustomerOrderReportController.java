@@ -31,7 +31,7 @@ public class CustomerOrderReportController {
 
     public static void startGetCustomerOrderReport(ArrayList<Object> data) {
     	ArrayList<CustomerOrder> customerOrders = CustomerOrderRepository.getInstance().getAll();
-    	new CustomerOrderSelectionView(customerOrders).setVisible(true);;
+    	new CustomerOrderSelectionView(customerOrders).setVisible(true);
     }
 
     public static void customerOrderSelectionCancel(ArrayList<Object> data) {
@@ -39,7 +39,7 @@ public class CustomerOrderReportController {
 
     public static void customerOrderSelectionNext(ArrayList<Object> data) {
     	CustomerOrder customerOrder = (CustomerOrder)data.get(0);
-    	new CustomerOrderReportListView(customerOrder).setVisible(true);;
+    	new CustomerOrderReportListView(customerOrder).setVisible(true);
     }
 
     public static void customerOrderReportListReturn(ArrayList<Object> data) {
