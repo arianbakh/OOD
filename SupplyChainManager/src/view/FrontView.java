@@ -63,6 +63,10 @@ public class FrontView extends JFrame {
         JButton newProductOrderReport = new JButton("ثبت گزارش سفارش محصول جدید");
         newProductOrderReport.addActionListener(e -> onNewProductOrderReport());
         add(newProductOrderReport);
+        
+        JButton newComponentOrderReport = new JButton("ثبت گزارش سفارش مولفه جدید");
+        newComponentOrderReport.addActionListener(e -> onNewComponentOrderReport());
+        add(newComponentOrderReport);
 
         setLayout(new FlowLayout());
 //        setLayout(new GridLayout(0, 3));
@@ -122,5 +126,9 @@ public class FrontView extends JFrame {
     
     private void onNewProductOrderReport() {
         FrontController.getFrontController().dispatch("startNewProductOrderReport", null);
+    }
+    
+    private void onNewComponentOrderReport() {
+        FrontController.getFrontController().dispatch("startNewComponentOrderReport", null);
     }
 }

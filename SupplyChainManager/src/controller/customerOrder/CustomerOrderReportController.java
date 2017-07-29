@@ -13,7 +13,7 @@ public class CustomerOrderReportController {
     public static void startNewCustomerOrderReport(ArrayList<Object> data) {
     	ArrayList<CustomerOrder> customerOrders = CustomerOrderRepository.getInstance().getAll();
     	ArrayList<Person> persons = PersonRepository.getInstance().getAll();
-    	new NewCustomerOrderReportView(customerOrders, persons).setVisible(true);;
+    	new NewCustomerOrderReportView(customerOrders, persons).setVisible(true);
     }
 
     public static void newCustomerOrderReportCancel(ArrayList<Object> data) {

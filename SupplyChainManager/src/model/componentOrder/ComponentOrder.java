@@ -50,6 +50,7 @@ public class ComponentOrder extends Order {
 
     @Override
     public String toString() {
-        return id.toString();
+//        return id.toString();
+    	return super.toString();
     }
 }
