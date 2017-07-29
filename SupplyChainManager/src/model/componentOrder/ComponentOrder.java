@@ -21,7 +21,7 @@ public class ComponentOrder extends Order {
 
     public ComponentOrder() {
         this.orderTime = new Date(); // set to current time
-    }; // empty constructor required by ORMLite
+    } // empty constructor required by ORMLite
 
     public ComponentOrder(Supplier supplier) {
         this.orderTime = new Date(); // set to current time

@@ -10,6 +10,7 @@ import model.product.Component;
 import model.product.Product;
 import model.product.StockChecker;
 import model.productOrder.ProductOrder;
+import model.productOrder.ProductOrderReport;
 import model.productOrder.Supplier;
 import model.repository.ComponentOrderRepository;
 import model.repository.ComponentRepository;
@@ -61,63 +62,93 @@ public class Main {
             TableUtils.clearTable(connectionSource, CustomerOrder.class);
             TableUtils.createTableIfNotExists(connectionSource, CustomerOrderReport.class);
             TableUtils.clearTable(connectionSource, CustomerOrderReport.class);
+            TableUtils.createTableIfNotExists(connectionSource, ProductOrder.class);
+            TableUtils.clearTable(connectionSource, ProductOrder.class);
+            TableUtils.createTableIfNotExists(connectionSource, ProductOrderReport.class);
+            TableUtils.clearTable(connectionSource, ProductOrderReport.class);
 
             Component component = new Component("RAM");
             Dao<Component, String> componentDao = DaoManager.createDao(connectionSource, Component.class);
             componentDao.create(component);
-            System.out.println(componentDao.queryForAll());
+            System.out.println("###" + componentDao.queryForAll());
 
             Supplier supplier = new Supplier("ASUS_RAM", 1000, component);
             Dao<Supplier, String> supplierDao = DaoManager.createDao(connectionSource, Supplier.class);
             supplierDao.create(supplier);
-            System.out.println(supplierDao.queryForAll());
-            System.out.println(supplierDao.queryForAll().get(0).getComponent());
-            System.out.println(componentDao.queryForAll().get(0).getSuppliers().get(0));
+            System.out.println("###" + supplierDao.queryForAll());
+            System.out.println("###" + supplierDao.queryForAll().get(0).getComponent());
+            System.out.println("###" + componentDao.queryForAll().get(0).getSuppliers().get(0));
 
             Person person = new Person("John");
             Dao<Person, String> personDao = DaoManager.createDao(connectionSource, Person.class);
             personDao.create(person);
-            System.out.println(personDao.queryForAll());
+            System.out.println("###" + personDao.queryForAll());
 
             ComponentOrder componentOrder = new ComponentOrder(supplier);
             Dao<ComponentOrder, Integer> componentOrderDao = DaoManager.createDao(connectionSource, ComponentOrder.class);
             componentOrderDao.create(componentOrder);
-            System.out.println(componentOrderDao.queryForAll());
+            System.out.println("###" + componentOrderDao.queryForAll());
 
             ComponentOrderReport componentOrderReport = new ComponentOrderReport(componentOrder, person);
             Dao<ComponentOrderReport, Integer> componentOrderReportDao = DaoManager.createDao(connectionSource, ComponentOrderReport.class);
             componentOrderReportDao.create(componentOrderReport);
-            System.out.println(componentOrderReportDao.queryForAll());
+            System.out.println("###" + componentOrderReportDao.queryForAll());
 
             componentOrder.setReport(componentOrderReport);
             componentOrderDao.update(componentOrder);
             ComponentOrder retrievedComponentOrder = componentOrderDao.queryForAll().get(0);
-            System.out.println(componentOrder.getReport());
-            System.out.println(retrievedComponentOrder.getReport());
-            System.out.println(retrievedComponentOrder.getOrderTime());
-            System.out.println(retrievedComponentOrder.getReport().getReadyTime());
+            System.out.println("###" + componentOrder.getReport());
+            System.out.println("###" + retrievedComponentOrder.getReport());
+            System.out.println("###" + retrievedComponentOrder.getOrderTime());
+            System.out.println("###" + retrievedComponentOrder.getReport().getReadyTime());
 
             Deliverer deliverer = new Deliverer("Jack", "very reliable");
             Dao<Deliverer, Integer> delivererDao = DaoManager.createDao(connectionSource, Deliverer.class);
             delivererDao.create(deliverer);
-            System.out.println(delivererDao.queryForAll());
+            System.out.println("###" + delivererDao.queryForAll());
 
             ArrayList<Component> components = new ArrayList<Component>(); // TODO replace with many to many
             components.add(component);
             Product product = new Product("PC", components);
             Dao<Product, Integer> productDao = DaoManager.createDao(connectionSource, Product.class);
             productDao.create(product);
-            System.out.println(productDao.queryForAll());
+            System.out.println("###" + productDao.queryForAll());
 
             CustomerOrder customerOrder = new CustomerOrder(product);
             Dao<CustomerOrder, Integer> customerOrderDao = DaoManager.createDao(connectionSource, CustomerOrder.class);
             customerOrderDao.create(customerOrder);
-            System.out.println(customerOrderDao.queryForAll());
+            System.out.println("###" + customerOrderDao.queryForAll());
 
             CustomerOrderReport customerOrderReport = new CustomerOrderReport(customerOrder, person);
             Dao<CustomerOrderReport, Integer> customerOrderReportDao = DaoManager.createDao(connectionSource, CustomerOrderReport.class);
             customerOrderReportDao.create(customerOrderReport);
-            System.out.println(customerOrderReportDao.queryForAll());
+            System.out.println("###" + customerOrderReportDao.queryForAll());
+
+            customerOrder.setReport(customerOrderReport);
+            customerOrderDao.update(customerOrder);
+            CustomerOrder retrievedCustomerOrder = customerOrderDao.queryForAll().get(0);
+            System.out.println("###" + customerOrder.getReport());
+            System.out.println("###" + retrievedCustomerOrder.getReport());
+            System.out.println("###" + retrievedCustomerOrder.getOrderTime());
+            System.out.println("###" + retrievedCustomerOrder.getReport().getReadyTime());
+
+            ProductOrder productOrder = new ProductOrder(product);
+            Dao<ProductOrder, Integer> productOrderDao = DaoManager.createDao(connectionSource, ProductOrder.class);
+            productOrderDao.create(productOrder);
+            System.out.println("###" + productOrderDao.queryForAll());
+
+            ProductOrderReport productOrderReport = new ProductOrderReport(productOrder, person);
+            Dao<ProductOrderReport, Integer> productOrderReportDao = DaoManager.createDao(connectionSource, ProductOrderReport.class);
+            productOrderReportDao.create(productOrderReport);
+            System.out.println("###" + productOrderReportDao.queryForAll());
+
+            productOrder.setReport(productOrderReport);
+            productOrderDao.update(productOrder);
+            ProductOrder retrievedProductOrder = productOrderDao.queryForAll().get(0);
+            System.out.println("###" + productOrder.getReport());
+            System.out.println("###" + retrievedProductOrder.getReport());
+            System.out.println("###" + retrievedProductOrder.getOrderTime());
+            System.out.println("###" + retrievedProductOrder.getReport().getReadyTime());
         } catch (Exception e) {
            System.err.println(e.getClass().getName() + ": " + e.getMessage());
            System.exit(0);

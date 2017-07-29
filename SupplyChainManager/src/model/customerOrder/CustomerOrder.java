@@ -3,10 +3,12 @@ package model.customerOrder;
 import java.util.Date;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import model.order.Order;
 import model.product.Product;
 
+@DatabaseTable(tableName = "CustomerOrder")
 public class CustomerOrder extends Order {
     @DatabaseField(generatedId = true)
     private Integer id;
@@ -16,6 +18,8 @@ public class CustomerOrder extends Order {
     private Deliverer deliverer;
     @DatabaseField
     private Date orderTime;
+    @DatabaseField(foreign = true)
+    private CustomerOrderReport report;
 
     public CustomerOrder() {
         this.orderTime = new Date(); // set to current time
@@ -36,6 +40,14 @@ public class CustomerOrder extends Order {
 
     public void setDeliverer(Deliverer deliverer) {
         this.deliverer = deliverer;
+    }
+
+    public CustomerOrderReport getReport() {
+        return report;
+    }
+
+    public void setReport(CustomerOrderReport report) {
+        this.report = report;
     }
 
     public Date getOrderTime() {

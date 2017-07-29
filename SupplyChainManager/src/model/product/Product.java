@@ -3,7 +3,9 @@ package model.product;
 import java.util.ArrayList;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
+@DatabaseTable(tableName = "Product")
 public class Product {
     @DatabaseField(generatedId = true)
     private Integer id;

@@ -1,7 +1,9 @@
 package model.customerOrder;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
+@DatabaseTable(tableName = "Deliverer")
 public class Deliverer {
     @DatabaseField(generatedId = true)
     private Integer id;

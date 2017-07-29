@@ -3,10 +3,12 @@ package model.customerOrder;
 import java.util.Date;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import model.order.OrderReport;
 import model.order.Person;
 
+@DatabaseTable(tableName = "CustomerOrderReport")
 public class CustomerOrderReport extends OrderReport {
     @DatabaseField(generatedId = true)
     private Integer id;

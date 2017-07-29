@@ -1,25 +1,49 @@
 package model.productOrder;
 
-import model.customerOrder.CustomerOrder;
+import java.util.ArrayList;
+import java.util.Date;
+
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 import model.order.Order;
 import model.product.Product;
 
-import java.util.ArrayList;
-
+@DatabaseTable(tableName = "ProductOrder")
 public class ProductOrder extends Order {
-	private static int idIndex;
+    @DatabaseField(generatedId = true)
+    private Integer id;
+    @DatabaseField(foreign = true)
     private Product product;
+    @DatabaseField(foreign = true)
+    private ProductOrderReport report;
+    @DatabaseField
+    private Date orderTime;
     private ArrayList<Supplier> suppliers;
-    private int id;
+
+    public ProductOrder() {
+        this.orderTime = new Date(); // set to current time
+    } // empty constructor required by ORMLite
 
     public ProductOrder(Product product) {
+        this.orderTime = new Date(); // set to current time
         this.product = product;
-        ProductOrder.idIndex++;
-        this.id = ProductOrder.idIndex;
     }
 
     public Product getProduct() {
         return product;
+    }
+
+    public ProductOrderReport getReport() {
+        return report;
+    }
+
+    public void setReport(ProductOrderReport report) {
+        this.report = report;
+    }
+
+    public Date getOrderTime() {
+        return orderTime;
     }
 
     public ArrayList<Supplier> getSuppliers() {
@@ -29,9 +53,9 @@ public class ProductOrder extends Order {
     public void setSuppliers(ArrayList<Supplier> suppliers) {
         this.suppliers = suppliers;
     }
-    
+
     @Override
     public String toString() {
-    	return "سفارش محصول " + this.id ;
+        return id.toString();
     }
 }
