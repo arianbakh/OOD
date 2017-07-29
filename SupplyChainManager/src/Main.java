@@ -12,6 +12,8 @@ import model.product.StockChecker;
 import model.productOrder.ProductOrder;
 import model.productOrder.ProductOrderReport;
 import model.productOrder.Supplier;
+import model.productReview.ProductFormReview;
+import model.productReview.ProductTextReview;
 import model.repository.ComponentOrderRepository;
 import model.repository.ComponentRepository;
 import model.repository.CustomerOrderRepository;
@@ -66,6 +68,10 @@ public class Main {
             TableUtils.clearTable(connectionSource, ProductOrder.class);
             TableUtils.createTableIfNotExists(connectionSource, ProductOrderReport.class);
             TableUtils.clearTable(connectionSource, ProductOrderReport.class);
+            TableUtils.createTableIfNotExists(connectionSource, ProductFormReview.class);
+            TableUtils.clearTable(connectionSource, ProductFormReview.class);
+            TableUtils.createTableIfNotExists(connectionSource, ProductTextReview.class);
+            TableUtils.clearTable(connectionSource, ProductTextReview.class);
 
             Component component = new Component("RAM");
             Dao<Component, String> componentDao = DaoManager.createDao(connectionSource, Component.class);
@@ -149,6 +155,16 @@ public class Main {
             System.out.println("###" + retrievedProductOrder.getReport());
             System.out.println("###" + retrievedProductOrder.getOrderTime());
             System.out.println("###" + retrievedProductOrder.getReport().getReadyTime());
+
+            ProductFormReview productFormReview = new ProductFormReview(5, 3, product);
+            Dao<ProductFormReview, Integer> productFormReviewDao = DaoManager.createDao(connectionSource, ProductFormReview.class);
+            productFormReviewDao.create(productFormReview);
+            System.out.println("###" + productFormReviewDao.queryForAll());
+
+            ProductTextReview productTextReview = new ProductTextReview(product, "fucking horrible");
+            Dao<ProductTextReview, Integer> productTextReviewDao = DaoManager.createDao(connectionSource, ProductTextReview.class);
+            productTextReviewDao.create(productTextReview);
+            System.out.println("###" + productTextReviewDao.queryForAll());
         } catch (Exception e) {
            System.err.println(e.getClass().getName() + ": " + e.getMessage());
            System.exit(0);
