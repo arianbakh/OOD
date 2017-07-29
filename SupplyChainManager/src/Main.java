@@ -8,12 +8,14 @@ import model.customerOrder.Deliverer;
 import model.product.Component;
 import model.product.Product;
 import model.product.StockChecker;
+import model.productOrder.ProductOrder;
 import model.productOrder.Supplier;
 import model.repository.ComponentOrderRepository;
 import model.repository.ComponentRepository;
 import model.repository.CustomerOrderRepository;
 import model.repository.DelivererRepository;
 import model.repository.PersonRepository;
+import model.repository.ProductOrderRepository;
 import model.repository.ProductRepository;
 import model.repository.SupplierRepository;
 
@@ -128,5 +130,9 @@ public class Main {
         
         Person person1 = new Person("غلام");
         PersonRepository.getInstance().save(person1);
+
+        ProductOrder productOrder = new ProductOrder(product);
+        ProductOrderRepository.getInstance().save(productOrder);
+
     }
 }
