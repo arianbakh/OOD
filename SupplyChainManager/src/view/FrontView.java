@@ -87,6 +87,10 @@ public class FrontView extends JFrame {
         JButton getComponentOrderReport = new JButton("دریافت گزارش سفارش مولفه");
         getComponentOrderReport.addActionListener(e -> onGetComponentOrderReport());
         add(getComponentOrderReport);
+        
+        JButton prediction = new JButton("پیش‌بینی");
+        prediction.addActionListener(e -> onFilterProducts());
+        add(prediction);
 
 
         setLayout(new FlowLayout());
@@ -171,5 +175,9 @@ public class FrontView extends JFrame {
     
     private void onGetComponentOrderReport() {
         FrontController.getFrontController().dispatch("startGetComponentOrderReport", null);
+    }
+    
+    private void onFilterProducts() {
+        FrontController.getFrontController().dispatch("startFilterProducts", null);
     }
 }
