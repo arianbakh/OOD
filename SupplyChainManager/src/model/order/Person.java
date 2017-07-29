@@ -5,7 +5,9 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Person")
 public class Person {
-    @DatabaseField(id = true)
+    @DatabaseField(generatedId = true)
+    private Integer id;
+    @DatabaseField
     private String name;
 
     public Person() {}; // empty constructor required by ORMLite

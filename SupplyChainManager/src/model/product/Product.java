@@ -2,12 +2,22 @@ package model.product;
 
 import java.util.ArrayList;
 
+import com.j256.ormlite.field.DatabaseField;
+
 public class Product {
+    @DatabaseField(generatedId = true)
+    private Integer id;
+    @DatabaseField
     private String name;
     private ArrayList<Component> components;
+    @DatabaseField
     private int minStock;
+    @DatabaseField
     private int maxStock;
+    @DatabaseField
     private int currentStock;
+
+    public Product() {} // empty constructor required by ORMLite
 
     public Product(String name, ArrayList<Component> components) {
         this.name = name;

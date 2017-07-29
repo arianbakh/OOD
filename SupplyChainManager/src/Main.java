@@ -4,6 +4,7 @@ import model.componentOrder.ComponentOrder;
 import model.componentOrder.ComponentOrderReport;
 import model.order.Person;
 import model.customerOrder.CustomerOrder;
+import model.customerOrder.CustomerOrderReport;
 import model.customerOrder.Deliverer;
 import model.product.Component;
 import model.product.Product;
@@ -13,6 +14,7 @@ import model.productOrder.Supplier;
 import model.repository.ComponentOrderRepository;
 import model.repository.ComponentRepository;
 import model.repository.CustomerOrderRepository;
+import model.repository.DatabaseHelper;
 import model.repository.DelivererRepository;
 import model.repository.PersonRepository;
 import model.repository.ProductOrderRepository;
@@ -25,7 +27,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
-import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -40,40 +41,49 @@ public class Main {
 
     private static void initializeDatabase() {
         try {
-            String databaseUrl = "jdbc:sqlite:main.db";
-            ConnectionSource connectionSource = new JdbcConnectionSource(databaseUrl);
+            ConnectionSource connectionSource = DatabaseHelper.getConnectionSource();
 
             TableUtils.createTableIfNotExists(connectionSource, Component.class);
             TableUtils.clearTable(connectionSource, Component.class);
+            TableUtils.createTableIfNotExists(connectionSource, Supplier.class);
+            TableUtils.clearTable(connectionSource, Supplier.class);
+            TableUtils.createTableIfNotExists(connectionSource, Person.class);
+            TableUtils.clearTable(connectionSource, Person.class);
+            TableUtils.createTableIfNotExists(connectionSource, ComponentOrder.class);
+            TableUtils.clearTable(connectionSource, ComponentOrder.class);
+            TableUtils.createTableIfNotExists(connectionSource, ComponentOrderReport.class);
+            TableUtils.clearTable(connectionSource, ComponentOrderReport.class);
+            TableUtils.createTableIfNotExists(connectionSource, Deliverer.class);
+            TableUtils.clearTable(connectionSource, Deliverer.class);
+            TableUtils.createTableIfNotExists(connectionSource, Product.class);
+            TableUtils.clearTable(connectionSource, Product.class);
+            TableUtils.createTableIfNotExists(connectionSource, CustomerOrder.class);
+            TableUtils.clearTable(connectionSource, CustomerOrder.class);
+            TableUtils.createTableIfNotExists(connectionSource, CustomerOrderReport.class);
+            TableUtils.clearTable(connectionSource, CustomerOrderReport.class);
+
             Component component = new Component("RAM");
             Dao<Component, String> componentDao = DaoManager.createDao(connectionSource, Component.class);
             componentDao.create(component);
             System.out.println(componentDao.queryForAll());
 
-            TableUtils.createTableIfNotExists(connectionSource, Supplier.class);
-            TableUtils.clearTable(connectionSource, Supplier.class);
             Supplier supplier = new Supplier("ASUS_RAM", 1000, component);
             Dao<Supplier, String> supplierDao = DaoManager.createDao(connectionSource, Supplier.class);
             supplierDao.create(supplier);
             System.out.println(supplierDao.queryForAll());
             System.out.println(supplierDao.queryForAll().get(0).getComponent());
+            System.out.println(componentDao.queryForAll().get(0).getSuppliers().get(0));
 
-            TableUtils.createTableIfNotExists(connectionSource, Person.class);
-            TableUtils.clearTable(connectionSource, Person.class);
             Person person = new Person("John");
             Dao<Person, String> personDao = DaoManager.createDao(connectionSource, Person.class);
             personDao.create(person);
             System.out.println(personDao.queryForAll());
 
-            TableUtils.createTableIfNotExists(connectionSource, ComponentOrder.class);
-            TableUtils.clearTable(connectionSource, ComponentOrder.class);
             ComponentOrder componentOrder = new ComponentOrder(supplier);
             Dao<ComponentOrder, Integer> componentOrderDao = DaoManager.createDao(connectionSource, ComponentOrder.class);
             componentOrderDao.create(componentOrder);
             System.out.println(componentOrderDao.queryForAll());
 
-            TableUtils.createTableIfNotExists(connectionSource, ComponentOrderReport.class);
-            TableUtils.clearTable(connectionSource, ComponentOrderReport.class);
             ComponentOrderReport componentOrderReport = new ComponentOrderReport(componentOrder, person);
             Dao<ComponentOrderReport, Integer> componentOrderReportDao = DaoManager.createDao(connectionSource, ComponentOrderReport.class);
             componentOrderReportDao.create(componentOrderReport);
@@ -81,11 +91,33 @@ public class Main {
 
             componentOrder.setReport(componentOrderReport);
             componentOrderDao.update(componentOrder);
-            ComponentOrder retrieved = componentOrderDao.queryForAll().get(0);
+            ComponentOrder retrievedComponentOrder = componentOrderDao.queryForAll().get(0);
             System.out.println(componentOrder.getReport());
-            System.out.println(retrieved.getReport());
-            System.out.println(retrieved.getOrderTime());
-            System.out.println(retrieved.getReport().getReadyTime());
+            System.out.println(retrievedComponentOrder.getReport());
+            System.out.println(retrievedComponentOrder.getOrderTime());
+            System.out.println(retrievedComponentOrder.getReport().getReadyTime());
+
+            Deliverer deliverer = new Deliverer("Jack", "very reliable");
+            Dao<Deliverer, Integer> delivererDao = DaoManager.createDao(connectionSource, Deliverer.class);
+            delivererDao.create(deliverer);
+            System.out.println(delivererDao.queryForAll());
+
+            ArrayList<Component> components = new ArrayList<Component>(); // TODO replace with many to many
+            components.add(component);
+            Product product = new Product("PC", components);
+            Dao<Product, Integer> productDao = DaoManager.createDao(connectionSource, Product.class);
+            productDao.create(product);
+            System.out.println(productDao.queryForAll());
+
+            CustomerOrder customerOrder = new CustomerOrder(product);
+            Dao<CustomerOrder, Integer> customerOrderDao = DaoManager.createDao(connectionSource, CustomerOrder.class);
+            customerOrderDao.create(customerOrder);
+            System.out.println(customerOrderDao.queryForAll());
+
+            CustomerOrderReport customerOrderReport = new CustomerOrderReport(customerOrder, person);
+            Dao<CustomerOrderReport, Integer> customerOrderReportDao = DaoManager.createDao(connectionSource, CustomerOrderReport.class);
+            customerOrderReportDao.create(customerOrderReport);
+            System.out.println(customerOrderReportDao.queryForAll());
         } catch (Exception e) {
            System.err.println(e.getClass().getName() + ": " + e.getMessage());
            System.exit(0);

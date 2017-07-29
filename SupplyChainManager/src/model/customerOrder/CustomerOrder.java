@@ -1,18 +1,29 @@
 package model.customerOrder;
 
+import java.util.Date;
+
+import com.j256.ormlite.field.DatabaseField;
+
 import model.order.Order;
 import model.product.Product;
 
 public class CustomerOrder extends Order {
-	private static int idIndex;
+    @DatabaseField(generatedId = true)
+    private Integer id;
+    @DatabaseField(foreign = true)
     private Product product;
+    @DatabaseField(foreign = true)
     private Deliverer deliverer;
-    private int id;
+    @DatabaseField
+    private Date orderTime;
+
+    public CustomerOrder() {
+        this.orderTime = new Date(); // set to current time
+    } // empty constructor required by ORMLite
 
     public CustomerOrder(Product product) {
         this.product = product;
-        CustomerOrder.idIndex++;
-        this.id = CustomerOrder.idIndex;
+        this.orderTime = new Date(); // set to current time
     }
 
     public Product getProduct() {
@@ -26,9 +37,13 @@ public class CustomerOrder extends Order {
     public void setDeliverer(Deliverer deliverer) {
         this.deliverer = deliverer;
     }
-    
+
+    public Date getOrderTime() {
+        return orderTime;
+    }
+
     @Override
     public String toString() {
-    	return "سفارش مشتری " + this.id ;
+        return id.toString();
     }
 }

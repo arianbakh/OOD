@@ -3,15 +3,20 @@ package model.product;
 import model.productOrder.Supplier;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Component")
 public class Component {
-	@DatabaseField(id = true)
+	@DatabaseField(generatedId = true)
+	private Integer id;
+	@DatabaseField
     private String name;
-    private ArrayList<Supplier> suppliers;
+	@ForeignCollectionField(eager = true, foreignFieldName = "component")
+    private Collection<Supplier> suppliers; // can't be ArrayList because of ORMLite
 
     public Component() {}; // empty constructor required by ORMLite
 
@@ -25,7 +30,7 @@ public class Component {
     }
 
     public ArrayList<Supplier> getSuppliers() {
-        return suppliers;
+        return new ArrayList<Supplier>(suppliers);
     }
 
     public void addSupplier(String name, int price) {

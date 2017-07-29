@@ -7,11 +7,13 @@ import model.product.Component;
 
 @DatabaseTable(tableName = "Supplier")
 public class Supplier {
-	@DatabaseField(id = true)
+	@DatabaseField(generatedId = true)
+	private Integer id;
+	@DatabaseField
     private String name;
 	@DatabaseField
     private int price;
-	@DatabaseField(foreign = true)
+	@DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Component component;
 
 	public Supplier() {}; // empty constructor required by ORMLite
