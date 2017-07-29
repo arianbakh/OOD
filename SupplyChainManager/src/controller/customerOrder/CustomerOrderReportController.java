@@ -27,8 +27,6 @@ public class CustomerOrderReportController {
     	CustomerOrderReport customerOrderReport = new CustomerOrderReport(customerOrder, person);
     	CustomerOrderRepository.getInstance().save(customerOrder);
     	customerOrder.submitReport(customerOrderReport);
-    	System.out.println("submited");
-    	System.out.println(customerOrder.getReport().getReadyTime().toString());
     }
 
     public static void startGetCustomerOrderReport(ArrayList<Object> data) {
