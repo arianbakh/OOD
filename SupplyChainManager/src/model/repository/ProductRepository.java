@@ -19,7 +19,18 @@ public class ProductRepository extends Repository<Product> {
     }
 
     public ArrayList<Product> filter(ArrayList<Component> components) {
-        return null;
+    	ArrayList<Product> result = new ArrayList<>();
+    	OUTER:
+    	for (Product p: this.getAll()){
+    		if (p.getComponents().size() != components.size())
+    			continue;
+    		for(Component c: p.getComponents()){
+    			if (!components.contains(c))
+    				continue OUTER;
+    		}
+    		result.add(p);
+    	}
+    	return result;
     }
 
     private boolean exists(Product product) {

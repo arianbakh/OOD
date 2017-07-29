@@ -15,6 +15,12 @@ public class FrontController {
 
     private FrontController() {
         try {
+        	this.controllersMap.put("newCustomerOrder",
+                    controller.customerOrder.CustomerOrderController.class.getMethod("startNewCustomerOrder", ArrayList.class));
+            this.controllersMap.put("newCustomerOrderSubmit",
+                    controller.customerOrder.CustomerOrderController.class.getMethod("newCustomerOrderSubmit", ArrayList.class));
+            this.controllersMap.put("newCustomerOrderCancel",
+                    controller.customerOrder.CustomerOrderController.class.getMethod("newCustomerOrderCancel", ArrayList.class));
         	this.controllersMap.put("startFormProductReview",
                     controller.productReview.ProductFormReviewController.class.getMethod("startNewFormProductReview", ArrayList.class));
             this.controllersMap.put("newFormReview",
