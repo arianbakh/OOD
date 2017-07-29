@@ -32,6 +32,19 @@ public class ProductRepository extends Repository<Product> {
     	}
     	return result;
     }
+    
+    public ArrayList<Product> hasAll(ArrayList<Component> components) {
+    	ArrayList<Product> result = new ArrayList<>();
+    	OUTER:
+    	for (Product p: this.getAll()){
+    		for(Component c: components){
+    			if (!p.getComponents().contains(c))
+    				continue OUTER;
+    		}
+    		result.add(p);
+    	}
+    	return result;
+    }
 
     private boolean exists(Product product) {
         return false;
