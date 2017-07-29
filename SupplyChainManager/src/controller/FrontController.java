@@ -15,6 +15,12 @@ public class FrontController {
 
     private FrontController() {
         try {
+        	this.controllersMap.put("startFormProductReview",
+                    controller.productReview.ProductFormReviewController.class.getMethod("startNewFormProductReview", ArrayList.class));
+            this.controllersMap.put("newFormReview",
+                    controller.productReview.ProductFormReviewController.class.getMethod("submitFormSubmit", ArrayList.class));
+            this.controllersMap.put("cancelFormReview",
+                    controller.productReview.ProductFormReviewController.class.getMethod("submitFormCancel", ArrayList.class));
             this.controllersMap.put("startTextProductReview",
                     controller.productReview.ProductTextReviewController.class.getMethod("startNewTextProductReview", ArrayList.class));
             this.controllersMap.put("newTextReview",
@@ -113,6 +119,14 @@ public class FrontController {
                     controller.productOrder.ProductOrderReportController.class.getMethod("productOrderSelectionCancel", ArrayList.class));
             this.controllersMap.put("productOrderListReturn",
                     controller.productOrder.ProductOrderReportController.class.getMethod("productOrderReportListReturn", ArrayList.class));
+            this.controllersMap.put("startGetComponentOrderReport",
+                    controller.componentOrder.ComponentOrderReportController.class.getMethod("startGetComponentOrderReport", ArrayList.class));
+            this.controllersMap.put("componentOrderSelectionNext",
+                    controller.componentOrder.ComponentOrderReportController.class.getMethod("componentOrderSelectionForReportNext", ArrayList.class));
+            this.controllersMap.put("componentOrderSelectionCancel",
+                    controller.componentOrder.ComponentOrderReportController.class.getMethod("componentOrderSelectionForReportCancel", ArrayList.class));
+            this.controllersMap.put("componentOrderListReturn",
+                    controller.componentOrder.ComponentOrderReportController.class.getMethod("componentOrderReportListReturn", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }

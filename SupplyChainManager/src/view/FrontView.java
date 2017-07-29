@@ -12,6 +12,10 @@ public class FrontView extends JFrame {
 
     private void initUI() {
     	
+    	JButton newFormProductReviewButton = new JButton("ثبت بازخورد فرمی برای محصول");
+        newFormProductReviewButton.addActionListener(e -> onNewFormProductReview());
+        add(newFormProductReviewButton);
+        
         JButton newTextProductReviewButton = new JButton("ثبت بازخورد متنی برای محصول");
         newTextProductReviewButton.addActionListener(e -> onNewTextProductReview());
         add(newTextProductReviewButton);
@@ -75,6 +79,10 @@ public class FrontView extends JFrame {
         JButton getProductOrderReport = new JButton("دریافت گزارش سفارش محصول");
         getProductOrderReport.addActionListener(e -> onGetProductOrderReport());
         add(getProductOrderReport);
+        
+        JButton getComponentOrderReport = new JButton("دریافت گزارش سفارش مولفه");
+        getComponentOrderReport.addActionListener(e -> onGetComponentOrderReport());
+        add(getComponentOrderReport);
 
 
         setLayout(new FlowLayout());
@@ -85,6 +93,10 @@ public class FrontView extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    private void onNewFormProductReview() {
+        FrontController.getFrontController().dispatch("startFormProductReview", null);
+    }
+    
     private void onNewTextProductReview() {
         FrontController.getFrontController().dispatch("startTextProductReview", null);
     }
@@ -147,5 +159,9 @@ public class FrontView extends JFrame {
     
     private void onGetProductOrderReport() {
         FrontController.getFrontController().dispatch("startGetProductOrderReport", null);
+    }
+    
+    private void onGetComponentOrderReport() {
+        FrontController.getFrontController().dispatch("startGetComponentOrderReport", null);
     }
 }

@@ -9,6 +9,7 @@ import model.productOrder.ProductOrder;
 import model.productOrder.ProductOrderReport;
 import model.repository.CustomerOrderRepository;
 import model.repository.PersonRepository;
+import model.repository.ProductOrderReportRepository;
 import model.repository.ProductOrderRepository;
 import view.customerOrder.CustomerOrderReportListView;
 import view.customerOrder.CustomerOrderSelectionView;
@@ -31,7 +32,7 @@ public class ProductOrderReportController {
     	ProductOrder productOrder = (ProductOrder)data.get(0);
     	Person person = (Person)data.get(1);
     	ProductOrderReport productOrderReport = new ProductOrderReport(productOrder, person);
-    	ProductOrderRepository.getInstance().save(productOrder);
+    	ProductOrderReportRepository.getInstance().save(productOrderReport);
     	productOrder.submitReport(productOrderReport);
     }
 
