@@ -27,6 +27,7 @@ public class CustomerOrderReport extends OrderReport {
         super(responsiblePerson);
         this.order = customerOrder;
         this.readyTime = new Date(); // set to current time
+        this.responsiblePerson = responsiblePerson;
     }
 
     public CustomerOrder getOrder() {

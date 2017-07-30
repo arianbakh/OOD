@@ -33,7 +33,7 @@ public class ProductOrderReportController {
     	Person person = (Person)data.get(1);
     	ProductOrderReport productOrderReport = new ProductOrderReport(productOrder, person);
     	ProductOrderReportRepository.getInstance().save(productOrderReport);
-    	productOrder.submitReport(productOrderReport);
+    	productOrder.setReport(productOrderReport);
     }
 
     public static void startGetProductOrderReport(ArrayList<Object> data) {
