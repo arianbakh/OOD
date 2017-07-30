@@ -34,6 +34,7 @@ public class ProductOrderReportController {
     	ProductOrderReport productOrderReport = new ProductOrderReport(productOrder, person);
     	ProductOrderReportRepository.getInstance().save(productOrderReport);
     	productOrder.setReport(productOrderReport);
+    	productOrder.getProduct().increaseStock();
     }
 
     public static void startGetProductOrderReport(ArrayList<Object> data) {

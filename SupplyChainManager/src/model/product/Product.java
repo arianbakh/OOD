@@ -59,7 +59,8 @@ public class Product {
     }
 
     public void decreaseStock() {
-        currentStock--;
+    	if (currentStock > 0)
+    		currentStock--;
     }
 
     public int getCurrentStock() {
