@@ -8,9 +8,9 @@ import model.repository.ComponentRepository;
 import model.repository.SupplierRepository;
 import view.componentOrder.ComponentSelectionView;
 import view.componentOrder.SelectComponentOrderForEditView;
-import view.componentOrder.SelectSupplierForEditView;
 import view.componentOrder.SetSupplierPropertiesView;
 import view.componentOrder.SupplierSelectionForNewView;
+import view.productOrder.SelectSupplierForEditView;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class ComponentOrderController {
 
     public static void componentSelectionNext(ArrayList<Object> data) {
         Component component = (Component)data.get(0);
-        new SupplierSelectionForNewView(SupplierRepository.getInstance().filterByComponent(component)).setVisible(true);
+        new SupplierSelectionForNewView(component.getSuppliers()).setVisible(true);
     }
 
     public static void supplierSelectionForNewCancel(ArrayList<Object> data) {
@@ -58,16 +58,11 @@ public class ComponentOrderController {
     }
 
     public static void componentOrderSelectionForEditNext(ArrayList<Object> data) {
-    	ComponentOrder componentOrder = (ComponentOrder) data.get(0);
-    	new SelectSupplierForEditView(componentOrder.getSupplier().getComponent().getSuppliers(), componentOrder).setVisible(true);
     }
 
     public static void supplierSelectionForEditCancel(ArrayList<Object> data) {
     }
 
     public static void supplierSelectionForEditSubmit(ArrayList<Object> data) {
-    	ComponentOrder componentOrder = (ComponentOrder) data.get(0);
-    	Supplier supplier = (Supplier) data.get(1);
-    	componentOrder.setSupplier(supplier);
     }
 }

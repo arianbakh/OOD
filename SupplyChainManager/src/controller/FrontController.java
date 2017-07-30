@@ -74,15 +74,15 @@ public class FrontController {
             this.controllersMap.put("selectDelivererCancel",
                     controller.customerOrder.CustomerOrderController.class.getMethod("selectDelivererCancel", ArrayList.class));
             this.controllersMap.put("startSelectSupplier",
-            		controller.componentOrder.ComponentOrderController.class.getMethod("startSelectSupplier", ArrayList.class));
-            this.controllersMap.put("componentOrderSelectionForEditNext",
-                    controller.componentOrder.ComponentOrderController.class.getMethod("componentOrderSelectionForEditNext", ArrayList.class));
-            this.controllersMap.put("componentOrderSelectionForEditCancel",
-                    controller.componentOrder.ComponentOrderController.class.getMethod("componentOrderSelectionForEditCancel", ArrayList.class));
+            		controller.productOrder.ProductOrderController.class.getMethod("startSelectSupplier", ArrayList.class));
+            this.controllersMap.put("productOrderSelectionForEditNext",
+                    controller.productOrder.ProductOrderController.class.getMethod("productOrderSelectionForEditNext", ArrayList.class));
+            this.controllersMap.put("productOrderSelectionForEditCancel",
+                    controller.productOrder.ProductOrderController.class.getMethod("productOrderSelectionForEditCancel", ArrayList.class));
             this.controllersMap.put("selectSupplierForEditSubmit",
-                    controller.componentOrder.ComponentOrderController.class.getMethod("supplierSelectionForEditSubmit", ArrayList.class));
+                    controller.productOrder.ProductOrderController.class.getMethod("supplierSelectionForEditSubmit", ArrayList.class));
             this.controllersMap.put("selectSupplierForEditCancel",
-                    controller.componentOrder.ComponentOrderController.class.getMethod("supplierSelectionForEditCancel", ArrayList.class));
+                    controller.productOrder.ProductOrderController.class.getMethod("supplierSelectionForEditCancel", ArrayList.class));
             this.controllersMap.put("startGetDeliverers",
                     controller.customerOrder.DelivererController.class.getMethod("startGetDeliverers", ArrayList.class));
             this.controllersMap.put("deliverersListReturn",

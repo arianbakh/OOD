@@ -1,4 +1,4 @@
-package view.componentOrder;
+package view.productOrder;
 
 import controller.FrontController;
 import model.componentOrder.ComponentOrder;
@@ -6,23 +6,25 @@ import model.customerOrder.CustomerOrder;
 import model.customerOrder.Deliverer;
 import model.product.Component;
 import model.product.Product;
+import model.productOrder.ProductOrder;
 import model.productOrder.Supplier;
 
 import javax.swing.*;
 
 import java.awt.FlowLayout;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SelectSupplierForEditView extends JFrame {
-	private JComboBox<Object> supplier;
-	private ComponentOrder componentOrder;
+	private ArrayList<JComboBox<Object>> supplier = new ArrayList<>();
+	private ProductOrder productOrder;
 
-    public SelectSupplierForEditView(ArrayList<Supplier> suppliers, ComponentOrder componentOrder) {
-    	this.componentOrder = componentOrder;
+    public SelectSupplierForEditView(HashMap<Component, ArrayList<Supplier>> suppliers, ProductOrder productOrder) {
+    	this.productOrder = productOrder;
         initUI(suppliers);
     }
 
-    private void initUI(ArrayList<Supplier> suppliers) {
+    private void initUI(HashMap<Component, ArrayList<Supplier>> suppliers) {
         JButton submitButton = new JButton("ثبت");
         submitButton.addActionListener(e -> onSubmit());
         add(submitButton);
@@ -31,8 +33,14 @@ public class SelectSupplierForEditView extends JFrame {
         cancelButton.addActionListener(e -> onCancel());
         add(cancelButton);
         
-        supplier = new JComboBox<>(suppliers.toArray());
-        add(supplier);
+        for(Component c: suppliers.keySet()){
+        	JLabel componentLabel = new JLabel(c.getName());
+            add(componentLabel);
+
+            JComboBox<Object> sups = new JComboBox<>(suppliers.get(c).toArray()); 
+	        supplier.add(sups);
+	        add(sups);
+        }
         
         setLayout(new FlowLayout());
         setTitle("انتخاب تامین‌کننده");
@@ -42,8 +50,9 @@ public class SelectSupplierForEditView extends JFrame {
 
     private void onSubmit() {
         ArrayList<Object> data = new ArrayList<>();
-        data.add(componentOrder);
-        data.add(supplier.getSelectedItem());
+        data.add(productOrder);
+        for(JComboBox<Object> jcb: supplier)
+        	data.add(jcb.getSelectedItem());
         FrontController.getFrontController().dispatch("selectSupplierForEditSubmit", data);
         setVisible(false);
         dispose();

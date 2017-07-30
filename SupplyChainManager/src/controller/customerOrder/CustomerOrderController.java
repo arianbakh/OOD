@@ -59,7 +59,7 @@ public class CustomerOrderController {
 
     public static void startFilterCustomerOrders(ArrayList<Object> data) {
     	Product product = (Product)data.get(0);
-    	new CustomerOrderListView(CustomerOrderRepository.getInstance().getByProduct(product)).setVisible(true);;
+    	new CustomerOrderListView(CustomerOrderRepository.getInstance().getByProduct(product)).setVisible(true);
     }
 
     public static void selectComponentsCancel(ArrayList<Object> data) {
