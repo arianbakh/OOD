@@ -22,12 +22,12 @@ public class SubmitFormView extends JFrame {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
 
         product = new JComboBox<>(products.toArray());
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(product, gbc);
 
         SpinnerModel qualityModel = new SpinnerNumberModel(0, 0, 5, 1);     
@@ -35,13 +35,11 @@ public class SubmitFormView extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(qualitySpinner, gbc);
         JLabel qualityLabel = new JLabel("کیفیت:");
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(qualityLabel, gbc);
         
         SpinnerModel deliveryModel = new SpinnerNumberModel(0, 0, 5, 1);     
@@ -49,13 +47,11 @@ public class SubmitFormView extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(deliverySpinner, gbc);
         JLabel deliveryLabel = new JLabel("تحویل‌دهی:");
         gbc.gridx = 1;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(deliveryLabel, gbc);
         
         JButton submitButton = new JButton("ثبت");
@@ -63,7 +59,6 @@ public class SubmitFormView extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(submitButton, gbc);
 
         JButton cancelButton = new JButton("انصراف");
@@ -71,7 +66,6 @@ public class SubmitFormView extends JFrame {
         gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(cancelButton, gbc);
 
         add(panel);

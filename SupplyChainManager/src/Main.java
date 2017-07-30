@@ -286,7 +286,7 @@ public class Main {
         PersonRepository.getInstance().save(person2);
         Person person3 = new Person("Jim Jarmush");
         PersonRepository.getInstance().save(person3);
-        
+
         CustomerOrder customerOrder = new CustomerOrder(gamingPc);
         CustomerOrderRepository.getInstance().save(customerOrder);
         

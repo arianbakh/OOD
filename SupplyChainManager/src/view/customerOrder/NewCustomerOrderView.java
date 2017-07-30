@@ -19,13 +19,13 @@ public class NewCustomerOrderView extends JFrame {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
 
         componentList = new JList(components.toArray());
         componentList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(new JScrollPane(componentList), gbc);
 
         JButton submitOrderButton = new JButton("ثبت سفارش");
@@ -33,7 +33,6 @@ public class NewCustomerOrderView extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(submitOrderButton, gbc);
 
         JButton returnButton = new JButton("انصراف");
@@ -41,7 +40,6 @@ public class NewCustomerOrderView extends JFrame {
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(returnButton, gbc);
 
         add(panel);

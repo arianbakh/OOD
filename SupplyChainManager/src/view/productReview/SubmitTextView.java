@@ -20,19 +20,18 @@ public class SubmitTextView extends JFrame {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
 
         product = new JComboBox<>(products.toArray());
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(product, gbc);
 
         text = new JTextArea(10, 30);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 2;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(text, gbc);
 
         JButton submitButton = new JButton("ثبت");
@@ -40,7 +39,6 @@ public class SubmitTextView extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(submitButton, gbc);
 
         JButton cancelButton = new JButton("انصراف");
@@ -48,7 +46,6 @@ public class SubmitTextView extends JFrame {
         gbc.gridx = 1;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(cancelButton, gbc);
 
         add(panel);

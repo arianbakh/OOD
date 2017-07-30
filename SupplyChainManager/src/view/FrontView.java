@@ -12,6 +12,7 @@ public class FrontView extends JFrame {
 
     private void initUI() {
         JPanel panel = new JPanel();
+        panel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
