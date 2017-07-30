@@ -19,9 +19,13 @@ public class ShowFamiliarsView extends JFrame {
         product = new JComboBox<>(products.toArray());
         add(product);
 
-        JButton submitButton = new JButton("نمایش سفارشات مشتری");
-        submitButton.addActionListener(e -> onShowCustomerOrders());
-        add(submitButton);
+        JButton customerOrdersButton = new JButton("نمایش سفارشات مشتری");
+        customerOrdersButton.addActionListener(e -> onShowCustomerOrders());
+        add(customerOrdersButton);
+        
+        JButton productOrdersButton = new JButton("نمایش سفارشات محصول");
+        productOrdersButton.addActionListener(e -> onShowProductOrders());
+        add(productOrdersButton);
 
         JButton cancelButton = new JButton("انصراف");
         cancelButton.addActionListener(e -> onCancel());
@@ -37,6 +41,14 @@ public class ShowFamiliarsView extends JFrame {
         ArrayList<Object> data = new ArrayList<>();
         data.add(product.getSelectedItem());
         FrontController.getFrontController().dispatch("customerOrdersList", data);
+        setVisible(false);
+        dispose();
+    }
+    
+    private void onShowProductOrders() {
+        ArrayList<Object> data = new ArrayList<>();
+        data.add(product.getSelectedItem());
+        FrontController.getFrontController().dispatch("productOrdersList", data);
         setVisible(false);
         dispose();
     }
