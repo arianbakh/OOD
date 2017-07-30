@@ -28,6 +28,7 @@ public class CustomerOrderReportController {
     	CustomerOrderReport customerOrderReport = new CustomerOrderReport(customerOrder, person);
     	CustomerOrderReportRepository.getInstance().save(customerOrderReport);
     	customerOrder.setReport(customerOrderReport);
+    	customerOrder.getProduct().decreaseStock();
     }
 
     public static void startGetCustomerOrderReport(ArrayList<Object> data) {
