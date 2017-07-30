@@ -16,13 +16,16 @@ public class CustomerOrderReportListView extends JFrame {
 
     private void initUI(CustomerOrder customerOrder) {
 
-        JLabel name = new JLabel(customerOrder.getReport().getResponsiblePerson().toString());
-        add(name);
+    	if (customerOrder.getReport() != null){
+	        JLabel name = new JLabel(customerOrder.getReport().getResponsiblePerson().toString());
+	        add(name);
+    	}
         JLabel nameLabel = new JLabel("نام فرد:");
         add(nameLabel);
-        
-        JLabel time = new JLabel(customerOrder.getReport().getReadyTime().toString());
-        add(time);
+        if (customerOrder.getReport() != null){
+	        JLabel time = new JLabel(customerOrder.getReport().getReadyTime().toString());
+	        add(time);
+        }
         JLabel timeLabel = new JLabel("زمان:");
         add(timeLabel);
         

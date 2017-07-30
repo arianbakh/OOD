@@ -56,6 +56,6 @@ public class CustomerOrder extends Order {
 
     @Override
     public String toString() {
-        return id.toString();
+        return " سفارش مشتری " + product.getName();
     }
 }

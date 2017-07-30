@@ -27,7 +27,7 @@ public class CustomerOrderReportController {
     	Person person = (Person)data.get(1);
     	CustomerOrderReport customerOrderReport = new CustomerOrderReport(customerOrder, person);
     	CustomerOrderReportRepository.getInstance().save(customerOrderReport);
-    	customerOrder.submitReport(customerOrderReport);
+    	customerOrder.setReport(customerOrderReport);
     }
 
     public static void startGetCustomerOrderReport(ArrayList<Object> data) {

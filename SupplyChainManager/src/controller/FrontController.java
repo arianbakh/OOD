@@ -146,6 +146,10 @@ public class FrontController {
                     controller.customerOrder.CustomerOrderController.class.getMethod("startFilterCustomerOrders", ArrayList.class));
             this.controllersMap.put("customerOrdersListReturn",
                     controller.customerOrder.CustomerOrderController.class.getMethod("customerOrderListReturn", ArrayList.class));
+            this.controllersMap.put("productOrdersList",
+                    controller.productOrder.ProductOrderController.class.getMethod("startFilterProductOrders", ArrayList.class));
+            this.controllersMap.put("productOrdersListReturn",
+                    controller.productOrder.ProductOrderController.class.getMethod("productOrderListReturn", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }

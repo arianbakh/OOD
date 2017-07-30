@@ -51,7 +51,7 @@ public class ComponentOrder extends Order {
     @Override
     public String toString() {
 //        return id.toString();
-    	return super.toString();
+    	return " سفارش مولفه‌ی " + this.supplier.getName();
     }
     
     

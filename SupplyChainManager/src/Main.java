@@ -230,11 +230,14 @@ public class Main {
         
         Supplier supplier1 = new Supplier("تامین‌کننده ۱", 1000, component1);
         SupplierRepository.getInstance().save(supplier1);
+        Supplier supplier2 = new Supplier("تامین کننده ۲", 2000, component2);
+        SupplierRepository.getInstance().save(supplier2);
         
         Person person1 = new Person("غلام");
         PersonRepository.getInstance().save(person1);
 
         ProductOrder productOrder = new ProductOrder(product);
+        productOrder.setSuppliers(new ArrayList<Supplier>() {{ add(supplier1); add(supplier2);}});
         ProductOrderRepository.getInstance().save(productOrder);
 
     }

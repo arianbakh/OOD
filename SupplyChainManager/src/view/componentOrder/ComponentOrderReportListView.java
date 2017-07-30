@@ -17,13 +17,17 @@ public class ComponentOrderReportListView extends JFrame {
 
     private void initUI(ComponentOrder componentOrder) {
 
-        JLabel name = new JLabel(componentOrder.getReport().getResponsiblePerson().toString());
-        add(name);
+    	if (componentOrder.getReport() != null){
+	        JLabel name = new JLabel(componentOrder.getReport().getResponsiblePerson().toString());
+	        add(name);
+    	}
         JLabel nameLabel = new JLabel("نام فرد:");
         add(nameLabel);
         
-        JLabel time = new JLabel(componentOrder.getReport().getReadyTime().toString());
-        add(time);
+        if (componentOrder.getReport() != null){
+	        JLabel time = new JLabel(componentOrder.getReport().getReadyTime().toString());
+	        add(time);
+        }
         JLabel timeLabel = new JLabel("زمان:");
         add(timeLabel);
         

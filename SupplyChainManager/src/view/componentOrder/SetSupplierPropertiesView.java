@@ -36,7 +36,7 @@ public class SetSupplierPropertiesView extends JFrame {
         JLabel nameLabel = new JLabel("نام:");
         add(nameLabel);
         
-        SpinnerModel priceModel = new SpinnerNumberModel(0, 0, 100, 1);     
+        SpinnerModel priceModel = new SpinnerNumberModel(0, 0, 100000, 1);     
         price = new JSpinner(priceModel);
         add(price);
         JLabel priceLabel = new JLabel("قیمت:");
