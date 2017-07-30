@@ -193,52 +193,113 @@ public class Main {
     }
 
     private static void addDummyObjects() {
-        Component component1 = new Component("مولفه ۱");
-        ComponentRepository.getInstance().save(component1);
+        Component ramComponent = new Component("RAM");
+        ComponentRepository.getInstance().save(ramComponent);
 
-        component1.addSupplier("تامین‌کننده ۱", 1000);
-        component1.addSupplier("تامین‌کننده ۲", 2000);
+        Supplier ramSupplier1 = new Supplier("Huawei RAM", 100, ramComponent);
+        SupplierRepository.getInstance().save(ramSupplier1);
+        ramComponent.addSupplier(ramSupplier1);
 
-        Component component2 = new Component("مولفه ۲");
-        ComponentRepository.getInstance().save(component2);
+        Supplier ramSupplier2 = new Supplier("ASUS RAM", 200, ramComponent);
+        SupplierRepository.getInstance().save(ramSupplier2);
+        ramComponent.addSupplier(ramSupplier2);
 
-        Component component3 = new Component("مولفه ۳");
-        ComponentRepository.getInstance().save(component3);
-        
-        component2.addSupplier("تامین‌کننده ۳", 3000);
+        Supplier ramSupplier3 = new Supplier("Kingston RAM", 300, ramComponent);
+        SupplierRepository.getInstance().save(ramSupplier3);
+        ramComponent.addSupplier(ramSupplier3);
 
-        ArrayList<Component> components = new ArrayList<>();
-        components.add(component1);
-        components.add(component2);
+        Component gpuComponent = new Component("GPU");
+        ComponentRepository.getInstance().save(gpuComponent);
 
-        Product product = new Product("محصول ۱", components);
-        product.setCurrentStock(5);
-        ProductRepository.getInstance().save(product);
+        Supplier gpuSupplier1 = new Supplier("NVidia GPU", 1000, gpuComponent);
+        SupplierRepository.getInstance().save(gpuSupplier1);
+        gpuComponent.addSupplier(gpuSupplier1);
 
-        Product product2 = new Product("محصول ۲", components);
-        product2.setCurrentStock(10);
-        ProductRepository.getInstance().save(product2);
+        Supplier gpuSupplier2 = new Supplier("AMD GPU", 2000, gpuComponent);
+        SupplierRepository.getInstance().save(gpuSupplier2);
+        gpuComponent.addSupplier(gpuSupplier2);
+
+        Supplier gpuSupplier3 = new Supplier("Intel GPU", 3000, gpuComponent);
+        SupplierRepository.getInstance().save(gpuSupplier3);
+        gpuComponent.addSupplier(gpuSupplier3);
+
+        Component ssdComponent = new Component("SSD");
+        ComponentRepository.getInstance().save(ssdComponent);
+
+        Supplier ssdSupplier1 = new Supplier("Samsung SSD", 10, ssdComponent);
+        SupplierRepository.getInstance().save(ssdSupplier1);
+        ssdComponent.addSupplier(ssdSupplier1);
+
+        Supplier ssdSupplier2 = new Supplier("ADATA SSD", 20, ssdComponent);
+        SupplierRepository.getInstance().save(ssdSupplier2);
+        ssdComponent.addSupplier(ssdSupplier2);
+
+        Component hddComponent = new Component("HDD");
+        ComponentRepository.getInstance().save(hddComponent);
+
+        Supplier hddSupplier1 = new Supplier("Silicon Power HDD", 1, hddComponent);
+        SupplierRepository.getInstance().save(hddSupplier1);
+        hddComponent.addSupplier(hddSupplier1);
+
+        Supplier hddSupplier2 = new Supplier("Western Digital HDD", 2, hddComponent);
+        SupplierRepository.getInstance().save(hddSupplier2);
+        hddComponent.addSupplier(hddSupplier2);
+
+        Component cpuComponent = new Component("CPU");
+        ComponentRepository.getInstance().save(cpuComponent);
+
+        Supplier cpuSupplier1 = new Supplier("Intel CPU", 10000, cpuComponent);
+        SupplierRepository.getInstance().save(cpuSupplier1);
+        cpuComponent.addSupplier(cpuSupplier1);
+
+        Supplier cpuSupplier2 = new Supplier("AMD CPU", 20000, cpuComponent);
+        SupplierRepository.getInstance().save(cpuSupplier2);
+        cpuComponent.addSupplier(cpuSupplier2);
+
+        ArrayList<Component> businessPcComponents = new ArrayList<>();
+        businessPcComponents.add(ramComponent);
+        businessPcComponents.add(hddComponent);
+        businessPcComponents.add(cpuComponent);
+        Product businessPc = new Product("Business PC", businessPcComponents);
+        businessPc.setCurrentStock(5);
+        ProductRepository.getInstance().save(businessPc);
+
+        ArrayList<Component> gamingPcComponents = new ArrayList<>();
+        gamingPcComponents.add(ramComponent);
+        gamingPcComponents.add(ssdComponent);
+        gamingPcComponents.add(cpuComponent);
+        gamingPcComponents.add(gpuComponent);
+        Product gamingPc = new Product("Gaming PC", gamingPcComponents);
+        gamingPc.setCurrentStock(10);
+        ProductRepository.getInstance().save(gamingPc);
         
-        CustomerOrder co = new CustomerOrder(product);
-        CustomerOrderRepository.getInstance().save(co);
-        
-        Deliverer del = new Deliverer("تحویل دهنده‌ی ۱", "ویژگی ۱");
-        DelivererRepository.getInstance().save(del);
-        
-        ComponentOrder componentOrder = new ComponentOrder(component1.getSuppliers().get(0));
-        ComponentOrderRepository.getInstance().save(componentOrder);
-        
-        Supplier supplier1 = new Supplier("تامین‌کننده ۱", 1000, component1);
-        SupplierRepository.getInstance().save(supplier1);
-        Supplier supplier2 = new Supplier("تامین کننده ۲", 2000, component2);
-        SupplierRepository.getInstance().save(supplier2);
-        
-        Person person1 = new Person("غلام");
+        Deliverer tnt = new Deliverer("TNT", "Very Fast");
+        DelivererRepository.getInstance().save(tnt);
+        Deliverer fedex = new Deliverer("Fedex", "Very Slow");
+        DelivererRepository.getInstance().save(fedex);
+        Deliverer dhl = new Deliverer("DHL", "Very Safe");
+        DelivererRepository.getInstance().save(dhl);
+
+        Person person1 = new Person("John Smith");
         PersonRepository.getInstance().save(person1);
+        Person person2 = new Person("Jane Doe");
+        PersonRepository.getInstance().save(person2);
+        Person person3 = new Person("Jim Jarmush");
+        PersonRepository.getInstance().save(person3);
+        
+        CustomerOrder customerOrder = new CustomerOrder(gamingPc);
+        CustomerOrderRepository.getInstance().save(customerOrder);
+        
+        ComponentOrder componentOrder = new ComponentOrder(cpuComponent.getSuppliers().get(0));
+        ComponentOrderRepository.getInstance().save(componentOrder);
 
-        ProductOrder productOrder = new ProductOrder(product);
-        productOrder.setSuppliers(new ArrayList<Supplier>() {{ add(supplier1); add(supplier2);}});
+        ProductOrder productOrder = new ProductOrder(businessPc);
+        ArrayList<Supplier> productOrderSuppliers = new ArrayList<>();
+        productOrderSuppliers.add(ramSupplier1);
+        productOrderSuppliers.add(ssdSupplier1);
+        productOrderSuppliers.add(cpuSupplier1);
+        productOrderSuppliers.add(gpuSupplier1);
+        productOrder.setSuppliers(productOrderSuppliers);
         ProductOrderRepository.getInstance().save(productOrder);
-
     }
 }

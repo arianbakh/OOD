@@ -11,94 +11,139 @@ public class FrontView extends JFrame {
     }
 
     private void initUI() {
-        JPanel panel = new JPanel(new GridLayout(21, 1));
+        JPanel panel = new JPanel();
+        GridBagLayout layout = new GridBagLayout();
+        panel.setLayout(layout);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.gridwidth = 1;
 
-    	JButton newCustomerOrderButton = new JButton("ثبت سفارش");
+    	JButton newCustomerOrderButton = new JButton("ثبت سفارش مشتری");
         newCustomerOrderButton.addActionListener(e -> onNewCustomerOrder());
-        panel.add(newCustomerOrderButton);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(newCustomerOrderButton, gbc);
 
-    	JButton newFormProductReviewButton = new JButton("ثبت بازخورد فرمی برای محصول");
-        newFormProductReviewButton.addActionListener(e -> onNewFormProductReview());
-        panel.add(newFormProductReviewButton);
+        JButton newCustomerOrderReport = new JButton("ثبت گزارش سفارش مشتری");
+        newCustomerOrderReport.addActionListener(e -> onNewCustomerOrderReport());
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        panel.add(newCustomerOrderReport, gbc);
 
-        JButton newTextProductReviewButton = new JButton("ثبت بازخورد متنی برای محصول");
-        newTextProductReviewButton.addActionListener(e -> onNewTextProductReview());
-        panel.add(newTextProductReviewButton);
+        JButton getCustomerOrderReport = new JButton("دریافت گزارش سفارش مشتری");
+        getCustomerOrderReport.addActionListener(e -> onGetCustomerOrderReport());
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        panel.add(getCustomerOrderReport, gbc);
 
         JButton showExistingComponentsButton = new JButton("نمایش مولفه‌های موجود");
         showExistingComponentsButton.addActionListener(e -> onShowExistingComponents());
-        panel.add(showExistingComponentsButton);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(showExistingComponentsButton, gbc);
 
-        JButton newComponentOrderButton = new JButton("سفارش مولفه جدید");
+        JButton newComponentOrderButton = new JButton("ثبت سفارش مولفه");
         newComponentOrderButton.addActionListener(e -> onNewComponentOrder());
-        panel.add(newComponentOrderButton);
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        panel.add(newComponentOrderButton, gbc);
 
-        JButton viewProductStock = new JButton("نمایش موجودی محصولات");
-        viewProductStock.addActionListener(e -> onViewStock());
-        panel.add(viewProductStock);
-        
-        JButton setMaxMinStock = new JButton("تعیین حداقل و حداکثر موجودی محصولات");
-        setMaxMinStock.addActionListener(e -> onSetProductStock());
-        panel.add(setMaxMinStock);
-        
-        JButton setSupplierProperties = new JButton("تعیین ویژگی‌های مسیر تامین جدید");
-        setSupplierProperties.addActionListener(e -> onSetSupplierProperties());
-        panel.add(setSupplierProperties);
-        
-        JButton setDeliverersProperties = new JButton("تعیین ویژگی‌های مسیر تحویل جدید");
-        setDeliverersProperties.addActionListener(e -> onSetDeliverersProperties());
-        panel.add(setDeliverersProperties);
-
-        JButton selectDeliverer = new JButton("انتخاب مسیر تحویل");
-        selectDeliverer.addActionListener(e -> onSelectDeliverer());
-        panel.add(selectDeliverer);
-        
-        JButton selectSupplier = new JButton("انتخاب مسیر تامین");
-        selectSupplier.addActionListener(e -> onSelectSupplier());
-        panel.add(selectSupplier);
-
-        JButton showExistingDeliverers = new JButton("دریافت مسیر‌های تحویل");
-        showExistingDeliverers.addActionListener(e -> onShowExistingDeliverers());
-        panel.add(showExistingDeliverers);
-        
-        JButton showExistingSuppliers = new JButton("دریافت مسیر‌های تامین");
-        showExistingSuppliers.addActionListener(e -> onShowExistingSuppliers());
-        panel.add(showExistingSuppliers);
-
-        JButton newCustomerOrderReport = new JButton("ثبت گزارش سفارش مشتری جدید");
-        newCustomerOrderReport.addActionListener(e -> onNewCustomerOrderReport());
-        panel.add(newCustomerOrderReport);
-        
-        JButton newProductOrderReport = new JButton("ثبت گزارش سفارش محصول جدید");
-        newProductOrderReport.addActionListener(e -> onNewProductOrderReport());
-        panel.add(newProductOrderReport);
-        
-        JButton newComponentOrderReport = new JButton("ثبت گزارش سفارش مولفه جدید");
+        JButton newComponentOrderReport = new JButton("ثبت گزارش سفارش مولفه");
         newComponentOrderReport.addActionListener(e -> onNewComponentOrderReport());
-        panel.add(newComponentOrderReport);
-        
-        JButton getCustomerOrderReport = new JButton("دریافت گزارش سفارش مشتری");
-        getCustomerOrderReport.addActionListener(e -> onGetCustomerOrderReport());
-        panel.add(getCustomerOrderReport);
+        gbc.gridx = 2;
+        gbc.gridy = 1;
+        panel.add(newComponentOrderReport, gbc);
+
+        JButton getComponentOrderReport = new JButton("دریافت گزارش سفارش مولفه");
+        getComponentOrderReport.addActionListener(e -> onGetComponentOrderReport());
+        gbc.gridx = 3;
+        gbc.gridy = 1;
+        panel.add(getComponentOrderReport, gbc);
+
+        JButton newProductOrderReport = new JButton("ثبت گزارش سفارش محصول");
+        newProductOrderReport.addActionListener(e -> onNewProductOrderReport());
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(newProductOrderReport, gbc);
         
         JButton getProductOrderReport = new JButton("دریافت گزارش سفارش محصول");
         getProductOrderReport.addActionListener(e -> onGetProductOrderReport());
-        panel.add(getProductOrderReport);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        panel.add(getProductOrderReport, gbc);
+
+        JButton viewProductStock = new JButton("نمایش موجودی محصولات");
+        viewProductStock.addActionListener(e -> onViewStock());
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(viewProductStock, gbc);
+
+        JButton setMaxMinStock = new JButton("تعیین حداقل و حداکثر موجودی محصولات");
+        setMaxMinStock.addActionListener(e -> onSetProductStock());
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        panel.add(setMaxMinStock, gbc);
+
+        JButton newFormProductReviewButton = new JButton("ثبت بازخورد فرمی برای محصول");
+        newFormProductReviewButton.addActionListener(e -> onNewFormProductReview());
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        panel.add(newFormProductReviewButton, gbc);
+
+        JButton newTextProductReviewButton = new JButton("ثبت بازخورد متنی برای محصول");
+        newTextProductReviewButton.addActionListener(e -> onNewTextProductReview());
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        panel.add(newTextProductReviewButton, gbc);
+
+        JButton setSupplierProperties = new JButton("تعیین ویژگی‌های مسیر تامین");
+        setSupplierProperties.addActionListener(e -> onSetSupplierProperties());
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        panel.add(setSupplierProperties, gbc);
         
-        JButton getComponentOrderReport = new JButton("دریافت گزارش سفارش مولفه");
-        getComponentOrderReport.addActionListener(e -> onGetComponentOrderReport());
-        panel.add(getComponentOrderReport);
+        JButton showExistingSuppliers = new JButton("دریافت مسیر‌های تامین");
+        showExistingSuppliers.addActionListener(e -> onShowExistingSuppliers());
+        gbc.gridx = 1;
+        gbc.gridy = 5;
+        panel.add(showExistingSuppliers, gbc);
+        
+        JButton selectSupplier = new JButton("انتخاب مسیر تامین");
+        selectSupplier.addActionListener(e -> onSelectSupplier());
+        gbc.gridx = 2;
+        gbc.gridy = 5;
+        panel.add(selectSupplier, gbc);
+
+        JButton setDeliverersProperties = new JButton("تعیین ویژگی‌های مسیر تحویل");
+        setDeliverersProperties.addActionListener(e -> onSetDeliverersProperties());
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        panel.add(setDeliverersProperties, gbc);
+
+        JButton showExistingDeliverers = new JButton("دریافت مسیر‌های تحویل");
+        showExistingDeliverers.addActionListener(e -> onShowExistingDeliverers());
+        gbc.gridx = 1;
+        gbc.gridy = 6;
+        panel.add(showExistingDeliverers, gbc);
+
+        JButton selectDeliverer = new JButton("انتخاب مسیر تحویل");
+        selectDeliverer.addActionListener(e -> onSelectDeliverer());
+        gbc.gridx = 2;
+        gbc.gridy = 6;
+        panel.add(selectDeliverer, gbc);
         
         JButton prediction = new JButton("پیش‌بینی");
         prediction.addActionListener(e -> onFilterProducts());
-        panel.add(prediction);
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        panel.add(prediction, gbc);
 
         add(panel);
 
         setLayout(new FlowLayout());
-//        setLayout(new GridLayout(0, 3));
         setTitle("سامانه مدیریت زنجیره تأمین");
-        setSize(800, 600);
+        setSize(1024, 768);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }

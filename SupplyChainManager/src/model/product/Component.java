@@ -33,8 +33,8 @@ public class Component {
         return new ArrayList<Supplier>(suppliers);
     }
 
-    public void addSupplier(String name, int price) {
-        suppliers.add(new Supplier(name, price, this));
+    public void addSupplier(Supplier supplier) {
+        suppliers.add(supplier);
     }
 
     @Override
