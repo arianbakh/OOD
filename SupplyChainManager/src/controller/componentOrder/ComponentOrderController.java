@@ -24,7 +24,7 @@ public class ComponentOrderController {
 
     public static void componentSelectionNext(ArrayList<Object> data) {
         Component component = (Component)data.get(0);
-        new SupplierSelectionForNewView(component.getSuppliers()).setVisible(true);
+        new SupplierSelectionForNewView(SupplierRepository.getInstance().filterByComponent(component)).setVisible(true);
     }
 
     public static void supplierSelectionForNewCancel(ArrayList<Object> data) {
