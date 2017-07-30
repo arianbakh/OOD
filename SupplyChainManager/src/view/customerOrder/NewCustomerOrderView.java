@@ -25,6 +25,7 @@ public class NewCustomerOrderView extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
+        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(new JScrollPane(componentList), gbc);
 
         JButton submitOrderButton = new JButton("ثبت سفارش");
@@ -32,6 +33,7 @@ public class NewCustomerOrderView extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(submitOrderButton, gbc);
 
         JButton returnButton = new JButton("انصراف");
@@ -39,13 +41,14 @@ public class NewCustomerOrderView extends JFrame {
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
         panel.add(returnButton, gbc);
 
         add(panel);
 
         setLayout(new FlowLayout());
         setTitle("ثبت سفارش");
-        setSize(800, 450);
+        setSize(800, 600);
         setLocationRelativeTo(null);
     }
 

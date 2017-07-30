@@ -16,23 +16,46 @@ public class SubmitTextView extends JFrame {
     }
 
     private void initUI(ArrayList<Product> products) {
+        JPanel panel = new JPanel();
+        GridBagLayout layout = new GridBagLayout();
+        panel.setLayout(layout);
+        GridBagConstraints gbc = new GridBagConstraints();
+
         product = new JComboBox<>(products.toArray());
-        add(product);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(product, gbc);
 
         text = new JTextArea(10, 30);
-        add(text);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(text, gbc);
 
         JButton submitButton = new JButton("ثبت");
         submitButton.addActionListener(e -> onSubmit());
-        add(submitButton);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(submitButton, gbc);
 
         JButton cancelButton = new JButton("انصراف");
         cancelButton.addActionListener(e -> onCancel());
-        add(cancelButton);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(cancelButton, gbc);
+
+        add(panel);
 
         setLayout(new FlowLayout());
         setTitle("ثبت بازخورد متنی برای محصول");
-        setSize(800, 450);
+        setSize(800, 600);
         setLocationRelativeTo(null);
     }
 

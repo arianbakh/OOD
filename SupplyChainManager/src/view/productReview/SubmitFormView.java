@@ -18,32 +18,67 @@ public class SubmitFormView extends JFrame {
     }
 
     private void initUI(ArrayList<Product> products) {
+        JPanel panel = new JPanel();
+        GridBagLayout layout = new GridBagLayout();
+        panel.setLayout(layout);
+        GridBagConstraints gbc = new GridBagConstraints();
+
         product = new JComboBox<>(products.toArray());
-        add(product);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(product, gbc);
 
         SpinnerModel qualityModel = new SpinnerNumberModel(0, 0, 5, 1);     
         qualitySpinner = new JSpinner(qualityModel);
-        add(qualitySpinner);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(qualitySpinner, gbc);
         JLabel qualityLabel = new JLabel("کیفیت:");
-        add(qualityLabel);
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(qualityLabel, gbc);
         
         SpinnerModel deliveryModel = new SpinnerNumberModel(0, 0, 5, 1);     
         deliverySpinner = new JSpinner(deliveryModel);
-        add(deliverySpinner);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(deliverySpinner, gbc);
         JLabel deliveryLabel = new JLabel("تحویل‌دهی:");
-        add(deliveryLabel);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(deliveryLabel, gbc);
         
         JButton submitButton = new JButton("ثبت");
         submitButton.addActionListener(e -> onSubmit());
-        add(submitButton);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(submitButton, gbc);
 
         JButton cancelButton = new JButton("انصراف");
         cancelButton.addActionListener(e -> onCancel());
-        add(cancelButton);
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        panel.add(cancelButton, gbc);
+
+        add(panel);
 
         setLayout(new FlowLayout());
         setTitle("ثبت بازخورد فرمی برای محصول");
-        setSize(800, 450);
+        setSize(800, 600);
         setLocationRelativeTo(null);
     }
 
