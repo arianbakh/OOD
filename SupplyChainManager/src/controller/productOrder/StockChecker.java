@@ -1,8 +1,9 @@
-package model.product;
+package controller.productOrder;
 
 import java.util.ArrayList;
 import java.util.TimerTask;
 
+import model.product.Product;
 import model.productOrder.ProductOrder;
 import model.repository.ProductOrderRepository;
 import model.repository.ProductRepository;

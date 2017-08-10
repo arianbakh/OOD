@@ -1,5 +1,5 @@
 import controller.FrontController;
-
+import controller.productOrder.StockChecker;
 import model.componentOrder.ComponentOrder;
 import model.componentOrder.ComponentOrderReport;
 import model.order.Person;
@@ -9,7 +9,6 @@ import model.customerOrder.Deliverer;
 import model.product.Component;
 import model.product.Product;
 import model.product.ProductComponent;
-import model.product.StockChecker;
 import model.productOrder.ProductOrder;
 import model.productOrder.ProductOrderReport;
 import model.productOrder.ProductOrderSupplier;

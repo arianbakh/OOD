@@ -27,7 +27,7 @@ public class ComponentSelectionView extends JFrame {
         add(cancelButton);
 
         setLayout(new FlowLayout());
-        setTitle("سفارش مولفه جدید");
+        setTitle("انتخاب مولفه");
         setSize(800, 450);
         setLocationRelativeTo(null);
     }
