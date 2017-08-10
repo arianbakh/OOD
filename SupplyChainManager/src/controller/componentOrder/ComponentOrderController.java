@@ -24,7 +24,17 @@ public class ComponentOrderController {
 
     public static void componentSelectionNext(ArrayList<Object> data) {
         Component component = (Component)data.get(0);
-        new SupplierSelectionForNewView(component.getSuppliers()).setVisible(true);
+        ArrayList<Supplier> suppliers = SupplierRepository.getInstance().filterByComponent(component);
+        new SupplierSelectionForNewView(suppliers).setVisible(true);
+    }
+    
+    public static void supplierSelectionForNewSubmit(ArrayList<Object> data) {
+    	Supplier supplier = (Supplier)data.get(0);
+    	if (supplier == null){
+    		System.err.println("No supplier");
+    		return;
+    	}
+    	ComponentOrderRepository.getInstance().save(new ComponentOrder(supplier));
     }
 
     public static void supplierSelectionForNewCancel(ArrayList<Object> data) {
@@ -47,11 +57,6 @@ public class ComponentOrderController {
     }
 
     public static void setSupplierPropertiesCancel(ArrayList<Object> data) {
-    }
-    
-    public static void supplierSelectionForNewSubmit(ArrayList<Object> data) {
-        Supplier supplier = (Supplier)data.get(0);
-        ComponentOrderRepository.getInstance().save(new ComponentOrder(supplier));
     }
 
     public static void startSelectSupplier(ArrayList<Object> data) {

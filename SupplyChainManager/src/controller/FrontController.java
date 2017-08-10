@@ -149,13 +149,18 @@ public class FrontController {
                     controller.productOrder.ProductOrderController.class.getMethod("startFilterProductOrders", ArrayList.class));
             this.controllersMap.put("productOrdersListReturn",
                     controller.productOrder.ProductOrderController.class.getMethod("productOrderListReturn", ArrayList.class));
-            
             this.controllersMap.put("startNewProduct",
                     controller.product.ProductController.class.getMethod("startNewProduct", ArrayList.class));
             this.controllersMap.put("newProductSubmit",
                     controller.product.ProductController.class.getMethod("newProductSubmit", ArrayList.class));
             this.controllersMap.put("newProductCancel",
                     controller.product.ProductController.class.getMethod("newProductCancel", ArrayList.class));
+            this.controllersMap.put("startNewComponent",
+                    controller.product.ComponentController.class.getMethod("startNewComponent", ArrayList.class));
+            this.controllersMap.put("newComponentSubmit",
+                    controller.product.ComponentController.class.getMethod("newComponentSubmit", ArrayList.class));
+            this.controllersMap.put("newComponentCancel",
+                    controller.product.ComponentController.class.getMethod("newComponentCancel", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
