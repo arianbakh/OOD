@@ -1,30 +1,26 @@
 package view.productOrder;
 
 import controller.FrontController;
-import model.componentOrder.ComponentOrder;
-import model.customerOrder.CustomerOrder;
-import model.customerOrder.Deliverer;
 import model.product.Component;
-import model.product.Product;
 import model.productOrder.ProductOrder;
 import model.productOrder.Supplier;
 
 import javax.swing.*;
-
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SelectSupplierForEditView extends JFrame {
-	private ArrayList<JComboBox<Object>> supplier = new ArrayList<>();
-	private ProductOrder productOrder;
+    private ArrayList<JComboBox<Object>> supplier = new ArrayList<>();
+    private ProductOrder productOrder;
 
-    public SelectSupplierForEditView(HashMap<Component, ArrayList<Supplier>> suppliers, ProductOrder productOrder) {
-    	this.productOrder = productOrder;
+    public SelectSupplierForEditView(Map<Component, List<Supplier>> suppliers, ProductOrder productOrder) {
+        this.productOrder = productOrder;
         initUI(suppliers);
     }
 
-    private void initUI(HashMap<Component, ArrayList<Supplier>> suppliers) {
+    private void initUI(Map<Component, List<Supplier>> suppliers) {
         JButton submitButton = new JButton("ثبت");
         submitButton.addActionListener(e -> onSubmit());
         add(submitButton);
@@ -32,16 +28,16 @@ public class SelectSupplierForEditView extends JFrame {
         JButton cancelButton = new JButton("انصراف");
         cancelButton.addActionListener(e -> onCancel());
         add(cancelButton);
-        
-        for(Component c: suppliers.keySet()){
-        	JLabel componentLabel = new JLabel(c.getName());
+
+        for (Component c : suppliers.keySet()) {
+            JLabel componentLabel = new JLabel(c.getName());
             add(componentLabel);
 
-            JComboBox<Object> sups = new JComboBox<>(suppliers.get(c).toArray()); 
-	        supplier.add(sups);
-	        add(sups);
+            JComboBox<Object> sups = new JComboBox<>(suppliers.get(c).toArray());
+            supplier.add(sups);
+            add(sups);
         }
-        
+
         setLayout(new FlowLayout());
         setTitle("انتخاب تامین‌کننده");
         setSize(800, 450);
@@ -51,8 +47,8 @@ public class SelectSupplierForEditView extends JFrame {
     private void onSubmit() {
         ArrayList<Object> data = new ArrayList<>();
         data.add(productOrder);
-        for(JComboBox<Object> jcb: supplier)
-        	data.add(jcb.getSelectedItem());
+        for (JComboBox<Object> jcb : supplier)
+            data.add(jcb.getSelectedItem());
         FrontController.getFrontController().dispatch("selectSupplierForEditSubmit", data);
         setVisible(false);
         dispose();

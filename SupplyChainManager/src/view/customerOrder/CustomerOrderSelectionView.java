@@ -2,20 +2,20 @@ package view.customerOrder;
 
 import controller.FrontController;
 import model.customerOrder.CustomerOrder;
-import model.product.Component;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerOrderSelectionView extends JFrame {
     private JComboBox<Object> customerOrder;
 
-    public CustomerOrderSelectionView(ArrayList<CustomerOrder> customerOrders) {
+    public CustomerOrderSelectionView(List<CustomerOrder> customerOrders) {
         initUI(customerOrders);
     }
 
-    private void initUI(ArrayList<CustomerOrder> customerOrders) {
+    private void initUI(List<CustomerOrder> customerOrders) {
         customerOrder = new JComboBox<>(customerOrders.toArray());
         add(customerOrder);
 

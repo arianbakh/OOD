@@ -1,20 +1,21 @@
 package view.customerOrder;
 
 import controller.FrontController;
-import model.customerOrder.Deliverer;
 import model.product.Component;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class NewCustomerOrderView extends JFrame {
     JList componentList;
-    public NewCustomerOrderView(ArrayList<Component> components) {
+
+    public NewCustomerOrderView(List<Component> components) {
         initUI(components);
     }
 
-    private void initUI(ArrayList<Component> components) {
+    private void initUI(List<Component> components) {
         JPanel panel = new JPanel();
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);

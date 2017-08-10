@@ -12,9 +12,10 @@ public class ProductComponent {
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Component component;
 
-    public ProductComponent() {} // empty constructor required by ORMLite
+    public ProductComponent() {
+    }  // empty constructor required by ORMLite
 
-    public ProductComponent(Product product, Component component) {
+    ProductComponent(Product product, Component component) {
         this.product = product;
         this.component = component;
     }

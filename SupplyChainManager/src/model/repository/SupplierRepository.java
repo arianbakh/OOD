@@ -1,9 +1,12 @@
 package model.repository;
 
-import java.util.ArrayList;
-
 import model.product.Component;
 import model.productOrder.Supplier;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SupplierRepository extends Repository<Supplier> {
     private static SupplierRepository supplierRepository;
@@ -17,14 +20,16 @@ public class SupplierRepository extends Repository<Supplier> {
         }
         return supplierRepository;
     }
-    
-    public static ArrayList<Supplier> filterByComponent(Component c){
-    	ArrayList<Supplier> result = new ArrayList<>();
-    	for (Supplier sup: supplierRepository.getAll()){
-    		if (sup.getComponent() == c){
-    			result.add(sup);
-    		}
-    	}
-    	return result;
+
+    public List<Supplier> filterByComponent(Component component) {
+        try {
+            Map<String, Object> queryFields = new HashMap<>();
+            queryFields.put("component_id", component);
+            return getDao().queryForFieldValues(queryFields);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return null;
     }
 }

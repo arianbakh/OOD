@@ -1,12 +1,12 @@
 package model.componentOrder;
 
-import java.util.Date;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-
 import model.order.Order;
 import model.productOrder.Supplier;
+import model.repository.ComponentOrderRepository;
+
+import java.util.Date;
 
 @DatabaseTable(tableName = "ComponentOrder")
 public class ComponentOrder extends Order {
@@ -20,12 +20,13 @@ public class ComponentOrder extends Order {
     private ComponentOrderReport report;
 
     public ComponentOrder() {
-        this.orderTime = new Date(); // set to current time
-    } // empty constructor required by ORMLite
+        this.orderTime = new Date();  // set to current time
+    }  // empty constructor required by ORMLite
 
     public ComponentOrder(Supplier supplier) {
-        this.orderTime = new Date(); // set to current time
+        this.orderTime = new Date();  // set to current time
         this.supplier = supplier;
+        ComponentOrderRepository.getInstance().create(this);
     }
 
     public Supplier getSupplier() {
@@ -34,6 +35,7 @@ public class ComponentOrder extends Order {
 
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
+        ComponentOrderRepository.getInstance().save(this);
     }
 
     public Date getOrderTime() {
@@ -42,6 +44,7 @@ public class ComponentOrder extends Order {
 
     public void setReport(ComponentOrderReport report) {
         this.report = report;
+        ComponentOrderRepository.getInstance().save(this);
     }
 
     public ComponentOrderReport getReport() {
@@ -50,9 +53,8 @@ public class ComponentOrder extends Order {
 
     @Override
     public String toString() {
-//        return id.toString();
-    	return " سفارش مولفه‌ی " + this.supplier.getName();
+        return " سفارش مولفه‌ی " + this.supplier.getName();
     }
-    
-    
+
+
 }

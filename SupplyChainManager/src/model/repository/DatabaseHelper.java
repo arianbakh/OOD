@@ -1,4 +1,5 @@
 package model.repository;
+
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 
@@ -6,7 +7,8 @@ public class DatabaseHelper {
     private static ConnectionSource connectionSource;
     private static String databaseUrl = "jdbc:sqlite:main.db";
 
-    private DatabaseHelper() {}
+    private DatabaseHelper() {
+    }
 
     public static ConnectionSource getConnectionSource() {
         if (connectionSource == null) {

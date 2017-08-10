@@ -15,6 +15,6 @@ public abstract class Order {
     }
 
     public void submitReport(OrderReport report) {
-    	this.report = report;
+        this.report = report;
     }
 }

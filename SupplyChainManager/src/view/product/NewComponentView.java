@@ -1,13 +1,9 @@
 package view.product;
 
 import controller.FrontController;
-import model.product.Component;
-import model.product.Product;
-import model.productOrder.Supplier;
 
 import javax.swing.*;
-
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class NewComponentView extends JFrame {
@@ -25,7 +21,7 @@ public class NewComponentView extends JFrame {
         JButton cancelButton = new JButton("انصراف");
         cancelButton.addActionListener(e -> onCancel());
         add(cancelButton);
-        
+
         name = new JTextArea(3, 10);
         add(name);
         JLabel nameLabel = new JLabel("نام:");

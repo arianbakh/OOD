@@ -1,13 +1,9 @@
 package view.customerOrder;
 
 import controller.FrontController;
-import model.product.Component;
-import model.product.Product;
-import model.productOrder.Supplier;
 
 import javax.swing.*;
-
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class SetDeliverersPropertiesView extends JFrame {

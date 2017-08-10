@@ -6,6 +6,7 @@ import model.product.Product;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SubmitFormView extends JFrame {
     private JComboBox<Object> product;
@@ -13,11 +14,11 @@ public class SubmitFormView extends JFrame {
     JSpinner deliverySpinner;
 
 
-    public SubmitFormView(ArrayList<Product> products) {
+    public SubmitFormView(List<Product> products) {
         initUI(products);
     }
 
-    private void initUI(ArrayList<Product> products) {
+    private void initUI(List<Product> products) {
         JPanel panel = new JPanel();
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);

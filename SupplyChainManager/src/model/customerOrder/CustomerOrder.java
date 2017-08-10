@@ -1,12 +1,12 @@
 package model.customerOrder;
 
-import java.util.Date;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-
 import model.order.Order;
 import model.product.Product;
+import model.repository.CustomerOrderRepository;
+
+import java.util.Date;
 
 @DatabaseTable(tableName = "CustomerOrder")
 public class CustomerOrder extends Order {
@@ -22,12 +22,13 @@ public class CustomerOrder extends Order {
     private CustomerOrderReport report;
 
     public CustomerOrder() {
-        this.orderTime = new Date(); // set to current time
-    } // empty constructor required by ORMLite
+        this.orderTime = new Date();  // set to current time
+    }  // empty constructor required by ORMLite
 
     public CustomerOrder(Product product) {
         this.product = product;
-        this.orderTime = new Date(); // set to current time
+        this.orderTime = new Date();  // set to current time
+        CustomerOrderRepository.getInstance().create(this);
     }
 
     public Product getProduct() {
@@ -40,6 +41,7 @@ public class CustomerOrder extends Order {
 
     public void setDeliverer(Deliverer deliverer) {
         this.deliverer = deliverer;
+        CustomerOrderRepository.getInstance().save(this);
     }
 
     public CustomerOrderReport getReport() {
@@ -48,6 +50,7 @@ public class CustomerOrder extends Order {
 
     public void setReport(CustomerOrderReport report) {
         this.report = report;
+        CustomerOrderRepository.getInstance().save(this);
     }
 
     public Date getOrderTime() {

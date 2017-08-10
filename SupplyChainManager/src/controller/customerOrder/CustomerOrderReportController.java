@@ -1,7 +1,5 @@
 package controller.customerOrder;
 
-import java.util.ArrayList;
-
 import model.customerOrder.CustomerOrder;
 import model.customerOrder.CustomerOrderReport;
 import model.order.Person;
@@ -12,10 +10,13 @@ import view.customerOrder.CustomerOrderReportListView;
 import view.customerOrder.CustomerOrderSelectionView;
 import view.customerOrder.NewCustomerOrderReportView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomerOrderReportController {
     public static void startNewCustomerOrderReport(ArrayList<Object> data) {
-    	ArrayList<CustomerOrder> customerOrders = CustomerOrderRepository.getInstance().getAll();
-    	ArrayList<Person> persons = PersonRepository.getInstance().getAll();
+    	List<CustomerOrder> customerOrders = CustomerOrderRepository.getInstance().getAll();
+    	List<Person> persons = PersonRepository.getInstance().getAll();
     	new NewCustomerOrderReportView(customerOrders, persons).setVisible(true);
     }
 
@@ -37,7 +38,7 @@ public class CustomerOrderReportController {
     }
 
     public static void startGetCustomerOrderReport(ArrayList<Object> data) {
-    	ArrayList<CustomerOrder> customerOrders = CustomerOrderRepository.getInstance().getAll();
+    	List<CustomerOrder> customerOrders = CustomerOrderRepository.getInstance().getAll();
     	new CustomerOrderSelectionView(customerOrders).setVisible(true);
     }
 

@@ -3,6 +3,7 @@ package model.repository;
 import model.product.Product;
 import model.productOrder.ProductOrder;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ProductOrderRepository extends Repository<ProductOrder> {
@@ -18,6 +19,17 @@ public class ProductOrderRepository extends Repository<ProductOrder> {
         return productOrderRepository;
     }
 
+    @Override
+    public void create(ProductOrder productOrder) {
+        super.create(productOrder);
+        try {
+            getDao().assignEmptyForeignCollection(productOrder, "productOrderSuppliers");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
     public ArrayList<ProductOrder> getByProduct(Product product) {
         ArrayList<ProductOrder> productOrders = new ArrayList<>();
         for (ProductOrder productOrder : getAll()) {
@@ -27,7 +39,7 @@ public class ProductOrderRepository extends Repository<ProductOrder> {
         }
         return productOrders;
     }
-    
+
     public ArrayList<ProductOrder> getByProductAndFilterNotDone(Product product) {
         ArrayList<ProductOrder> productOrders = new ArrayList<>();
         for (ProductOrder productOrder : getAll()) {

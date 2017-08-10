@@ -6,15 +6,16 @@ import model.product.Component;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ComponentSelectionView extends JFrame {
     private JComboBox<Object> component;
 
-    public ComponentSelectionView(ArrayList<Component> components) {
+    public ComponentSelectionView(List<Component> components) {
         initUI(components);
     }
 
-    private void initUI(ArrayList<Component> components) {
+    private void initUI(List<Component> components) {
         component = new JComboBox<>(components.toArray());
         add(component);
 

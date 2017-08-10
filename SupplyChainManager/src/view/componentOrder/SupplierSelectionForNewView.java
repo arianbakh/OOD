@@ -1,22 +1,22 @@
 package view.componentOrder;
 
 import controller.FrontController;
-import model.product.Product;
 import model.productOrder.Supplier;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SupplierSelectionForNewView extends JFrame {
     private JComboBox<Object> supplier;
     private JTextArea text;
 
-    public SupplierSelectionForNewView(ArrayList<Supplier> suppliers) {
+    public SupplierSelectionForNewView(List<Supplier> suppliers) {
         initUI(suppliers);
     }
 
-    private void initUI(ArrayList<Supplier> suppliers) {
+    private void initUI(List<Supplier> suppliers) {
         supplier = new JComboBox<>(suppliers.toArray());
         add(supplier);
 

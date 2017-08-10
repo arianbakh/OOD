@@ -1,21 +1,22 @@
 package view.product;
 
 import controller.FrontController;
-import model.customerOrder.Deliverer;
 import model.product.Component;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class NewProductView extends JFrame {
     JList componentList;
     private JTextArea name;
-    public NewProductView(ArrayList<Component> components) {
+
+    public NewProductView(List<Component> components) {
         initUI(components);
     }
 
-    private void initUI(ArrayList<Component> components) {
+    private void initUI(List<Component> components) {
         JPanel panel = new JPanel();
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
@@ -28,7 +29,7 @@ public class NewProductView extends JFrame {
         gbc.gridy = 0;
         gbc.gridwidth = 2;
         panel.add(new JScrollPane(componentList), gbc);
-        
+
         name = new JTextArea(3, 10);
         gbc.gridx = 0;
         gbc.gridy = 1;

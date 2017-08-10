@@ -1,26 +1,22 @@
 package view.product;
 
-import java.awt.FlowLayout;
-import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTable;
-
 import controller.FrontController;
-import model.product.Component;
 import model.product.Product;
 
-public class StockCheckView extends JFrame{
-	public StockCheckView(ArrayList<Product> products) {
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
+
+public class StockCheckView extends JFrame {
+    public StockCheckView(List<Product> products) {
         initUI(products);
     }
 
-    private void initUI(ArrayList<Product> products) {
+    private void initUI(List<Product> products) {
         String[] columnNames = {"محصول", "موجودی"};
         Object[][] rows = new Object[products.size()][2];
-        for(int i = 0; i < products.size(); i++) {
-        	rows[i][0] = products.get(i).getCurrentStock();
+        for (int i = 0; i < products.size(); i++) {
+            rows[i][0] = products.get(i).getCurrentStock();
             rows[i][1] = products.get(i);
         }
         JTable componentsTable = new JTable(rows, columnNames);

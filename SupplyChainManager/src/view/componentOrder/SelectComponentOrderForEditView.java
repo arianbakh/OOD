@@ -2,25 +2,20 @@ package view.componentOrder;
 
 import controller.FrontController;
 import model.componentOrder.ComponentOrder;
-import model.customerOrder.CustomerOrder;
-import model.customerOrder.Deliverer;
-import model.product.Component;
-import model.product.Product;
-import model.productOrder.Supplier;
 
 import javax.swing.*;
-
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SelectComponentOrderForEditView extends JFrame {
-	private JComboBox<Object> componentOrder;
+    private JComboBox<Object> componentOrder;
 
-    public SelectComponentOrderForEditView(ArrayList<ComponentOrder> componentOrders) {
+    public SelectComponentOrderForEditView(List<ComponentOrder> componentOrders) {
         initUI(componentOrders);
     }
 
-    private void initUI(ArrayList<ComponentOrder> componentOrders) {
+    private void initUI(List<ComponentOrder> componentOrders) {
         JButton submitButton = new JButton("ادامه");
         submitButton.addActionListener(e -> onSubmit());
         add(submitButton);
@@ -28,10 +23,10 @@ public class SelectComponentOrderForEditView extends JFrame {
         JButton cancelButton = new JButton("انصراف");
         cancelButton.addActionListener(e -> onCancel());
         add(cancelButton);
-        
+
         componentOrder = new JComboBox<>(componentOrders.toArray());
         add(componentOrder);
-        
+
         setLayout(new FlowLayout());
         setTitle("انتخاب مسیر تامین");
         setSize(800, 450);

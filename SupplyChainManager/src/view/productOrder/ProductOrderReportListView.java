@@ -1,14 +1,10 @@
 package view.productOrder;
 
 import controller.FrontController;
-import model.customerOrder.CustomerOrder;
-import model.customerOrder.Deliverer;
-import model.product.Component;
 import model.productOrder.ProductOrder;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class ProductOrderReportListView extends JFrame {
     public ProductOrderReportListView(ProductOrder productOrder) {
@@ -17,19 +13,19 @@ public class ProductOrderReportListView extends JFrame {
 
     private void initUI(ProductOrder productOrder) {
 
-    	if(productOrder.getReport() != null){
-	        JLabel name = new JLabel(productOrder.getReport().getResponsiblePerson().toString());
-	        add(name);
-    	}
+        if (productOrder.getReport() != null) {
+            JLabel name = new JLabel(productOrder.getReport().getResponsiblePerson().toString());
+            add(name);
+        }
         JLabel nameLabel = new JLabel("نام فرد:");
         add(nameLabel);
-        if(productOrder.getReport() != null){
-	        JLabel time = new JLabel(productOrder.getReport().getReadyTime().toString());
-	        add(time);
+        if (productOrder.getReport() != null) {
+            JLabel time = new JLabel(productOrder.getReport().getReadyTime().toString());
+            add(time);
         }
         JLabel timeLabel = new JLabel("زمان:");
         add(timeLabel);
-        
+
         JButton returnButton = new JButton("بازگشت");
         returnButton.addActionListener(e -> onReturn());
         add(returnButton);

@@ -12,9 +12,10 @@ public class ProductOrderSupplier {
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Supplier supplier;
 
-    public ProductOrderSupplier() {} // empty constructor required by ORMLite
+    public ProductOrderSupplier() {
+    }  // empty constructor required by ORMLite
 
-    public ProductOrderSupplier(ProductOrder productOrder, Supplier supplier) {
+    ProductOrderSupplier(ProductOrder productOrder, Supplier supplier) {
         this.productOrder = productOrder;
         this.supplier = supplier;
     }

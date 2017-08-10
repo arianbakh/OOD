@@ -2,8 +2,8 @@ package model.productReview;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-
 import model.product.Product;
+import model.repository.ProductFormReviewRepository;
 
 @DatabaseTable(tableName = "ProductFormReview")
 public class ProductFormReview {
@@ -18,12 +18,14 @@ public class ProductFormReview {
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Product product;
 
-    public ProductFormReview() {} // empty constructor required by ORMLite
+    public ProductFormReview() {
+    }  // empty constructor required by ORMLite
 
     public ProductFormReview(int qualityRating, int deliveryRating, Product product) {
         this.qualityRating = qualityRating;
         this.deliveryRating = deliveryRating;
         this.product = product;
+        ProductFormReviewRepository.getInstance().create(this);
     }
 
     public int getQualityRating() {

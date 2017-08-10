@@ -2,28 +2,27 @@ package view.customerOrder;
 
 import controller.FrontController;
 import model.customerOrder.Deliverer;
-import model.product.Component;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class DeliverersListView extends JFrame {
-    public DeliverersListView(ArrayList<Deliverer> deliverers) {
+    public DeliverersListView(List<Deliverer> deliverers) {
         initUI(deliverers);
     }
 
-    private void initUI(ArrayList<Deliverer> deliverers) {
+    private void initUI(List<Deliverer> deliverers) {
         String[] columnNames = {"نام", "ويژگی‌ها"};
         Object[][] rows = new Object[deliverers.size()][2];
-        for(int i = 0; i < deliverers.size(); i++) {
+        for (int i = 0; i < deliverers.size(); i++) {
             rows[i][0] = deliverers.get(i).getName();
             rows[i][1] = deliverers.get(i).getProperties();
         }
         JTable deliverersTable = new JTable(rows, columnNames);
         deliverersTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        for(int i = 0; i < deliverersTable.getColumnCount(); i++)
-        	deliverersTable.getColumnModel().getColumn(i).setPreferredWidth(300);
+        for (int i = 0; i < deliverersTable.getColumnCount(); i++)
+            deliverersTable.getColumnModel().getColumn(i).setPreferredWidth(300);
         add(deliverersTable);
 
         JButton returnButton = new JButton("بازگشت");

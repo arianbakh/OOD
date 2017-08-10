@@ -1,26 +1,21 @@
 package view.productOrder;
 
 import controller.FrontController;
-import model.customerOrder.CustomerOrder;
-import model.customerOrder.Deliverer;
-import model.product.Component;
-import model.product.Product;
 import model.productOrder.ProductOrder;
-import model.productOrder.Supplier;
 
 import javax.swing.*;
-
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SelectProductOrderForEditView extends JFrame {
-	private JComboBox<Object> productOrder;
+    private JComboBox<Object> productOrder;
 
-    public SelectProductOrderForEditView(ArrayList<ProductOrder> productOrders) {
+    public SelectProductOrderForEditView(List<ProductOrder> productOrders) {
         initUI(productOrders);
     }
 
-    private void initUI(ArrayList<ProductOrder> productOrders) {
+    private void initUI(List<ProductOrder> productOrders) {
         JButton submitButton = new JButton("ادامه");
         submitButton.addActionListener(e -> onSubmit());
         add(submitButton);
@@ -28,10 +23,10 @@ public class SelectProductOrderForEditView extends JFrame {
         JButton cancelButton = new JButton("انصراف");
         cancelButton.addActionListener(e -> onCancel());
         add(cancelButton);
-        
+
         productOrder = new JComboBox<>(productOrders.toArray());
         add(productOrder);
-        
+
         setLayout(new FlowLayout());
         setTitle("انتخاب مسیر تامین");
         setSize(800, 450);

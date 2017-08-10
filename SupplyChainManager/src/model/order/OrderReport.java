@@ -7,7 +7,8 @@ public abstract class OrderReport {
     private Date readyTime;
     private Person responsiblePerson;
 
-    protected OrderReport() {}; // empty constructor required by ORMLite
+    protected OrderReport() {
+    }  // empty constructor required by ORMLite
 
     protected OrderReport(Person responsiblePerson) {
         this.responsiblePerson = responsiblePerson;

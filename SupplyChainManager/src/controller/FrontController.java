@@ -15,13 +15,13 @@ public class FrontController {
 
     private FrontController() {
         try {
-        	this.controllersMap.put("newCustomerOrder",
+            this.controllersMap.put("newCustomerOrder",
                     controller.customerOrder.CustomerOrderController.class.getMethod("startNewCustomerOrder", ArrayList.class));
             this.controllersMap.put("newCustomerOrderSubmit",
                     controller.customerOrder.CustomerOrderController.class.getMethod("newCustomerOrderSubmit", ArrayList.class));
             this.controllersMap.put("newCustomerOrderCancel",
                     controller.customerOrder.CustomerOrderController.class.getMethod("newCustomerOrderCancel", ArrayList.class));
-        	this.controllersMap.put("startFormProductReview",
+            this.controllersMap.put("startFormProductReview",
                     controller.productReview.ProductFormReviewController.class.getMethod("startNewFormProductReview", ArrayList.class));
             this.controllersMap.put("newFormReview",
                     controller.productReview.ProductFormReviewController.class.getMethod("submitFormSubmit", ArrayList.class));
@@ -74,7 +74,7 @@ public class FrontController {
             this.controllersMap.put("selectDelivererCancel",
                     controller.customerOrder.CustomerOrderController.class.getMethod("selectDelivererCancel", ArrayList.class));
             this.controllersMap.put("startSelectSupplier",
-            		controller.productOrder.ProductOrderController.class.getMethod("startSelectSupplier", ArrayList.class));
+                    controller.productOrder.ProductOrderController.class.getMethod("startSelectSupplier", ArrayList.class));
             this.controllersMap.put("productOrderSelectionForEditNext",
                     controller.productOrder.ProductOrderController.class.getMethod("productOrderSelectionForEditNext", ArrayList.class));
             this.controllersMap.put("productOrderSelectionForEditCancel",
@@ -169,6 +169,7 @@ public class FrontController {
                     controller.PersonController.class.getMethod("newPersonCancel", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
+            System.exit(1);
         }
     }
 
@@ -188,6 +189,7 @@ public class FrontController {
             method.invoke(null, data);
         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
             e.printStackTrace();
+            System.exit(1);
         }
     }
 }

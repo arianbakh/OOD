@@ -22,7 +22,7 @@ public class ShowFamiliarsView extends JFrame {
         JButton customerOrdersButton = new JButton("نمایش سفارشات مشتری");
         customerOrdersButton.addActionListener(e -> onShowCustomerOrders());
         add(customerOrdersButton);
-        
+
         JButton productOrdersButton = new JButton("نمایش سفارشات محصول");
         productOrdersButton.addActionListener(e -> onShowProductOrders());
         add(productOrdersButton);
@@ -44,7 +44,7 @@ public class ShowFamiliarsView extends JFrame {
         setVisible(false);
         dispose();
     }
-    
+
     private void onShowProductOrders() {
         ArrayList<Object> data = new ArrayList<>();
         data.add(product.getSelectedItem());

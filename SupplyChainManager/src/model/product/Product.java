@@ -1,9 +1,13 @@
 package model.product;
 
-import java.util.ArrayList;
-
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
+import model.repository.ProductRepository;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @DatabaseTable(tableName = "Product")
 public class Product {
@@ -11,7 +15,8 @@ public class Product {
     private Integer id;
     @DatabaseField
     private String name;
-    private ArrayList<Component> components;
+    @ForeignCollectionField(eager = true)
+    private Collection<ProductComponent> productComponents;
     @DatabaseField
     private int minStock;
     @DatabaseField
@@ -19,18 +24,26 @@ public class Product {
     @DatabaseField
     private int currentStock;
 
-    public Product() {} // empty constructor required by ORMLite
+    public Product() {
+    }  // empty constructor required by ORMLite
 
-    public Product(String name, ArrayList<Component> components) {
+    public Product(String name, List<Component> components) {
         this.name = name;
-        this.components = components;
+        ProductRepository.getInstance().create(this);
+        for (Component component : components) {
+            productComponents.add(new ProductComponent(this, component));
+        }
     }
 
     public String getName() {
         return name;
     }
 
-    public ArrayList<Component> getComponents() {
+    public List<Component> getComponents() {
+        List<Component> components = new ArrayList<>();
+        for (ProductComponent productComponent : productComponents) {
+            components.add(productComponent.getComponent());
+        }
         return components;
     }
 
@@ -40,6 +53,7 @@ public class Product {
 
     public void setMinStock(int minStock) {
         this.minStock = minStock;
+        ProductRepository.getInstance().save(this);
     }
 
     public int getMaxStock() {
@@ -48,19 +62,24 @@ public class Product {
 
     public void setMaxStock(int maxStock) {
         this.maxStock = maxStock;
+        ProductRepository.getInstance().save(this);
     }
 
     public void setCurrentStock(int currentStock) {
         this.currentStock = currentStock;
+        ProductRepository.getInstance().save(this);
     }
 
     public void increaseStock() {
         currentStock++;
+        ProductRepository.getInstance().save(this);
     }
 
     public void decreaseStock() {
-    	if (currentStock > 0)
-    		currentStock--;
+        if (currentStock > 0) {
+            currentStock--;
+            ProductRepository.getInstance().save(this);
+        }
     }
 
     public int getCurrentStock() {

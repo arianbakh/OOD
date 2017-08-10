@@ -5,17 +5,17 @@ import model.product.Component;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class ComponentsListView extends JFrame {
-    public ComponentsListView(ArrayList<Component> components) {
+    public ComponentsListView(List<Component> components) {
         initUI(components);
     }
 
-    private void initUI(ArrayList<Component> components) {
+    private void initUI(List<Component> components) {
         String[] columnNames = {"مولفه"};
         Object[][] rows = new Object[components.size()][1];
-        for(int i = 0; i < components.size(); i++) {
+        for (int i = 0; i < components.size(); i++) {
             rows[i][0] = components.get(i);
         }
         JTable componentsTable = new JTable(rows, columnNames);

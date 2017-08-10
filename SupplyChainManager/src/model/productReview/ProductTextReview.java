@@ -2,8 +2,8 @@ package model.productReview;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-
 import model.product.Product;
+import model.repository.ProductTextReviewRepository;
 
 @DatabaseTable(tableName = "ProductTextReview")
 public class ProductTextReview {
@@ -16,11 +16,13 @@ public class ProductTextReview {
     @DatabaseField
     private String text;
 
-    public ProductTextReview() {} // empty constructor required by ORMLite
+    public ProductTextReview() {
+    }  // empty constructor required by ORMLite
 
     public ProductTextReview(Product product, String text) {
         this.product = product;
         this.text = text;
+        ProductTextReviewRepository.getInstance().create(this);
     }
 
     public Product getProduct() {

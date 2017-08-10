@@ -1,9 +1,8 @@
 package model.repository;
 
-import java.util.ArrayList;
-
 import model.order.Person;
-import model.product.Component;
+
+import java.util.ArrayList;
 
 public class PersonRepository extends Repository<Person> {
     private static PersonRepository personRepository;
@@ -17,13 +16,13 @@ public class PersonRepository extends Repository<Person> {
         }
         return personRepository;
     }
-    
-    public ArrayList<Person> filter(String name){
-    	ArrayList<Person> persons = new ArrayList<>();
-    	for (Person c: this.getAll())
-    		if (c.getName().equals(name))
-    			persons.add(c);
-    	return persons;
-    		
+
+    public ArrayList<Person> filter(String name) {
+        ArrayList<Person> persons = new ArrayList<>();
+        for (Person c : this.getAll())
+            if (c.getName().equals(name))
+                persons.add(c);
+        return persons;
+
     }
 }

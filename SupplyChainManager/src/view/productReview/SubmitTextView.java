@@ -6,16 +6,17 @@ import model.product.Product;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SubmitTextView extends JFrame {
     private JComboBox<Object> product;
     private JTextArea text;
 
-    public SubmitTextView(ArrayList<Product> products) {
+    public SubmitTextView(List<Product> products) {
         initUI(products);
     }
 
-    private void initUI(ArrayList<Product> products) {
+    private void initUI(List<Product> products) {
         JPanel panel = new JPanel();
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);

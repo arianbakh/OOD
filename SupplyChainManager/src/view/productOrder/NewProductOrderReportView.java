@@ -1,27 +1,23 @@
 package view.productOrder;
 
 import controller.FrontController;
-import model.customerOrder.CustomerOrder;
 import model.order.Person;
-import model.product.Component;
-import model.product.Product;
 import model.productOrder.ProductOrder;
-import model.productOrder.Supplier;
 
 import javax.swing.*;
-
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class NewProductOrderReportView extends JFrame {
-	private JComboBox<Object> productOrder;
-	private JComboBox<Object> person;
+    private JComboBox<Object> productOrder;
+    private JComboBox<Object> person;
 
-    public NewProductOrderReportView(ArrayList<ProductOrder> productOrders, ArrayList<Person> persons) {
+    public NewProductOrderReportView(List<ProductOrder> productOrders, List<Person> persons) {
         initUI(productOrders, persons);
     }
 
-    private void initUI(ArrayList<ProductOrder> productOrders, ArrayList<Person> persons) {
+    private void initUI(List<ProductOrder> productOrders, List<Person> persons) {
         JButton submitButton = new JButton("ثبت");
         submitButton.addActionListener(e -> onSubmit());
         add(submitButton);
@@ -29,14 +25,14 @@ public class NewProductOrderReportView extends JFrame {
         JButton cancelButton = new JButton("انصراف");
         cancelButton.addActionListener(e -> onCancel());
         add(cancelButton);
-        
+
 
         person = new JComboBox<>(persons.toArray());
         add(person);
 
         productOrder = new JComboBox<>(productOrders.toArray());
         add(productOrder);
-        
+
         setLayout(new FlowLayout());
         setTitle("ثبت گزارش سفارش محصول جدید");
         setSize(800, 450);

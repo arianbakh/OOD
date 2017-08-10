@@ -2,8 +2,6 @@ package model.repository;
 
 import model.productReview.ProductTextReview;
 
-import java.util.ArrayList;
-
 public class ProductTextReviewRepository extends Repository<ProductTextReview> {
     private static ProductTextReviewRepository productTextReviewRepository;
 
