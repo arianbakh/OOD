@@ -152,6 +152,12 @@ public class FrontView extends JFrame {
         gbc.gridy = 8;
         panel.add(prediction, gbc);
 
+        JButton newPersonButton = new JButton("افزودن شخص جدید");
+        newPersonButton.addActionListener(e -> onNewPerson());
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        panel.add(newPersonButton, gbc);
+        
         add(panel);
 
         setLayout(new FlowLayout());
@@ -247,5 +253,9 @@ public class FrontView extends JFrame {
     
     private void onFilterProducts() {
         FrontController.getFrontController().dispatch("startFilterProducts", null);
+    }
+    
+    private void onNewPerson() {
+        FrontController.getFrontController().dispatch("startNewPerson", null);
     }
 }

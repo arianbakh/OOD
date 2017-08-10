@@ -30,7 +30,7 @@ public class ComponentController {
     		Component newComponent = new Component(componentName);
     		ComponentRepository.getInstance().save(newComponent);
     	} else {
-    		System.err.println("Product with same name already exists");
+    		System.err.println("Component with same name already exists");
     		return;
     	}
     }

@@ -161,6 +161,12 @@ public class FrontController {
                     controller.product.ComponentController.class.getMethod("newComponentSubmit", ArrayList.class));
             this.controllersMap.put("newComponentCancel",
                     controller.product.ComponentController.class.getMethod("newComponentCancel", ArrayList.class));
+            this.controllersMap.put("startNewPerson",
+                    controller.PersonController.class.getMethod("startNewPerson", ArrayList.class));
+            this.controllersMap.put("newPersonSubmit",
+                    controller.PersonController.class.getMethod("newPersonSubmit", ArrayList.class));
+            this.controllersMap.put("newPersonCancel",
+                    controller.PersonController.class.getMethod("newPersonCancel", ArrayList.class));
         } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
