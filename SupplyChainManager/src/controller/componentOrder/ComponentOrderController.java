@@ -37,6 +37,10 @@ public class ComponentOrderController {
     public static void setSupplierPropertiesSubmit(ArrayList<Object> data) {
         Component component = (Component)data.get(0);
         String name = (String)data.get(1);
+        if (name.equals("")){
+        	System.err.println("Empty name is not allowd");
+        	return;
+        }
         int price = (int)data.get(2);
         Supplier newSupplier = new Supplier(name, price, component);
         SupplierRepository.getInstance().save(newSupplier);

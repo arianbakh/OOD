@@ -32,6 +32,11 @@ public class CustomerOrderController {
     		components.add(comp);
     		productName += comp.toString() + ",";
     	}
+    	if (components.size() == 0)
+    	{
+    		System.err.println("No componet was selected");
+    		return;
+    	}
     	ArrayList<Product> productsIfAny = ProductRepository.getInstance().filter(components);
     	if (productsIfAny.size() > 0) {
     		product = productsIfAny.get(0);

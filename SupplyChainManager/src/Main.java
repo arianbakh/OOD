@@ -40,7 +40,7 @@ public class Main {
         initializeDatabase();
         addDummyObjects();
         Timer timer = new Timer();
-        timer.schedule(new StockChecker(), 0, TimeUnit.MINUTES.toMillis(1));
+        timer.schedule(new StockChecker(), 0, TimeUnit.SECONDS.toMillis(30));
         FrontController.getFrontController().start();
     }
 

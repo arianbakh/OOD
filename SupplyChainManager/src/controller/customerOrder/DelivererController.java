@@ -18,6 +18,10 @@ public class DelivererController {
     public static void setDelivererPropertiesSubmit(ArrayList<Object> data) {
     	String name = (String)data.get(0);
     	String properties = (String)data.get(1);
+    	if (name.equals("")){
+    		System.err.println("Empty name is not allowed");
+    		return;
+    	}
     	Deliverer newDeliverer = new Deliverer(name, properties);
     	DelivererRepository.getInstance().save(newDeliverer);
     }
