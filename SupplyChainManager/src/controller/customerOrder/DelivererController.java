@@ -18,7 +18,7 @@ public class DelivererController {
     public static void setDelivererPropertiesSubmit(ArrayList<Object> data) {
     	String name = (String)data.get(0);
     	String properties = (String)data.get(1);
-    	if (name.equals("")){
+    	if (name.trim().equals("")){
     		System.err.println("Empty name is not allowed");
     		return;
     	}

@@ -21,6 +21,10 @@ public class ComponentController {
     
     public static void newComponentSubmit(ArrayList<Object> data) {
     	String componentName = (String)data.get(0);
+    	if (componentName.trim().equals("")) {
+    		System.err.println("No name for component is provided");
+			return;
+		}
     	ArrayList<Component> componentIfAny = ComponentRepository.getInstance().filter(componentName);
     	if (componentIfAny.size() == 0){
     		Component newComponent = new Component(componentName);

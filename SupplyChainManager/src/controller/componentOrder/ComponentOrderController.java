@@ -47,7 +47,7 @@ public class ComponentOrderController {
     public static void setSupplierPropertiesSubmit(ArrayList<Object> data) {
         Component component = (Component)data.get(0);
         String name = (String)data.get(1);
-        if (name.equals("")){
+        if (name.trim().equals("")){
         	System.err.println("Empty name is not allowd");
         	return;
         }
