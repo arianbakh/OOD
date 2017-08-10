@@ -7,6 +7,7 @@ import model.product.Product;
 import model.repository.ComponentRepository;
 import model.repository.ProductRepository;
 import view.customerOrder.NewCustomerOrderView;
+import view.product.NewProductView;
 import view.product.SelectComponentsView;
 import view.product.SelectProductMinMaxView;
 import view.product.ShowFamiliarsView;
@@ -55,5 +56,33 @@ public class ProductController {
     }
 
     public static void productListReturn(ArrayList<Object> data) {
+    }
+    
+    public static void startNewProduct(ArrayList<Object> data) {
+    	new NewProductView(ComponentRepository.getInstance().getAll()).setVisible(true);
+    }
+    
+    public static void newProductSubmit(ArrayList<Object> data){
+    	ArrayList<Component> components = new ArrayList<>();
+    	for (Object c: (Object[])data.get(0))
+    		components.add((Component)c);
+    	if (components.size() == 0){
+    		System.err.println("ٔNo component was selected");
+    		return;
+    	}
+    	String productName = (String)data.get(1);
+    	
+    	ArrayList<Product> productsIfAny = ProductRepository.getInstance().filter(components);
+    	if (productsIfAny.size() == 0) {
+    		Product product = new Product(productName, components);
+    		ProductRepository.getInstance().save(product);
+    	} else {
+    		System.err.println("Product already exists");
+    	}
+    	
+    }
+    
+    public static void newProductCancel(ArrayList<Object> data){
+    	
     }
 }

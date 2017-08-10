@@ -74,15 +74,21 @@ public class FrontView extends JFrame {
         gbc.gridy = 2;
         panel.add(getProductOrderReport, gbc);
 
+        JButton newProductButton = new JButton("ثبت محصول جدید");
+        newProductButton.addActionListener(e -> onNewProduct());
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(newProductButton, gbc);
+        
         JButton viewProductStock = new JButton("نمایش موجودی محصولات");
         viewProductStock.addActionListener(e -> onViewStock());
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 3;
         panel.add(viewProductStock, gbc);
 
         JButton setMaxMinStock = new JButton("تعیین حداقل و حداکثر موجودی محصولات");
         setMaxMinStock.addActionListener(e -> onSetProductStock());
-        gbc.gridx = 1;
+        gbc.gridx = 2;
         gbc.gridy = 3;
         panel.add(setMaxMinStock, gbc);
 
@@ -169,6 +175,10 @@ public class FrontView extends JFrame {
         FrontController.getFrontController().dispatch("startNewComponentOrder", null);
     }
 
+    private void onNewProduct() {
+        FrontController.getFrontController().dispatch("startNewProduct", null);
+    }
+    
     private void onViewStock() {
         FrontController.getFrontController().dispatch("viewStock", null);
     }

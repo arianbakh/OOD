@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class NewProductView extends JFrame {
     JList componentList;
+    private JTextArea name;
     public NewProductView(ArrayList<Component> components) {
         initUI(components);
     }
@@ -27,25 +28,36 @@ public class NewProductView extends JFrame {
         gbc.gridy = 0;
         gbc.gridwidth = 2;
         panel.add(new JScrollPane(componentList), gbc);
-
-        JButton submitOrderButton = new JButton("ثبت سفارش");
-        submitOrderButton.addActionListener(e -> onSubmit());
+        
+        name = new JTextArea(3, 10);
         gbc.gridx = 0;
         gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        panel.add(name, gbc);
+        JLabel nameLabel = new JLabel("نام:");
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        panel.add(nameLabel, gbc);
+
+        JButton submitOrderButton = new JButton("ثبت محصول");
+        submitOrderButton.addActionListener(e -> onSubmit());
+        gbc.gridx = 0;
+        gbc.gridy = 2;
         gbc.gridwidth = 1;
         panel.add(submitOrderButton, gbc);
 
         JButton returnButton = new JButton("انصراف");
         returnButton.addActionListener(e -> onCancel());
         gbc.gridx = 1;
-        gbc.gridy = 1;
+        gbc.gridy = 2;
         gbc.gridwidth = 1;
         panel.add(returnButton, gbc);
 
         add(panel);
 
         setLayout(new FlowLayout());
-        setTitle("ثبت سفارش");
+        setTitle("ثبت محصول جدید");
         setSize(800, 600);
         setLocationRelativeTo(null);
     }
@@ -53,13 +65,14 @@ public class NewProductView extends JFrame {
     private void onSubmit() {
         ArrayList<Object> data = new ArrayList<>();
         data.add(componentList.getSelectedValues());
-        FrontController.getFrontController().dispatch("newCustomerOrderSubmit", data);
+        data.add(name.getText());
+        FrontController.getFrontController().dispatch("newProductSubmit", data);
         setVisible(false);
         dispose();
     }
 
     private void onCancel() {
-        FrontController.getFrontController().dispatch("newCustomerOrderCancel", null);
+        FrontController.getFrontController().dispatch("newProductCancel", null);
         setVisible(false);
         dispose();
     }
