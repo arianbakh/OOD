@@ -21,8 +21,9 @@ public class ProductOrderListView extends JFrame {
         Object[][] rows = new Object[productOrders.size()][4];
         for(int i = 0; i < productOrders.size(); i++) {
         	int sum = 0;
-        	for (Supplier s: productOrders.get(i).getSuppliers())
-        		sum += s.getPrice();
+        	if (productOrders.get(i).getSuppliers() != null)
+	        	for (Supplier s: productOrders.get(i).getSuppliers())
+	        		sum += s.getPrice();
             rows[i][0] = sum;
             rows[i][1] = productOrders.get(i).getOrderTime();
             if(productOrders.get(i).getReport() != null){
