@@ -80,19 +80,19 @@ public class Main {
             TableUtils.clearTable(connectionSource, ProductOrderSupplier.class);
 
             Component component = new Component("RAM");
-            Dao<Component, String> componentDao = DaoManager.createDao(connectionSource, Component.class);
+            Dao<Component, Integer> componentDao = DaoManager.createDao(connectionSource, Component.class);
             componentDao.create(component);
             System.out.println("###" + componentDao.queryForAll());
 
             Supplier supplier = new Supplier("ASUS_RAM", 1000, component);
-            Dao<Supplier, String> supplierDao = DaoManager.createDao(connectionSource, Supplier.class);
+            Dao<Supplier, Integer> supplierDao = DaoManager.createDao(connectionSource, Supplier.class);
             supplierDao.create(supplier);
             System.out.println("###" + supplierDao.queryForAll());
             System.out.println("###" + supplierDao.queryForAll().get(0).getComponent());
             System.out.println("###" + componentDao.queryForAll().get(0).getSuppliers().get(0));
 
             Person person = new Person("John");
-            Dao<Person, String> personDao = DaoManager.createDao(connectionSource, Person.class);
+            Dao<Person, Integer> personDao = DaoManager.createDao(connectionSource, Person.class);
             personDao.create(person);
             System.out.println("###" + personDao.queryForAll());
 
