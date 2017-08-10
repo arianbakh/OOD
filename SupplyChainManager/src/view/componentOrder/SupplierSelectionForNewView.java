@@ -29,7 +29,7 @@ public class SupplierSelectionForNewView extends JFrame {
         add(cancelButton);
 
         setLayout(new FlowLayout());
-        setTitle("ثبت بازخورد متنی برای محصول");
+        setTitle("انتخاب تامین‌کننده");
         setSize(800, 450);
         setLocationRelativeTo(null);
     }

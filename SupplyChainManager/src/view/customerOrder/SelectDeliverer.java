@@ -36,7 +36,7 @@ public class SelectDeliverer extends JFrame {
         add(deliverer);
         
         setLayout(new FlowLayout());
-        setTitle("ثبت ویژگی‌های مسیر تامین جدید");
+        setTitle("انتخاب مسیر تحویل");
         setSize(800, 450);
         setLocationRelativeTo(null);
     }

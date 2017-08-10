@@ -38,7 +38,7 @@ public class SetDeliverersPropertiesView extends JFrame {
         add(nameLabel);
 
         setLayout(new FlowLayout());
-        setTitle("ثبت ویژگی‌های مسیر تامین جدید");
+        setTitle("ثبت ویژگی‌های مسیر تحویل جدید");
         setSize(800, 450);
         setLocationRelativeTo(null);
     }

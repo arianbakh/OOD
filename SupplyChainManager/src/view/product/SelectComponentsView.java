@@ -28,7 +28,7 @@ public class SelectComponentsView extends JFrame {
         add(returnButton);
 
         setLayout(new FlowLayout());
-        setTitle("انتخاب مولفه‌های محصول جدید");
+        setTitle("انتخاب مولفه‌های محصول");
         setSize(800, 450);
         setLocationRelativeTo(null);
     }

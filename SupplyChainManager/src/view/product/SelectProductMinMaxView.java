@@ -52,7 +52,7 @@ public class SelectProductMinMaxView extends JFrame{
         add(cancelButton);
 
         setLayout(new FlowLayout());
-        setTitle("ثبت بازخورد متنی برای محصول");
+        setTitle("انتخاب حداقل و حداکثری موجودی محصولات");
         setSize(800, 450);
         setLocationRelativeTo(null);
     }
