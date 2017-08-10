@@ -27,4 +27,14 @@ public class ProductOrderRepository extends Repository<ProductOrder> {
         }
         return productOrders;
     }
+    
+    public ArrayList<ProductOrder> getByProductAndFilterNotDone(Product product) {
+        ArrayList<ProductOrder> productOrders = new ArrayList<>();
+        for (ProductOrder productOrder : getAll()) {
+            if (productOrder.getProduct() == product && productOrder.getReport() == null) {
+                productOrders.add(productOrder);
+            }
+        }
+        return productOrders;
+    }
 }

@@ -36,6 +36,6 @@ public class ProductOrderReport extends OrderReport {
 
     @Override
     public String toString() {
-        return id.toString();
+        return "ProductOrderReport";
     }
 }

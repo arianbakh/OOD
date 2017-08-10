@@ -13,7 +13,8 @@ public class StockChecker extends TimerTask {
 	public void run() {
 		ArrayList<Product> products = ProductRepository.getInstance().getAll();
 		for (Product product: products){
-			if (product.getCurrentStock() + ProductOrderRepository.getInstance().getByProduct(product).size() < product.getMinStock()){
+			int currentStockAndOrders = product.getCurrentStock() + ProductOrderRepository.getInstance().getByProductAndFilterNotDone(product).size(); 
+			if ( currentStockAndOrders < product.getMinStock()){
 				for(int i = 0; i < product.getMaxStock() - product.getCurrentStock(); i++){
 					ProductOrder po = new ProductOrder(product);
 					ProductOrderRepository.getInstance().save(po);
