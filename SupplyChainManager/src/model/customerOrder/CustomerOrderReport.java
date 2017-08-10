@@ -38,6 +38,10 @@ public class CustomerOrderReport extends OrderReport {
         return responsiblePerson;
     }
 
+    public void setResponsiblePerson(Person person){
+    	this.responsiblePerson = person;
+    }
+    
     public Date getReadyTime() {
         return readyTime;
     }

@@ -25,10 +25,15 @@ public class CustomerOrderReportController {
     public static void newCustomerOrderReportSubmit(ArrayList<Object> data) {
     	CustomerOrder customerOrder = (CustomerOrder)data.get(0);
     	Person person = (Person)data.get(1);
-    	CustomerOrderReport customerOrderReport = new CustomerOrderReport(customerOrder, person);
-    	CustomerOrderReportRepository.getInstance().save(customerOrderReport);
-    	customerOrder.setReport(customerOrderReport);
-    	customerOrder.getProduct().decreaseStock();
+    	if(customerOrder.getReport() == null){
+	    	CustomerOrderReport customerOrderReport = new CustomerOrderReport(customerOrder, person);
+	    	CustomerOrderReportRepository.getInstance().save(customerOrderReport);
+	    	customerOrder.setReport(customerOrderReport);
+	    	customerOrder.getProduct().decreaseStock();
+    	} else {
+    		CustomerOrderReport customerOrderReport = customerOrder.getReport();
+    		customerOrderReport.setResponsiblePerson(person);
+    	}
     }
 
     public static void startGetCustomerOrderReport(ArrayList<Object> data) {

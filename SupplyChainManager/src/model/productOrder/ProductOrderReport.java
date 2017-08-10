@@ -30,6 +30,10 @@ public class ProductOrderReport extends OrderReport {
         this.responsiblePerson = responsiblePerson;
     }
 
+    public void setResponsiblePerson(Person person){
+    	this.responsiblePerson = person;
+    }
+    
     public Date getReadyTime() {
         return readyTime;
     }

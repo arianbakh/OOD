@@ -31,10 +31,15 @@ public class ProductOrderReportController {
     public static void newProductOrderReportSubmit(ArrayList<Object> data) {
     	ProductOrder productOrder = (ProductOrder)data.get(0);
     	Person person = (Person)data.get(1);
-    	ProductOrderReport productOrderReport = new ProductOrderReport(productOrder, person);
-    	ProductOrderReportRepository.getInstance().save(productOrderReport);
-    	productOrder.setReport(productOrderReport);
-    	productOrder.getProduct().increaseStock();
+    	if (productOrder.getReport() == null){
+	    	ProductOrderReport productOrderReport = new ProductOrderReport(productOrder, person);
+	    	ProductOrderReportRepository.getInstance().save(productOrderReport);
+	    	productOrder.setReport(productOrderReport);
+	    	productOrder.getProduct().increaseStock();
+    	} else {
+    		ProductOrderReport productOrderReport = productOrder.getReport();
+    		productOrderReport.setResponsiblePerson(person);
+    	}
     }
 
     public static void startGetProductOrderReport(ArrayList<Object> data) {
