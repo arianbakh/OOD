@@ -9,7 +9,6 @@ import model.repository.ProductOrderRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 @DatabaseTable(tableName = "ProductOrder")
@@ -18,17 +17,13 @@ public class ProductOrder extends Order {
     private Product product;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private ProductOrderReport report;
-    @DatabaseField
-    private Date orderTime;
     @ForeignCollectionField(eager = true)
     private Collection<ProductOrderSupplier> productOrderSuppliers;
 
     public ProductOrder() {
-        this.orderTime = new Date();  // set to current time
     }  // empty constructor required by ORMLite
 
     public ProductOrder(Product product) {
-        this.orderTime = new Date();  // set to current time
         this.product = product;
         ProductOrderRepository.getInstance().create(this);
     }
@@ -44,10 +39,6 @@ public class ProductOrder extends Order {
     public void setReport(ProductOrderReport report) {
         this.report = report;
         ProductOrderRepository.getInstance().save(this);
-    }
-
-    public Date getOrderTime() {
-        return orderTime;
     }
 
     public List<Supplier> getSuppliers() {

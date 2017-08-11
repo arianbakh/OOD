@@ -6,23 +6,18 @@ import model.order.Order;
 import model.productOrder.Supplier;
 import model.repository.ComponentOrderRepository;
 
-import java.util.Date;
-
 @DatabaseTable(tableName = "ComponentOrder")
 public class ComponentOrder extends Order {
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Supplier supplier;
-    @DatabaseField
-    private Date orderTime;
+
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private ComponentOrderReport report;
 
     public ComponentOrder() {
-        this.orderTime = new Date();  // set to current time
     }  // empty constructor required by ORMLite
 
     public ComponentOrder(Supplier supplier) {
-        this.orderTime = new Date();  // set to current time
         this.supplier = supplier;
         ComponentOrderRepository.getInstance().create(this);
     }
@@ -34,10 +29,6 @@ public class ComponentOrder extends Order {
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
         ComponentOrderRepository.getInstance().save(this);
-    }
-
-    public Date getOrderTime() {
-        return orderTime;
     }
 
     public void setReport(ComponentOrderReport report) {
@@ -53,6 +44,4 @@ public class ComponentOrder extends Order {
     public String toString() {
         return " سفارش مولفه‌ی " + this.supplier.getName();
     }
-
-
 }

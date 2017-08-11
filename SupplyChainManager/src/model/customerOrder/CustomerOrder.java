@@ -6,26 +6,20 @@ import model.order.Order;
 import model.product.Product;
 import model.repository.CustomerOrderRepository;
 
-import java.util.Date;
-
 @DatabaseTable(tableName = "CustomerOrder")
 public class CustomerOrder extends Order {
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Product product;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Deliverer deliverer;
-    @DatabaseField
-    private Date orderTime;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private CustomerOrderReport report;
 
     public CustomerOrder() {
-        this.orderTime = new Date();  // set to current time
     }  // empty constructor required by ORMLite
 
     public CustomerOrder(Product product) {
         this.product = product;
-        this.orderTime = new Date();  // set to current time
         CustomerOrderRepository.getInstance().create(this);
     }
 
@@ -49,10 +43,6 @@ public class CustomerOrder extends Order {
     public void setReport(CustomerOrderReport report) {
         this.report = report;
         CustomerOrderRepository.getInstance().save(this);
-    }
-
-    public Date getOrderTime() {
-        return orderTime;
     }
 
     @Override

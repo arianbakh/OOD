@@ -1,23 +1,23 @@
 package model.order;
 
+import com.j256.ormlite.field.DatabaseField;
 import model.ModelBase;
 
 import java.util.Date;
 
 public abstract class OrderReport extends ModelBase {
-    protected Order order;
+    @DatabaseField
     private Date readyTime;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Person responsiblePerson;
 
     protected OrderReport() {
+        this.readyTime = new Date();  // set to current time
     }  // empty constructor required by ORMLite
 
     protected OrderReport(Person responsiblePerson) {
+        this.readyTime = new Date();  // set to current time
         this.responsiblePerson = responsiblePerson;
-    }
-
-    public Order getOrder() {
-        return order;
     }
 
     public Date getReadyTime() {
@@ -26,5 +26,9 @@ public abstract class OrderReport extends ModelBase {
 
     public Person getResponsiblePerson() {
         return responsiblePerson;
+    }
+
+    protected void setResponsiblePerson(Person responsiblePerson) {
+        this.responsiblePerson = responsiblePerson;
     }
 }
