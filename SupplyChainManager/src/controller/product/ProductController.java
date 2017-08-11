@@ -48,9 +48,8 @@ public class ProductController {
         ArrayList<Component> components = new ArrayList<>();
         for (Object c : (Object[]) data.get(0))
             components.add((Component) c);
-        ArrayList<Product> familiarProducts = ProductRepository.getInstance().hasAll(components);
+        List<Product> familiarProducts = ProductRepository.getInstance().hasAll(components);
         new ShowFamiliarsView(familiarProducts).setVisible(true);
-        ;
     }
 
     public static void productListReturn(ArrayList<Object> data) {
@@ -70,13 +69,12 @@ public class ProductController {
         }
         String productName = (String) data.get(1);
 
-        ArrayList<Product> productsIfAny = ProductRepository.getInstance().filter(components);
+        List<Product> productsIfAny = ProductRepository.getInstance().filter(components);
         if (productsIfAny.size() == 0) {
             new Product(productName, components);
         } else {
             System.err.println("Product already exists");
         }
-
     }
 
     public static void newProductCancel(ArrayList<Object> data) {

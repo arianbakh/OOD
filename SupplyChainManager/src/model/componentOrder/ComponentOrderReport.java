@@ -10,8 +10,6 @@ import java.util.Date;
 
 @DatabaseTable(tableName = "OrderReport")
 public class ComponentOrderReport extends OrderReport {
-    @DatabaseField(generatedId = true)
-    private Integer id;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private ComponentOrder order;
     @DatabaseField

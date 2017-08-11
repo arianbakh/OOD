@@ -6,16 +6,17 @@ import model.product.Product;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShowFamiliarsView extends JFrame {
     private JComboBox<Object> product;
 
 
-    public ShowFamiliarsView(ArrayList<Product> products) {
+    public ShowFamiliarsView(List<Product> products) {
         initUI(products);
     }
 
-    private void initUI(ArrayList<Product> products) {
+    private void initUI(List<Product> products) {
         product = new JComboBox<>(products.toArray());
         add(product);
 

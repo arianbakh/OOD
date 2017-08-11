@@ -2,13 +2,12 @@ package model.productReview;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import model.ModelBase;
 import model.product.Product;
 import model.repository.ProductFormReviewRepository;
 
 @DatabaseTable(tableName = "ProductFormReview")
-public class ProductFormReview {
-    @DatabaseField(generatedId = true)
-    private Integer id;
+public class ProductFormReview extends ModelBase {
     @DatabaseField
     private String name;
     @DatabaseField

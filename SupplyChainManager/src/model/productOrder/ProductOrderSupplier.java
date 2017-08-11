@@ -2,11 +2,10 @@ package model.productOrder;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import model.ModelBase;
 
 @DatabaseTable(tableName = "ProductOrderSupplier")
-public class ProductOrderSupplier {
-    @DatabaseField(generatedId = true)
-    private Integer id;
+public class ProductOrderSupplier extends ModelBase {
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private ProductOrder productOrder;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)

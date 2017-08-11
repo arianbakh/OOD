@@ -2,12 +2,11 @@ package model.customerOrder;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import model.ModelBase;
 import model.repository.DelivererRepository;
 
 @DatabaseTable(tableName = "Deliverer")
-public class Deliverer {
-    @DatabaseField(generatedId = true)
-    private Integer id;
+public class Deliverer extends ModelBase {
     @DatabaseField
     private String name;
     @DatabaseField

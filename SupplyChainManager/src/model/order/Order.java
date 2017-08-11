@@ -1,8 +1,10 @@
 package model.order;
 
+import model.ModelBase;
+
 import java.util.Date;
 
-public abstract class Order {
+public abstract class Order extends ModelBase {
     private Date orderTime;
     private OrderReport report;
 

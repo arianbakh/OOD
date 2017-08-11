@@ -10,8 +10,6 @@ import java.util.Date;
 
 @DatabaseTable(tableName = "ProductOrderReport")
 public class ProductOrderReport extends OrderReport {
-    @DatabaseField(generatedId = true)
-    private Integer id;
     @DatabaseField
     private Date readyTime;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)

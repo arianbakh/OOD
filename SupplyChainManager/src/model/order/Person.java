@@ -2,12 +2,11 @@ package model.order;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import model.ModelBase;
 import model.repository.PersonRepository;
 
 @DatabaseTable(tableName = "Person")
-public class Person {
-    @DatabaseField(generatedId = true)
-    private Integer id;
+public class Person extends ModelBase {
     @DatabaseField
     private String name;
 

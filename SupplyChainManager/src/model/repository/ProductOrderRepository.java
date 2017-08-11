@@ -5,6 +5,7 @@ import model.productOrder.ProductOrder;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductOrderRepository extends Repository<ProductOrder> {
     private static ProductOrderRepository productOrderRepository;
@@ -30,23 +31,25 @@ public class ProductOrderRepository extends Repository<ProductOrder> {
         }
     }
 
-    public ArrayList<ProductOrder> getByProduct(Product product) {
-        ArrayList<ProductOrder> productOrders = new ArrayList<>();
-        for (ProductOrder productOrder : getAll()) {
-            if (productOrder.getProduct() == product) {
-                productOrders.add(productOrder);
-            }
+    public List<ProductOrder> getByProduct(Product product) {
+        try {
+            return getDao().queryForEq("product_id", product);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(1);
         }
-        return productOrders;
+        return null;
     }
 
-    public ArrayList<ProductOrder> getByProductAndFilterNotDone(Product product) {
-        ArrayList<ProductOrder> productOrders = new ArrayList<>();
-        for (ProductOrder productOrder : getAll()) {
-            if (productOrder.getProduct() == product && productOrder.getReport() == null) {
-                productOrders.add(productOrder);
+    public List<ProductOrder> getByProductAndFilterNotDone(Product product) {
+        List<ProductOrder> productOrders = getByProduct(product);
+        List<ProductOrder> productOrdersToRemove = new ArrayList<>();
+        for (ProductOrder productOrder : productOrders) {
+            if (productOrder.getReport() != null) {
+                productOrdersToRemove.add(productOrder);
             }
         }
+        productOrders.removeAll(productOrdersToRemove);
         return productOrders;
     }
 }

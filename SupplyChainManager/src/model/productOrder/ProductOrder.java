@@ -14,8 +14,6 @@ import java.util.List;
 
 @DatabaseTable(tableName = "ProductOrder")
 public class ProductOrder extends Order {
-    @DatabaseField(generatedId = true)
-    private Integer id;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Product product;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)

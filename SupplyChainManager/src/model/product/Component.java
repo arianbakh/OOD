@@ -2,6 +2,7 @@ package model.product;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import model.ModelBase;
 import model.productOrder.Supplier;
 import model.repository.ComponentRepository;
 import model.repository.SupplierRepository;
@@ -9,9 +10,7 @@ import model.repository.SupplierRepository;
 import java.util.Collection;
 
 @DatabaseTable(tableName = "Component")
-public class Component {
-    @DatabaseField(generatedId = true)
-    private Integer id;
+public class Component extends ModelBase {
     @DatabaseField
     private String name;
 

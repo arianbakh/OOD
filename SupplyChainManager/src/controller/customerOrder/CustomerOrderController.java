@@ -13,6 +13,7 @@ import view.customerOrder.NewCustomerOrderView;
 import view.customerOrder.SelectDeliverer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerOrderController {
     public static void startNewCustomerOrder(ArrayList<Object> data) {
@@ -35,7 +36,7 @@ public class CustomerOrderController {
             System.err.println("No componet was selected");
             return;
         }
-        ArrayList<Product> productsIfAny = ProductRepository.getInstance().filter(components);
+        List<Product> productsIfAny = ProductRepository.getInstance().filter(components);
         if (productsIfAny.size() > 0) {
             product = productsIfAny.get(0);
         } else {

@@ -2,11 +2,10 @@ package model.product;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import model.ModelBase;
 
 @DatabaseTable(tableName = "ProductComponent")
-public class ProductComponent {
-    @DatabaseField(generatedId = true)
-    private Integer id;
+public class ProductComponent extends ModelBase {
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Product product;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)

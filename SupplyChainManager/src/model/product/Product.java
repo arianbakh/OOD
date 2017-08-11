@@ -3,6 +3,7 @@ package model.product;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
+import model.ModelBase;
 import model.repository.ProductRepository;
 
 import java.util.ArrayList;
@@ -10,9 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 @DatabaseTable(tableName = "Product")
-public class Product {
-    @DatabaseField(generatedId = true)
-    private Integer id;
+public class Product extends ModelBase {
     @DatabaseField
     private String name;
     @ForeignCollectionField(eager = true)

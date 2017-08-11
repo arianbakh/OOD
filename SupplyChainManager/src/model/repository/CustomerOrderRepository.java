@@ -3,7 +3,10 @@ package model.repository;
 import model.customerOrder.CustomerOrder;
 import model.product.Product;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CustomerOrderRepository extends Repository<CustomerOrder> {
     private static CustomerOrderRepository customerOrderRepository;
@@ -18,13 +21,15 @@ public class CustomerOrderRepository extends Repository<CustomerOrder> {
         return customerOrderRepository;
     }
 
-    public ArrayList<CustomerOrder> getByProduct(Product product) {
-        ArrayList<CustomerOrder> customerOrders = new ArrayList<>();
-        for (CustomerOrder customerOrder : getAll()) {
-            if (customerOrder.getProduct() == product) {
-                customerOrders.add(customerOrder);
-            }
+    public List<CustomerOrder> getByProduct(Product product) {
+        try {
+            Map<String, Object> queryFields = new HashMap<>();
+            queryFields.put("product_id", product);
+            return getDao().queryForFieldValues(queryFields);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(1);
         }
-        return customerOrders;
+        return null;
     }
 }

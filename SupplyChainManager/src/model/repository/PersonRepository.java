@@ -2,7 +2,10 @@ package model.repository;
 
 import model.order.Person;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PersonRepository extends Repository<Person> {
     private static PersonRepository personRepository;
@@ -17,12 +20,15 @@ public class PersonRepository extends Repository<Person> {
         return personRepository;
     }
 
-    public ArrayList<Person> filter(String name) {
-        ArrayList<Person> persons = new ArrayList<>();
-        for (Person c : this.getAll())
-            if (c.getName().equals(name))
-                persons.add(c);
-        return persons;
-
+    public List<Person> filter(String name) {
+        try {
+            Map<String, Object> queryFields = new HashMap<>();
+            queryFields.put("name", name);
+            return getDao().queryForFieldValues(queryFields);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return null;
     }
 }

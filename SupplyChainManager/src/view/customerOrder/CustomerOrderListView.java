@@ -6,13 +6,14 @@ import model.customerOrder.CustomerOrder;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerOrderListView extends JFrame {
-    public CustomerOrderListView(ArrayList<CustomerOrder> customerOrders) {
+    public CustomerOrderListView(List<CustomerOrder> customerOrders) {
         initUI(customerOrders);
     }
 
-    private void initUI(ArrayList<CustomerOrder> customerOrders) {
+    private void initUI(List<CustomerOrder> customerOrders) {
         String[] columnNames = {"تحویل‌دهنده", "زمان ثبت سفارش", "فرد درگیر", "زمان رسیدن"};
         Object[][] rows = new Object[customerOrders.size()][4];
         for (int i = 0; i < customerOrders.size(); i++) {

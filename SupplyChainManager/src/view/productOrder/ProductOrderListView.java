@@ -7,13 +7,14 @@ import model.productOrder.Supplier;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductOrderListView extends JFrame {
-    public ProductOrderListView(ArrayList<ProductOrder> productOrders) {
+    public ProductOrderListView(List<ProductOrder> productOrders) {
         initUI(productOrders);
     }
 
-    private void initUI(ArrayList<ProductOrder> productOrders) {
+    private void initUI(List<ProductOrder> productOrders) {
         String[] columnNames = {"مجموع قیمت", "زمان ثبت سفارش", "فرد درگیر", "زمان رسیدن"};
         Object[][] rows = new Object[productOrders.size()][4];
         for (int i = 0; i < productOrders.size(); i++) {

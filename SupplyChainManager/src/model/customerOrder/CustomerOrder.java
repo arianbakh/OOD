@@ -10,8 +10,6 @@ import java.util.Date;
 
 @DatabaseTable(tableName = "CustomerOrder")
 public class CustomerOrder extends Order {
-    @DatabaseField(generatedId = true)
-    private Integer id;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Product product;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)

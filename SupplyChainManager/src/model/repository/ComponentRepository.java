@@ -2,7 +2,10 @@ package model.repository;
 
 import model.product.Component;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ComponentRepository extends Repository<Component> {
     private static ComponentRepository componentRepository;
@@ -17,11 +20,15 @@ public class ComponentRepository extends Repository<Component> {
         return componentRepository;
     }
 
-    public ArrayList<Component> filter(String name) {
-        ArrayList<Component> components = new ArrayList<>();
-        for (Component c : this.getAll())
-            if (c.getName().equals(name))
-                components.add(c);
-        return components;
+    public List<Component> filter(String name) {
+        try {
+            Map<String, Object> queryFields = new HashMap<>();
+            queryFields.put("name", name);
+            return getDao().queryForFieldValues(queryFields);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return null;
     }
 }

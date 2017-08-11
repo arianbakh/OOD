@@ -5,6 +5,7 @@ import model.repository.PersonRepository;
 import view.NewPersonView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class PersonController {
     public static void startNewPerson(ArrayList<Object> data) {
@@ -17,7 +18,7 @@ class PersonController {
             System.err.println("No name for person is provided");
             return;
         }
-        ArrayList<Person> personIfAny = PersonRepository.getInstance().filter(personName);
+        List<Person> personIfAny = PersonRepository.getInstance().filter(personName);
         if (personIfAny.size() == 0) {
             Person newPerson = new Person(personName);
             PersonRepository.getInstance().save(newPerson);

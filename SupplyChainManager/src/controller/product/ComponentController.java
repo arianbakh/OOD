@@ -6,6 +6,7 @@ import view.product.ComponentsListView;
 import view.product.NewComponentView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ComponentController {
     public static void startShowExistingComponents(ArrayList<Object> data) {
@@ -25,12 +26,11 @@ public class ComponentController {
             System.err.println("No name for component is provided");
             return;
         }
-        ArrayList<Component> componentIfAny = ComponentRepository.getInstance().filter(componentName);
+        List<Component> componentIfAny = ComponentRepository.getInstance().filter(componentName);
         if (componentIfAny.size() == 0) {
             new Component(componentName);
         } else {
             System.err.println("Component with same name already exists");
-            return;
         }
     }
 

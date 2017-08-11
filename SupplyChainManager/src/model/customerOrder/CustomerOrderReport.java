@@ -10,8 +10,6 @@ import java.util.Date;
 
 @DatabaseTable(tableName = "CustomerOrderReport")
 public class CustomerOrderReport extends OrderReport {
-    @DatabaseField(generatedId = true)
-    private Integer id;
     @DatabaseField
     private Date readyTime;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
@@ -50,6 +48,6 @@ public class CustomerOrderReport extends OrderReport {
 
     @Override
     public String toString() {
-        return id.toString();
+        return getId().toString();
     }
 }
