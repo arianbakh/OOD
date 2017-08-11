@@ -7,11 +7,11 @@ import view.NewPersonView;
 import java.util.ArrayList;
 
 class PersonController {
-    static void startNewPerson(ArrayList<Object> data) {
+    public static void startNewPerson(ArrayList<Object> data) {
         new NewPersonView().setVisible(true);
     }
 
-    static void newPersonSubmit(ArrayList<Object> data) {
+    public static void newPersonSubmit(ArrayList<Object> data) {
         String personName = (String) data.get(0);
         if (personName.trim().equals("")) {
             System.err.println("No name for person is provided");
@@ -26,6 +26,6 @@ class PersonController {
         }
     }
 
-    static void newPersonCancel(ArrayList<Object> data) {
+    public static void newPersonCancel(ArrayList<Object> data) {
     }
 }

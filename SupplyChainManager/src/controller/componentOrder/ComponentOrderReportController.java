@@ -27,7 +27,6 @@ public class ComponentOrderReportController {
         ComponentOrder componentOrder = (ComponentOrder) data.get(0);
         Person person = (Person) data.get(1);
         ComponentOrderReport componentOrderReport = new ComponentOrderReport(componentOrder, person);
-        ComponentOrderReportRepository.getInstance().save(componentOrderReport);
         componentOrder.setReport(componentOrderReport);
     }
 

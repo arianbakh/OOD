@@ -72,8 +72,7 @@ public class ProductController {
 
         ArrayList<Product> productsIfAny = ProductRepository.getInstance().filter(components);
         if (productsIfAny.size() == 0) {
-            Product product = new Product(productName, components);
-            ProductRepository.getInstance().save(product);
+            new Product(productName, components);
         } else {
             System.err.println("Product already exists");
         }
@@ -81,6 +80,5 @@ public class ProductController {
     }
 
     public static void newProductCancel(ArrayList<Object> data) {
-
     }
 }

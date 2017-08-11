@@ -28,7 +28,6 @@ public class CustomerOrderReportController {
     	Person person = (Person)data.get(1);
     	if(customerOrder.getReport() == null){
 	    	CustomerOrderReport customerOrderReport = new CustomerOrderReport(customerOrder, person);
-	    	CustomerOrderReportRepository.getInstance().save(customerOrderReport);
 	    	customerOrder.setReport(customerOrderReport);
 	    	customerOrder.getProduct().decreaseStock();
     	} else {

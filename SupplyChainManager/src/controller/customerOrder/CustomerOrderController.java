@@ -40,10 +40,8 @@ public class CustomerOrderController {
             product = productsIfAny.get(0);
         } else {
             product = new Product(productName.substring(0, productName.length() - 1), components);
-            ProductRepository.getInstance().save(product);
         }
-        CustomerOrder newCustomerOrder = new CustomerOrder(product);
-        CustomerOrderRepository.getInstance().save(newCustomerOrder);
+        new CustomerOrder(product);
     }
 
     public static void startSelectDeliverer(ArrayList<Object> data) {

@@ -27,8 +27,7 @@ public class ComponentController {
         }
         ArrayList<Component> componentIfAny = ComponentRepository.getInstance().filter(componentName);
         if (componentIfAny.size() == 0) {
-            Component newComponent = new Component(componentName);
-            ComponentRepository.getInstance().save(newComponent);
+            new Component(componentName);
         } else {
             System.err.println("Component with same name already exists");
             return;

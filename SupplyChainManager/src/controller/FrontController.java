@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class FrontController {
     private static FrontController frontController;
-    private Map<String, Method> controllersMap = new HashMap<String, Method>();
+    private Map<String, Method> controllersMap = new HashMap<>();
 
     private FrontController() {
         try {

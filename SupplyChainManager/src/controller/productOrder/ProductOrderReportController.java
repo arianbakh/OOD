@@ -18,7 +18,6 @@ public class ProductOrderReportController {
         List<ProductOrder> productOrders = ProductOrderRepository.getInstance().getAll();
         List<Person> persons = PersonRepository.getInstance().getAll();
         new NewProductOrderReportView(productOrders, persons).setVisible(true);
-        ;
     }
 
     public static void newProductOrderReportCancel(ArrayList<Object> data) {
@@ -29,7 +28,6 @@ public class ProductOrderReportController {
         Person person = (Person) data.get(1);
         if (productOrder.getReport() == null) {
             ProductOrderReport productOrderReport = new ProductOrderReport(productOrder, person);
-            ProductOrderReportRepository.getInstance().save(productOrderReport);
             productOrder.setReport(productOrderReport);
             productOrder.getProduct().increaseStock();
         } else {

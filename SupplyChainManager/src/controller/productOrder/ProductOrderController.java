@@ -19,7 +19,6 @@ public class ProductOrderController {
     public static void startFilterProductOrders(ArrayList<Object> data) {
         Product product = (Product) data.get(0);
         new ProductOrderListView(ProductOrderRepository.getInstance().getByProduct(product)).setVisible(true);
-        ;
     }
 
     public static void selectProductsCancel(ArrayList<Object> data) {

@@ -23,8 +23,7 @@ public class DelivererController {
             System.err.println("Empty name is not allowed");
             return;
         }
-        Deliverer newDeliverer = new Deliverer(name, properties);
-        DelivererRepository.getInstance().save(newDeliverer);
+        new Deliverer(name, properties);
     }
 
     public static void startGetDeliverers(ArrayList<Object> data) {

@@ -20,7 +20,6 @@ public class ProductFormReviewController {
         Product product = (Product) data.get(0);
         int quality = (int) data.get(1);
         int delivery = (int) data.get(2);
-        ProductFormReview productFormReview = new ProductFormReview(quality, delivery, product);
-        ProductFormReviewRepository.getInstance().save(productFormReview);
+        new ProductFormReview(quality, delivery, product);
     }
 }

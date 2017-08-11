@@ -34,7 +34,7 @@ public class ComponentOrderController {
             System.err.println("No supplier");
             return;
         }
-        ComponentOrderRepository.getInstance().save(new ComponentOrder(supplier));
+        new ComponentOrder(supplier);
     }
 
     public static void supplierSelectionForNewCancel(ArrayList<Object> data) {
@@ -52,8 +52,7 @@ public class ComponentOrderController {
             return;
         }
         int price = (int) data.get(2);
-        Supplier newSupplier = new Supplier(name, price, component);
-        SupplierRepository.getInstance().save(newSupplier);
+        new Supplier(name, price, component);
     }
 
     public static void setSupplierPropertiesCancel(ArrayList<Object> data) {

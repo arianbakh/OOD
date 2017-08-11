@@ -16,8 +16,7 @@ public class ProductTextReviewController {
     public static void submitFormSubmit(ArrayList<Object> data) {
         Product product = (Product) data.get(0);
         String text = (String) data.get(1);
-        ProductTextReview productTextReview = new ProductTextReview(product, text);
-        ProductTextReviewRepository.getInstance().save(productTextReview);
+        new ProductTextReview(product, text);
     }
 
     public static void submitFormCancel(ArrayList<Object> data) {
