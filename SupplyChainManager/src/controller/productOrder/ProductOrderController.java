@@ -22,12 +22,6 @@ public class ProductOrderController {
         ;
     }
 
-    public static void selectProductsCancel(ArrayList<Object> data) {
-    }
-
-    public static void selectProductsNext(ArrayList<Object> data) {
-    }
-
     public static void productOrderListReturn(ArrayList<Object> data) {
     }
 

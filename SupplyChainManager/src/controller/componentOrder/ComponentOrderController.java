@@ -7,7 +7,6 @@ import model.repository.ComponentOrderRepository;
 import model.repository.ComponentRepository;
 import model.repository.SupplierRepository;
 import view.componentOrder.ComponentSelectionView;
-import view.componentOrder.SelectComponentOrderForEditView;
 import view.componentOrder.SetSupplierPropertiesView;
 import view.componentOrder.SupplierSelectionForNewView;
 
@@ -57,21 +56,5 @@ public class ComponentOrderController {
     }
 
     public static void setSupplierPropertiesCancel(ArrayList<Object> data) {
-    }
-
-    public static void startSelectSupplier(ArrayList<Object> data) {
-        new SelectComponentOrderForEditView(ComponentOrderRepository.getInstance().getAll()).setVisible(true);
-    }
-
-    public static void componentOrderSelectionForEditCancel(ArrayList<Object> data) {
-    }
-
-    public static void componentOrderSelectionForEditNext(ArrayList<Object> data) {
-    }
-
-    public static void supplierSelectionForEditCancel(ArrayList<Object> data) {
-    }
-
-    public static void supplierSelectionForEditSubmit(ArrayList<Object> data) {
     }
 }

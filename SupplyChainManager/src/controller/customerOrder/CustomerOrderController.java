@@ -65,12 +65,6 @@ public class CustomerOrderController {
         new CustomerOrderListView(CustomerOrderRepository.getInstance().getByProduct(product)).setVisible(true);
     }
 
-    public static void selectComponentsCancel(ArrayList<Object> data) {
-    }
-
-    public static void selectComponentsNext(ArrayList<Object> data) {
-    }
-
     public static void customerOrderListReturn(ArrayList<Object> data) {
     }
 }
