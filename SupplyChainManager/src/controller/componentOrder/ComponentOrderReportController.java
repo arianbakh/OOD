@@ -26,8 +26,10 @@ public class ComponentOrderReportController {
     public static void newComponentOrderReportSubmit(ArrayList<Object> data) {
         ComponentOrder componentOrder = (ComponentOrder) data.get(0);
         Person person = (Person) data.get(1);
-        ComponentOrderReport componentOrderReport = new ComponentOrderReport(componentOrder, person);
-        componentOrder.setReport(componentOrderReport);
+        if(componentOrder != null){
+	        ComponentOrderReport componentOrderReport = new ComponentOrderReport(componentOrder, person);
+	        componentOrder.setReport(componentOrderReport);
+        }
     }
 
     public static void startGetComponentOrderReport(ArrayList<Object> data) {
