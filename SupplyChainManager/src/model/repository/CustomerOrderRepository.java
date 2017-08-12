@@ -2,7 +2,6 @@ package model.repository;
 
 import model.customerOrder.CustomerOrder;
 import model.product.Product;
-import model.productOrder.ProductOrder;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -33,8 +32,14 @@ public class CustomerOrderRepository extends Repository<CustomerOrder> {
         }
         return null;
     }
-    
-    public List<CustomerOrder> getIncomplete(){
-    	return null;
+
+    public List<CustomerOrder> getIncomplete() {
+        try {
+            return getDao().queryBuilder().where().isNull("report_id").query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return null;
     }
 }

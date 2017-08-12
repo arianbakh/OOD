@@ -13,7 +13,6 @@ public class ProductController {
     public static void startSetProductStock(ArrayList<Object> data) {
         List<Product> products = ProductRepository.getInstance().getAll();
         new SelectProductMinMaxView(products).setVisible(true);
-        ;
     }
 
     public static void selectProductMinMaxCancel(ArrayList<Object> data) {

@@ -1,8 +1,9 @@
 package model.repository;
 
-import java.util.List;
-
 import model.componentOrder.ComponentOrder;
+
+import java.sql.SQLException;
+import java.util.List;
 
 public class ComponentOrderRepository extends Repository<ComponentOrder> {
     private static ComponentOrderRepository componentOrderRepository;
@@ -16,8 +17,14 @@ public class ComponentOrderRepository extends Repository<ComponentOrder> {
         }
         return componentOrderRepository;
     }
-    
-    public List<ComponentOrder> getIncomplete(){
-    	return null;
+
+    public List<ComponentOrder> getIncomplete() {
+        try {
+            return getDao().queryBuilder().where().isNull("report_id").query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return null;
     }
 }

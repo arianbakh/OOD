@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class DelivererController {
     public static void startSetDelivererProperties(ArrayList<Object> data) {
         new SetDeliverersPropertiesView().setVisible(true);
-        ;
     }
 
     public static void setDelivererPropertiesCancel(ArrayList<Object> data) {

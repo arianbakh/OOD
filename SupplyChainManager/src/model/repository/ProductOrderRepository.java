@@ -52,8 +52,14 @@ public class ProductOrderRepository extends Repository<ProductOrder> {
         productOrders.removeAll(productOrdersToRemove);
         return productOrders;
     }
-    
-    public List<ProductOrder> getIncomplete(){
-    	return null;
+
+    public List<ProductOrder> getIncomplete() {
+        try {
+            return getDao().queryBuilder().where().isNull("report_id").query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return null;
     }
 }
