@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ComponentOrderReportController {
     public static void startNewComponentOrderReport(ArrayList<Object> data) {
-        List<ComponentOrder> componentOrders = ComponentOrderRepository.getInstance().getAll();
+        List<ComponentOrder> componentOrders = ComponentOrderRepository.getInstance().getIncomplete();
         List<Person> persons = PersonRepository.getInstance().getAll();
         new NewComponentOrderReportView(componentOrders, persons).setVisible(true);
     }

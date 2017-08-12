@@ -2,6 +2,7 @@ package model.repository;
 
 import model.customerOrder.CustomerOrder;
 import model.product.Product;
+import model.productOrder.ProductOrder;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -31,5 +32,9 @@ public class CustomerOrderRepository extends Repository<CustomerOrder> {
             System.exit(1);
         }
         return null;
+    }
+    
+    public List<CustomerOrder> getIncomplete(){
+    	return null;
     }
 }

@@ -52,4 +52,8 @@ public class ProductOrderRepository extends Repository<ProductOrder> {
         productOrders.removeAll(productOrdersToRemove);
         return productOrders;
     }
+    
+    public List<ProductOrder> getIncomplete(){
+    	return null;
+    }
 }

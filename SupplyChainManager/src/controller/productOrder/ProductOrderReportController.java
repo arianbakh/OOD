@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ProductOrderReportController {
     public static void startNewProductOrderReport(ArrayList<Object> data) {
-        List<ProductOrder> productOrders = ProductOrderRepository.getInstance().getAll();
+        List<ProductOrder> productOrders = ProductOrderRepository.getInstance().getIncomplete();
         List<Person> persons = PersonRepository.getInstance().getAll();
         new NewProductOrderReportView(productOrders, persons).setVisible(true);
     }
