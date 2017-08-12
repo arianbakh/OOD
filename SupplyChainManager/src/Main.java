@@ -28,7 +28,7 @@ public class Main {
         initializeDatabase();
         addDummyObjects();
         Timer timer = new Timer();
-        timer.schedule(new StockChecker(), 0, TimeUnit.SECONDS.toMillis(30));
+        timer.schedule(new StockChecker(), 0, TimeUnit.SECONDS.toMillis(5));
         FrontController.getFrontController().start();
     }
 
